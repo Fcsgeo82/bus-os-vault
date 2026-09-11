@@ -1,0 +1,328 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import {
+  Bus,
+  Database,
+  RefreshCw,
+  FolderGit2,
+  Layers,
+  CheckCircle,
+  MessageSquare,
+  FilePlus,
+} from "lucide-react";
+import { ChatContainer } from "@/components/chat/ChatContainer";
+import { FilterBar, LineOption } from "@/components/filters/FilterBar";
+import { NoteViewerModal } from "@/components/vault/NoteViewerModal";
+import { DataEntryForm } from "@/components/entry/DataEntryForm";
+import { RAGFilters, OSMestra } from "@/lib/types";
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<"consulta" | "entrada">("consulta");
+  const [filters, setFilters] = useState<RAGFilters>({
+    apenas_vigentes: true,
+    linhas: [],
+    consorcios: [],
+  });
+  const [selectedNote, setSelectedNote] = useState<string | null>(null);
+  const [osList, setOsList] = useState<OSMestra[]>([]);
+  const [availableLines, setAvailableLines] = useState<LineOption[]>([]);
+  const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
+  const [syncing, setSyncing] = useState(false);
+  const [syncSuccess, setSyncSuccess] = useState(false);
+
+  const fetchOsList = () => {
+    fetch("/api/os")
+      .then((res) => res.json())
+      .then((data) => setOsList(data))
+      .catch((err) => console.error("Erro ao carregar OS:", err));
+  };
+
+  useEffect(() => {
+    fetchOsList();
+    fetch("/api/os/lines/all")
+      .then((res) => res.json())
+      .then((data: { codigo: string; vista?: string; consorcio?: string }[]) => {
+        setAvailableLines(
+          data.map((d) => ({ codigo: String(d.codigo), vista: d.vista, consorcio: d.consorcio }))
+        );
+        const consorcios = Array.from(
+          new Set(data.map((d) => String(d.consorcio ?? "")).filter(Boolean))
+        ).sort();
+        if (consorcios.length > 0) setAvailableConsorcios(consorcios);
+      })
+      .catch((err) => console.error("Erro ao carregar linhas:", err));
+  }, []);
+
+  const handleSyncVault = async () => {
+    setSyncing(true);
+    setSyncSuccess(false);
+    try {
+      const res = await fetch("/api/rag/sync", { method: "POST" });
+      if (res.ok) {
+        setSyncSuccess(true);
+        fetchOsList();
+        setTimeout(() => setSyncSuccess(false), 3000);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSyncing(false);
+    }
+  };
+
+  const handleEntrySuccess = (newOsTitle: string) => {
+    fetchOsList();
+    setActiveTab("consulta");
+    setSelectedNote(newOsTitle);
+  };
+
+  return (
+    <main style={{ maxWidth: "1400px", margin: "0 auto", padding: "24px 20px" }}>
+      {/* Header */}
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "24px",
+          paddingBottom: "18px",
+          borderBottom: "1px solid var(--border-subtle)",
+          flexWrap: "wrap",
+          gap: "16px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <div
+            style={{
+              background: "linear-gradient(135deg, var(--accent-cyan), var(--accent-blue))",
+              borderRadius: "14px",
+              padding: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 0 20px rgba(56, 189, 248, 0.3)",
+            }}
+          >
+            <Bus size={26} color="#fff" />
+          </div>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <h1 style={{ fontSize: "1.45rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
+                Bus OS Vault
+              </h1>
+              <span className="badge badge-vigente">v0.2.0</span>
+            </div>
+            <p style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+              Sistema de Gestão de Ordens de Serviço & Motor de Busca Híbrido RAG para Obsidian
+            </p>
+          </div>
+        </div>
+
+        {/* Abas de Navegação & Sincronização */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div
+            style={{
+              background: "rgba(11, 15, 25, 0.8)",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "var(--radius-md)",
+              padding: "4px",
+              display: "flex",
+              gap: "4px",
+            }}
+          >
+            <button
+              onClick={() => setActiveTab("consulta")}
+              style={{
+                background: activeTab === "consulta" ? "rgba(56, 189, 248, 0.18)" : "transparent",
+                border: activeTab === "consulta" ? "1px solid var(--border-glow)" : "1px solid transparent",
+                color: activeTab === "consulta" ? "var(--accent-cyan)" : "var(--text-secondary)",
+                padding: "8px 14px",
+                borderRadius: "8px",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "all 0.2s",
+              }}
+            >
+              <MessageSquare size={15} />
+              Consulta & RAG
+            </button>
+
+            <button
+              onClick={() => setActiveTab("entrada")}
+              style={{
+                background: activeTab === "entrada" ? "rgba(139, 92, 246, 0.18)" : "transparent",
+                border: activeTab === "entrada" ? "1px solid rgba(139, 92, 246, 0.4)" : "1px solid transparent",
+                color: activeTab === "entrada" ? "#c084fc" : "var(--text-secondary)",
+                padding: "8px 14px",
+                borderRadius: "8px",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "all 0.2s",
+              }}
+            >
+              <FilePlus size={15} />
+              Nova Ordem de Serviço
+            </button>
+          </div>
+
+          <button
+            onClick={handleSyncVault}
+            disabled={syncing}
+            className="btn-secondary"
+            title="Reindexar arquivos Markdown no LanceDB e BM25"
+          >
+            <RefreshCw size={14} className={syncing ? "animate-spin" : ""} />
+            {syncing ? "Sincronizando..." : syncSuccess ? "Indexado!" : "Sincronizar"}
+            {syncSuccess && <CheckCircle size={14} color="#34d399" />}
+          </button>
+        </div>
+      </header>
+
+      {/* Conteúdo Dinâmico por Aba */}
+      {activeTab === "entrada" ? (
+        <section className="animate-fade-in">
+          <DataEntryForm onSuccess={handleEntrySuccess} />
+        </section>
+      ) : (
+        /* Aba de Consulta & Chat RAG */
+        <div
+          className="animate-fade-in"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "340px 1fr",
+            gap: "24px",
+            alignItems: "start",
+          }}
+        >
+          {/* Painel Lateral Esquerdo (Acervo & OS) */}
+          <aside style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {/* Card de OS Registradas */}
+            <div className="glass-panel" style={{ padding: "18px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+                <FolderGit2 size={16} style={{ color: "var(--accent-cyan)" }} />
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Ordens de Serviço</h3>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px", maxHeight: "320px", overflowY: "auto" }}>
+                {osList.length === 0 ? (
+                  <p style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Carregando OS do Vault...</p>
+                ) : (
+                  osList.map((os) => (
+                    <div
+                      key={os.uid}
+                      onClick={() => setSelectedNote(os.title)}
+                      style={{
+                        background: "rgba(11, 15, 25, 0.6)",
+                        border: "1px solid var(--border-subtle)",
+                        borderRadius: "var(--radius-md)",
+                        padding: "12px",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                        <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }}>
+                          {os.title}
+                        </span>
+                        <span className={`badge ${os.status_vigencia === "Vigente" ? "badge-vigente" : "badge-retificada"}`}>
+                          {os.status_vigencia}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "flex", flexDirection: "column", gap: "2px" }}>
+                        <span>Processo: {os.processo_rio || "N/A"}</span>
+                        <span>Vigência: a partir de {os.inicio_vigencia || "N/A"}</span>
+                        {os.retifica_os && (
+                          <span style={{ color: "#fbbf24" }}>Retifica: {os.retifica_os}</span>
+                        )}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Card de Anexos Operacionais */}
+            <div className="glass-panel" style={{ padding: "18px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+                <Database size={16} style={{ color: "var(--accent-purple)" }} />
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Anexos Operacionais</h3>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "0.82rem" }}>
+                <div
+                  onClick={() => setSelectedNote("ANEXO_I_Viagens_Resumo")}
+                  style={{
+                    background: "rgba(11, 15, 25, 0.6)",
+                    padding: "10px 12px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    border: "1px solid var(--border-subtle)",
+                  }}
+                >
+                  <div style={{ fontWeight: 600, color: "var(--text-primary)" }}>ANEXO I — Viagens & Km</div>
+                  <div style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>Grade consolidada do estudo</div>
+                </div>
+
+                <div
+                  onClick={() => setSelectedNote("ANEXO_II_Itinerarios")}
+                  style={{
+                    background: "rgba(11, 15, 25, 0.6)",
+                    padding: "10px 12px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    border: "1px solid var(--border-subtle)",
+                  }}
+                >
+                  <div style={{ fontWeight: 600, color: "var(--text-primary)" }}>ANEXO II — Itinerários Alternativos</div>
+                  <div style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>Desvios catalogados</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card de Hubs de Linhas */}
+            <div className="glass-panel" style={{ padding: "18px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+                <Layers size={16} style={{ color: "var(--accent-emerald)" }} />
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Hubs de Linhas (MOC)</h3>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                {["006", "104", "117", "169"].map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setSelectedNote(`Linha ${l}`)}
+                    className="btn-secondary"
+                    style={{ fontSize: "0.78rem", padding: "4px 10px" }}
+                  >
+                    Linha {l}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          {/* Painel Central (Filtros + Chat RAG) */}
+          <section>
+            <FilterBar
+              filters={filters}
+              onChange={setFilters}
+              availableLines={availableLines}
+              availableConsorcios={availableConsorcios}
+            />
+            <ChatContainer filters={filters} onOpenNote={(titulo) => setSelectedNote(titulo)} />
+          </section>
+        </div>
+      )}
+
+      {/* Drawer Lateral de Visualização de Notas */}
+      <NoteViewerModal noteIdentifier={selectedNote} onClose={() => setSelectedNote(null)} />
+    </main>
+  );
+}

@@ -1,0 +1,39 @@
+# Bus OS Vault — Backend Dependencies
+# Python 3.12+
+# Instalar via: pip install -r requirements.txt
+
+# === Web Framework ===
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9       # Upload de arquivos
+
+# === Validação & Serialização ===
+pydantic>=2.9.0
+pydantic-settings>=2.5.0     # Configuração via .env
+
+# === RAG Pipeline ===
+google-genai>=1.0.0           # Google Gemini API (LLM + Embeddings)
+sentence-transformers>=5.0.0  # Embeddings locais (all-MiniLM-L6-v2)
+lancedb>=0.13.0               # Vector store embedded
+rank-bm25>=0.2.2              # Busca léxica BM25
+
+# === Processamento de Texto ===
+python-frontmatter>=1.1.0     # Parse YAML frontmatter de Markdown
+mistune>=3.0.0                # Parser Markdown rápido
+jinja2>=3.1.0                 # Templating para geração de MD
+
+# === I/O & Utilitários ===
+aiofiles>=24.1.0              # I/O assíncrono de arquivos
+watchdog>=5.0.0               # File system watcher (sincronização)
+python-slugify>=8.0.0         # Geração de slugs para filenames
+
+# === CSV / Dados Tabulares ===
+pandas>=2.2.0                 # Leitura e manipulação de CSV
+
+# === Segurança & Config ===
+python-dotenv>=1.0.0          # Variáveis de ambiente
+
+# === Testes ===
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+httpx>=0.27.0                 # Test client para FastAPI

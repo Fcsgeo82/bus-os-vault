@@ -1,0 +1,476 @@
+Serviço,Vista,Consórcio,Sentido,Extensão,Evento,Descrição,Ativação
+006,Silvestre - Castelo,Intersul,Ida,8.865,[desvio_feira],Feira Livre,Automática.
+007,Silvestre - Central do Brasil,Intersul,Ida,8.657,[desvio_lazer],Feira Livre,Automática.
+010,Bairro de Fátima - Central do Brasil,Intersul,Ida,12.509,[desvio_feira],Feira Livre,Automática.
+014,Paula Matos - Central do Brasil,Intersul,Ida,8.242,[desvio_feira],Feira Livre,Automática.
+100,General Osório - Central,Intersul,Ida,16.075,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+100,General Osório - Central,Intersul,Volta,14.117,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+104,São Conrado - Terminal Gentileza,Intersul,Ida,27.085,[desvio_feira],Feira Livre na Rua Carlos Sampaio,Automática.
+104,São Conrado - Terminal Gentileza,Intersul,Volta,26.369,[desvio_feira],Feira Livre da Glória,Automática.
+104,São Conrado - Terminal Gentileza,Intersul,Volta,25.545,[reversivel],Faixa reversível na Av. Niemeyer,Automática.
+107,Central - Urca,Intersul,Ida,12.468,[desvio_obras],Fechamento Obra Rua Senador Pompeu,"Manual, mediante provocação do operador."
+109,São Conrado - Terminal Gentileza,Intersul,Ida,24.599,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+109,São Conrado - Terminal Gentileza,Intersul,Volta,19.484,[reversivel],Faixa reversível na Av. Niemeyer,Automática.
+117,Central - Cosme Velho,Intersul,Ida,9.248,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+117,Central - Cosme Velho,Intersul,Volta,7.239,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+133,Largo do Machado - Terminal Gentileza,Intersul,Ida,9.448,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+133,Largo do Machado - Terminal Gentileza,Intersul,Volta,12.740,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+157,Gávea - Rodoviária,Intersul,Ida,24.602,[desvio_feira],Feira Livre,Automática.
+157,Gávea - Rodoviária,Intersul,Ida,27.237,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+161,Terminal Gentileza - Ipanema,Intersul,Ida,27.355,[desvio_feira],Feira Livre da Rua Farme de Amoedo,Automática.
+165,Terminal Gentileza - Cosme Velho,Intersul,Ida,10.082,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+165,Terminal Gentileza - Cosme Velho,Intersul,Volta,10.083,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+167,Terminal Gentileza - Urca,Intersul,Ida,14.780,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+167,Terminal Gentileza - Urca,Intersul,Volta,17.418,[desvio_tunel],Fechamento do túnel Rio 450,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Ida,17.474,[desvio_aterro],Área de Lazer no Aterro do Flamengo,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Volta,19.926,[desvio_aterro],Área de Lazer no Aterro do Flamengo,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Ida,17.408,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Volta,20.142,[desvio_tunel],Fechamento do túnel Rio 450,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Ida,16.783,[desvio_tunel_e_desvio_aterro],Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar,Automática.
+169,Terminal Gentileza - General Osório,Intersul,Volta,20.779,[desvio_tunel_e_desvio_aterro],Área de Lazer no Aterro do Flamengo e Fechamento do túnel Rio 450,Automática.
+201,Santa Alexandrina - Castelo,Intersul,Ida,7.136,[desvio_lazer],Área de Lazer na Praça da Cruz Vermelha,Automática.
+201,Santa Alexandrina - Castelo,Intersul,Ida,6.153,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+201,Santa Alexandrina - Castelo,Intersul,Volta,7.340,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+202,Rio Comprido - Castelo,Intersul,Ida,9.088,[desvio_sambodromo],Eventos de utilização no Sambódromo,Automática.
+202,Rio Comprido - Castelo,Intersul,Volta,9.757,[desvio_sambodromo],Eventos de utilização no Sambódromo,Automática.
+202,Rio Comprido - Castelo,Intersul,Ida,8.308,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+202,Rio Comprido - Castelo,Intersul,Volta,9.012,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+232,Lins de Vasconcelos - Castelo,Internorte,Ida,17.708,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+238,Água Santa - Castelo,Internorte,Volta,21.630,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+239,Água Santa - Passeio,Internorte,Volta,20.681,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+247,Camarista Méier - Passeio,Internorte,Ida,17.859,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+249,Água Santa - Carioca,Internorte,Ida,18.453,[desvio_lazer],Área de Lazer,Automática.
+249,Água Santa - Carioca,Internorte,Volta,17.728,[desvio_lazer],Área de Lazer,Automática.
+249,Água Santa - Carioca,Internorte,Ida,18.648,[desvio_lazer_e_desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+249,Água Santa - Carioca,Internorte,Ida,18.418,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+249,Água Santa - Carioca,Internorte,Ida,18.750,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+254,Madureira - Candelária,Internorte,Ida,24.180,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+254,Madureira - Candelária,Internorte,Volta,23.107,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+254,Madureira - Candelária,Internorte,Ida,24.638,[desvio_engenhao_e_maracana],Eventos esportivos no entorno dos estádios Nilton Santos e Maracanã.,Automática.
+254,Madureira - Candelária,Internorte,Ida,22.045,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+277,Rocha Miranda - Candelária,Internorte,Ida,26.898,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+277,Rocha Miranda - Candelária,Internorte,Volta,30.294,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+306,Praça Seca - Castelo,Transcarioca,Ida,32.041,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+306,Praça Seca - Castelo,Transcarioca,Ida,36.653,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+306,Praça Seca - Castelo,Transcarioca,Volta,31.012,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+312,Olaria - Candelária,Internorte,Volta,19.723,[desvio_lazer],Área de Lazer,Automática.
+312,Olaria - Candelária,Internorte,Ida,18.252,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+312,Olaria - Candelária,Internorte,Volta,19.059,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+312,Olaria - Candelária,Internorte,Ida,49.751,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+312,Olaria - Candelária,Internorte,Volta,18.871,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+312,Olaria - Candelária,Internorte,Ida,18.332,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+312,Olaria - Candelária,Internorte,Volta,18.781,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Ida,19.388,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Volta,20.005,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Ida,19.739,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Volta,19.676,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Ida,19.870,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+313,Penha (Grotão) - Praça Tiradentes,Internorte,Volta,20.993,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+315,Central - Recreio dos Bandeirantes,Transcarioca,Ida,43.576,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+315,Central - Recreio dos Bandeirantes,Transcarioca,Volta,46.451,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Ida,31.928,[desvio_tunel_1],Fechamento do túnel Santa Bárbara.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Volta,33.306,[desvio_tunel_1],Fechamento do túnel Santa Bárbara.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Ida,31.925,[desvio_tunel_2],Fechamento do túnel Acústico Rafael Mascarenhas.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Volta,33.368,[desvio_tunel_2],Fechamento do túnel Acústico Rafael Mascarenhas.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Ida,34.298,[desvio_tunel_3],Fechamento dos túneis Santa Bárbara e Acústico Rafael Mascarenhas.,Automática.
+319,Terminal Alvorada - Central do Brasil,Transcarioca,Volta,36.608,[desvio_tunel_3],Fechamento dos túneis Santa Bárbara e Acústico Rafael Mascarenhas.,Automática.
+321,Bancários - Castelo,Internorte,Ida,27.799,[desvio_lazer],Área de Lazer,Automática.
+323,Bananal - Castelo,Internorte,Ida,29.727,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+324,Ribeira - Candelária,Internorte,Volta,28.741,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+324,Ribeira - Candelária,Internorte,Ida,28.054,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+325,Ribeira - Castelo,Internorte,Ida,29.502,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+325,Ribeira - Castelo,Internorte,Volta,28.218,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+326,Bancários - Candelária,Internorte,Ida,26.496,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+328,Bananal - Candelária,Internorte,Ida,28.644,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+328,Bananal - Candelária,Internorte,Ida,27.220,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+328,Bananal - Candelária,Internorte,Volta,29.838,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+329,Bancários - Candelária,Internorte,Ida,26.513,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+329,Bancários - Candelária,Internorte,Volta,27.121,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+341,Taquara - Candelária,Transcarioca,Ida,28.328,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+341,Taquara - Candelária,Transcarioca,Ida,32.949,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+341,Taquara - Candelária,Transcarioca,Volta,32.488,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+348,Riocentro - Candelária,Transcarioca,Ida,36.803,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+348,Riocentro - Candelária,Transcarioca,Volta,38.789,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,32.486,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,32.118,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,33.272,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,33.099,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,33.296,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,31.652,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+355,Madureira - Praça Tiradentes,Internorte,Volta,32.301,[desvio_tunel],Fechamento do túnel João Ricardo.,Automática.
+361,Recreio dos Bandeirantes - Castelo,Transcarioca,Ida,47.517,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+361,Recreio dos Bandeirantes - Castelo,Transcarioca,Volta,45.942,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+363,Vila Valqueire - Candelária,Transcarioca,Ida,26.912,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+368,Riocentro - Candelária,Transcarioca,Ida,38.117,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+368,Riocentro - Candelária,Transcarioca,Ida,42.735,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+368,Riocentro - Candelária,Transcarioca,Volta,42.995,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+368,Riocentro - Candelária,Transcarioca,Ida,34.127,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+368,Riocentro - Candelária,Transcarioca,Volta,35.291,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+371,Praça Seca - Praça Tiradentes,Transcarioca,Volta,29.512,[desvio_lazer],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+371,Praça Seca - Praça Tiradentes,Transcarioca,Volta,28.312,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+371,Praça Seca - Praça Tiradentes,Transcarioca,Ida,25.299,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+371,Praça Seca - Praça Tiradentes,Transcarioca,Volta,26.030,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+371,Praça Seca - Praça Tiradentes,Transcarioca,Volta,26.558,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+383,Realengo - Praça da República,Santa Cruz,Ida,33.763,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+383,Realengo - Praça da República,Santa Cruz,Volta,33.945,[desvio_obras],Fechamento obra local.,Automática.
+388,Santa Cruz - Candelária,Santa Cruz,Volta,79.567,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+390,Curicica - Candelária,Transcarioca,Ida,32.347,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+390,Curicica - Candelária,Transcarioca,Ida,37.072,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+390,Curicica - Candelária,Transcarioca,Volta,33.860,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+391,Padre Miguel - Praça da República,Santa Cruz,Ida,38.313,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+393,Bangu - Candelária,Santa Cruz,Ida,44.552,[desvio_obras],Fechamento obra local.,Automática.
+393,Bangu - Candelária,Santa Cruz,Volta,45.682,[desvio_obras],Fechamento obra local.,Automática.
+393,Bangu - Candelária,Santa Cruz,Volta,45.771,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+410,Saens Peña - Gávea,Intersul,Volta,23.063,[desvio_lazer],Área de Lazer,Automática.
+410,Saens Peña - Gávea,Intersul,Ida,19.438,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+410,Saens Peña - Gávea,Intersul,Volta,20.818,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+415,Usina - Leblon,Intersul,Ida,24.658,[desvio_aterro],Área de Lazer no Aterro do Flamengo,Automática.
+415,Usina - Leblon,Intersul,Volta,27.725,[desvio_aterro],Área de Lazer no Aterro do Flamengo,Automática.
+415,Usina - Leblon,Intersul,Ida,25.841,[desvio_sambodromo],Eventos de utilização no Sambódromo,Automática.
+426,Usina - Jardim de Alah,Intersul,Ida,24.891,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+426,Usina - Jardim de Alah,Intersul,Volta,28.435,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+426,Usina - Jardim de Alah,Intersul,Ida,22.282,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+426,Usina - Jardim de Alah,Intersul,Volta,22.256,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+455,Méier - Copacabana,Internorte,Volta,25.364,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+455,Méier - Copacabana,Internorte,Volta,26.116,[desvio_maracana_e_praia],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+455,Méier - Copacabana,Internorte,Ida,24.390,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+455,Méier - Copacabana,Internorte,Volta,26.596,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+456,Norte Shopping - Copacabana,Internorte,Ida,26.844,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+456,Norte Shopping - Copacabana,Internorte,Volta,27.848,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+457,Abolição - Copacabana,Internorte,Ida,26.905,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+457,Abolição - Copacabana,Internorte,Ida,28.962,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+457,Abolição - Copacabana,Internorte,Volta,30.578,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+472,Triagem - Leme,Intersul,Ida,21.167,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+472,Triagem - Leme,Intersul,Volta,21.161,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+473,São Januário - Lido,Intersul,Ida,16.225,[desvio_januario],Eventos esportivos no entorno do estádio São Januário.,Automática.
+473,São Januário - Lido,Intersul,Volta,17.636,[desvio_januario],Eventos esportivos no entorno do estádio São Januário.,Automática.
+474,Jacaré - Copacabana,Intersul,Ida,24.246,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+474,Jacaré - Copacabana,Intersul,Volta,26.672,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+474,Jacaré - Copacabana,Intersul,Ida,18.461,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+474,Jacaré - Copacabana,Intersul,Volta,20.769,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+483,Penha - General Osório,Internorte,Ida,30.519,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+483,Penha - General Osório,Internorte,Volta,31.926,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+483,Penha - General Osório,Internorte,Ida,30.124,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+483,Penha - General Osório,Internorte,Volta,31.458,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+483,Penha - General Osório,Internorte,Ida,26.500,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+483,Penha - General Osório,Internorte,Volta,27.156,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+483,Penha - General Osório,Internorte,Ida,30.115,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+483,Penha - General Osório,Internorte,Volta,32.594,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+483,Penha - General Osório,Internorte,Ida,30.132,[via_praia_do_flamengo_e_presidente_vargas],Área de Lazer no Aterro do Flamengo,Automática.
+483,Penha - General Osório,Internorte,Volta,32.541,[via_praia_do_flamengo_e_presidente_vargas],Área de Lazer no Aterro do Flamengo,Automática.
+483,Penha - General Osório,Internorte,Ida,30.751,[via_praia_do_flamengo_e_tunel],Área de Lazer no Aterro do Flamengo,Automática.
+485,Fundão - General Osório,Internorte,Ida,31.848,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+485,Fundão - General Osório,Internorte,Volta,35.185,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+486,Fundão - General Osório,Internorte,Volta,31.835,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+492,Bancários - Prado Júnior,Internorte,Ida,31.637,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+492,Bancários - Prado Júnior,Internorte,Volta,32.323,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+492,Bancários - Prado Júnior,Internorte,Ida,32.068,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+492,Bancários - Prado Júnior,Internorte,Ida,31.817,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+492,Bancários - Prado Júnior,Internorte,Volta,33.509,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+497,Penha - Largo do Machado,Internorte,Ida,22.548,[desvio_feira],Feira Livre,Automática.
+497,Penha - Largo do Machado,Internorte,Volta,21.172,[desvio_feira],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Ida,30.909,[desvio_feira1],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Volta,28.201,[desvio_feira1],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Ida,31.983,[desvio_feira2],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Volta,30.523,[desvio_feira2],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Ida,34.477,[desvio_feira2_e_desvio_tunel],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Volta,33.810,[desvio_feira2_e_desvio_tunel],Feira Livre,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Ida,32.848,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Volta,31.511,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+550,Cidade de Deus - Gávea,Transcarioca,Ida,33.413,[desvio_tunel_e_desvio_feira1],Fechamento do túnel Zuzu Angel.,Automática.
+552,Terminal Alvorada - Rio Sul,Transcarioca,Volta,30.294,[reversivel],Faixa reversível na Av. Atlântica e Av. Niemeyer,Automática.
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Ida,44.125,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Volta,44.549,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Ida,41.505,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Volta,38.749,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Volta,40.230,[reversivel],Faixa reversível na Av. Atlântica e Av. Niemeyer,Automática.
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Volta,40.992,[via_barata_ribeiro],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+553,Recreio dos Bandeirantes - Rio Sul,Transcarioca,Ida,42.712,[via_visconde_de_piraja],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+554,Piabas - Rio Sul,Transcarioca,Volta,51.908,[reversivel],Faixa reversível na Av. Atlântica e Av. Niemeyer,Automática.
+555,Rio das Pedras - Gávea,Transcarioca,Ida,22.818,[desvio_feira],Feira Livre,Automática.
+555,Rio das Pedras - Gávea,Transcarioca,Ida,24.752,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+555,Rio das Pedras - Gávea,Transcarioca,Volta,24.809,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+557,Rio das Pedras - Copacabana,Transcarioca,Ida,30.525,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+557,Rio das Pedras - Copacabana,Transcarioca,Volta,26.858,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+557,Rio das Pedras - Copacabana,Transcarioca,Ida,30.323,[reversivel],Faixa reversível na Av. Atlântica e Av. Niemeyer,Automática.
+557,Rio das Pedras - Copacabana,Transcarioca,Volta,26.363,[reversivel],Faixa reversível na Av. Atlântica e Av. Niemeyer,Automática.
+565,Tanque - Gávea,Transcarioca,Ida,30.719,[desvio_feira],Feira Livre,Automática.
+565,Tanque - Gávea,Transcarioca,Volta,28.002,[desvio_feira],Feira Livre,Automática.
+565,Tanque - Gávea,Transcarioca,Ida,32.658,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+565,Tanque - Gávea,Transcarioca,Volta,31.313,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+565,Tanque - Gávea,Transcarioca,Ida,31.172,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+565,Tanque - Gávea,Transcarioca,Volta,29.038,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+600,Taquara - Saens Peña,Transcarioca,Ida,28.010,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+600,Taquara - Saens Peña,Transcarioca,Volta,30.790,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+601,Santa Maria - Saens Peña,Transcarioca,Ida,28.538,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+601,Santa Maria - Saens Peña,Transcarioca,Volta,28.825,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+601,Santa Maria - Saens Peña,Transcarioca,Ida,34.440,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+601,Santa Maria - Saens Peña,Transcarioca,Volta,31.425,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+606,Engenho de Dentro - Terminal Gentileza,Internorte,Ida,16.479,[desvio_lazer],Área de Lazer,Automática.
+606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,18.209,[desvio_lazer],Área de Lazer,Automática.
+606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,16.261,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,16.847,[desvio_maracana_e_desvio_lazer],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+608,Grajaú - Saens Peña,Intersul,Ida,4.307,[desvio_lazer],Área de Lazer na Praça Edmundo Rego.,Automática.
+608,Grajaú - Saens Peña,Intersul,Volta,5.027,[desvio_lazer],Área de Lazer na Praça Edmundo Rego.,Automática.
+621,Penha - Saens Peña,Internorte,Ida,38.615,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+621,Penha - Saens Peña,Internorte,Ida,37.837,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+622,Penha - Saens Peña,Internorte,Ida,38.722,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+622,Penha - Saens Peña,Internorte,Ida,37.815,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+622,Penha - Saens Peña,Internorte,Ida,37.063,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+622,Penha - Saens Peña,Internorte,Ida,38.096,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+623,Penha - Saens Peña,Internorte,Ida,22.386,[desvio_feira],Feira Livre na Estrada José Rucas.,Automática.
+623,Penha - Saens Peña,Internorte,Volta,22.549,[desvio_feira],Feira Livre na Estrada José Rucas.,Automática.
+623,Penha - Saens Peña,Internorte,Volta,22.958,[desvio_lazer],Área de Lazer,Automática.
+623,Penha - Saens Peña,Internorte,Volta,23.967,[desvio_lazer_1],Área de Lazer,Automática.
+623,Penha - Saens Peña,Internorte,Ida,22.267,[desvio_obras],Fechamento obra local.,Automática.
+623,Penha - Saens Peña,Internorte,Ida,22.502,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+623,Penha - Saens Peña,Internorte,Volta,22.438,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+623,Penha - Saens Peña,Internorte,Ida,21.474,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+623,Penha - Saens Peña,Internorte,Volta,24.441,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+623,Penha - Saens Peña,Internorte,Ida,22.604,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+623,Penha - Saens Peña,Internorte,Volta,21.561,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+624,Mariópolis - Praça da Bandeira,Internorte,Ida,35.231,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+624,Mariópolis - Praça da Bandeira,Internorte,Volta,39.034,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+625,Olaria - Saens Peña,Internorte,Ida,19.881,[desvio_lazer],Área de Lazer,Automática.
+625,Olaria - Saens Peña,Internorte,Ida,18.598,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+625,Olaria - Saens Peña,Internorte,Volta,18.650,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+625,Olaria - Saens Peña,Internorte,Ida,19.103,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+625,Olaria - Saens Peña,Internorte,Volta,19.870,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+625,Olaria - Saens Peña,Internorte,Ida,18.352,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+625,Olaria - Saens Peña,Internorte,Volta,20.042,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+627,Inhaúma - Saens Peña,Internorte,Volta,14.972,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+628,Penha - Nova América,Internorte,Ida,7.201,[desvio_feira],Feira Livre na Estrada José Rucas.,Automática.
+628,Penha - Nova América,Internorte,Volta,8.605,[desvio_feira],Feira Livre na Estrada José Rucas.,Automática.
+628,Penha - Nova América,Internorte,Volta,9.014,[desvio_lazer],Área de Lazer,Automática.
+628,Penha - Nova América,Internorte,Volta,10.022,[desvio_lazer_2],Área de Lazer,Automática.
+628,Penha - Nova América,Internorte,Ida,7.313,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+628,Penha - Nova América,Internorte,Volta,8.494,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+628,Penha - Nova América,Internorte,Ida,8.455,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+628,Penha - Nova América,Internorte,Volta,7.616,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+629,Irajá - Saens Peña,Internorte,Volta,20.870,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+630,Penha (IAPI) - Saens Peña,Internorte,Volta,17.779,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+635,Bananal - Saens Peña,Internorte,Ida,33.748,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+636,Merck - Saens Peña,Transcarioca,Ida,24.812,[desvio_lazer],Área de Lazer,Automática.
+638,Marechal Hermes - Saens Peña,Internorte,Ida,26.379,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+638,Marechal Hermes - Saens Peña,Internorte,Volta,26.824,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+638,Marechal Hermes - Saens Peña,Internorte,Volta,27.349,[desvio_maracana_e_engenhao],Eventos esportivos no entorno dos estádios Nilton Santos e Maracanã.,Automática.
+639,Jardim América - Saens Peña,Internorte,Ida,35.518,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+639,Jardim América - Saens Peña,Internorte,Volta,32.946,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+652,Cascadura - Méier,Transcarioca,Ida,28.481,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+665,Pavuna - Saens Peña,Internorte,Volta,27.542,[desvio_feira],Feira Livre na Rua Moraes e Silva,Automática.
+665,Pavuna - Saens Peña,Internorte,Ida,34.140,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+669,Pavuna - Méier,Internorte,Ida,28.190,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+669,Pavuna - Méier,Internorte,Volta,28.006,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+679,Grotão - Méier,Internorte,Ida,16.512,[desvio_festividade],Evento local.,Automática.
+679,Grotão - Méier,Internorte,Volta,18.417,[desvio_festividade],Evento local.,Automática.
+679,Grotão - Méier,Internorte,Volta,18.317,[desvio_lazer],Área de Lazer,Automática.
+679,Grotão - Méier,Internorte,Ida,15.488,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+679,Grotão - Méier,Internorte,Volta,16.859,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+679,Grotão - Méier,Internorte,Ida,16.588,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+679,Grotão - Méier,Internorte,Ida,15.248,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+679,Grotão - Méier,Internorte,Volta,16.163,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+685,Terminal Margaridas - Méier,Internorte,Ida,24.631,[desvio_lazer],Área de Lazer,Automática.
+685,Terminal Margaridas - Méier,Internorte,Volta,24.976,[desvio_lazer],Área de Lazer,Automática.
+696,Méier - Praia do Dendê,Internorte,Volta,34.831,[desvio_feira],Feira Livre,Automática.
+696,Méier - Praia do Dendê,Internorte,Ida,34.375,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+696,Méier - Praia do Dendê,Internorte,Volta,35.203,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+696,Méier - Praia do Dendê,Internorte,Ida,34.849,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+696,Méier - Praia do Dendê,Internorte,Volta,32.916,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+711,Rocha Miranda - Rio Comprido,Internorte,Ida,30.737,[desvio_feira],Feira Livre,Automática.
+711,Rocha Miranda - Rio Comprido,Internorte,Volta,31.684,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+731,Campo Grande - Marechal Hermes,Santa Cruz,Volta,28.366,[desvio_feira],Feira Livre na Rua Laudelino Vieira de Campos.,Automática.
+731,Campo Grande - Marechal Hermes,Santa Cruz,Ida,30.213,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+731,Campo Grande - Marechal Hermes,Santa Cruz,Volta,29.462,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+737,Santíssimo - Cascadura,Santa Cruz,Ida,33.809,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+737,Santíssimo - Cascadura,Santa Cruz,Volta,34.284,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+745,Bangu - Cascadura,Santa Cruz,Volta,19.403,[desvio_obras],Fechamento obra local.,Automática.
+746,Jabour - Cascadura,Santa Cruz,Volta,19.755,[desvio_obras],Fechamento obra local.,Automática.
+759,Cesarão - Coelho Neto,Santa Cruz,Volta,56.025,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+770,Campo Grande - Metrô Coelho Neto,Santa Cruz,Volta,28.992,[desvio_feira],Feira Livre,Automática.
+771,Campo Grande - Metrô Coelho Neto,Santa Cruz,Volta,28.751,[desvio_feira],Feira Livre,Automática.
+774,Madureira - Jardim América,Transcarioca,Ida,17.416,[desvio_feira],Feira Livre,Automática.
+774,Madureira - Jardim América,Transcarioca,Volta,16.006,[desvio_feira],Feira Livre,Automática.
+783,Terminal Deodoro - Praça Seca,Transcarioca,Volta,12.447,[desvio_feira],Feira Livre,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Ida,28.739,[desvio_obras],Fechamento obra local.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Volta,29.346,[desvio_obras],Fechamento obra local.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Ida,28.754,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Volta,29.430,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Ida,29.169,[eventos_climaticos_1],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Volta,29.282,[eventos_climaticos_1],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Ida,29.293,[eventos_climaticos_2],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+786,Terminal Campo Grande - Cascadura,Santa Cruz,Volta,29.622,[eventos_climaticos_2],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+788,Terminal Campo Grande - Terminal Deodoro,Santa Cruz,Ida,24.273,[desvio_feira],Feira Livre,Automática.
+788,Terminal Campo Grande - Terminal Deodoro,Santa Cruz,Ida,24.594,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+788,Terminal Campo Grande - Terminal Deodoro,Santa Cruz,Volta,22.506,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+788,Terminal Campo Grande - Terminal Deodoro,Santa Cruz,Ida,24.542,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+790,Campo Grande - Cascadura,Santa Cruz,Volta,35.202,[desvio_feira],Feira Livre,Automática.
+803,Jabour - Taquara,Santa Cruz,Volta,22.007,[desvio_obras],Fechamento obra local.,Automática.
+819,Jardim Bangu - Bangu,Santa Cruz,Ida,9.453,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+819,Jardim Bangu - Bangu,Santa Cruz,Volta,8.834,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+833,Conjunto Manguariba - Campo Grande,Santa Cruz,Ida,10.423,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+833,Conjunto Manguariba - Campo Grande,Santa Cruz,Volta,10.446,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+838,Terminal Campo Grande - Terminal Magarça,Santa Cruz,Ida,13.990,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+838,Terminal Campo Grande - Terminal Magarça,Santa Cruz,Volta,13.331,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+847,Rio da Prata - Terminal Campo Grande,Santa Cruz,Volta,5.828,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+848,Terminal Campo Grande - Monte Santo,Santa Cruz,Ida,11.247,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+855,Terminal Magarça - Terminal Deodoro,Santa Cruz,Ida,34.196,[desvio_obras],Fechamento obra local.,Automática.
+855,Terminal Magarça - Terminal Deodoro,Santa Cruz,Volta,35.577,[desvio_obras],Fechamento obra local.,Automática.
+861,Rio das Pedras - Curicica,Transcarioca,Ida,16.497,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+862,Rio das Pedras - Barra da Tijuca,Transcarioca,Ida,24.718,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+863,Rio das Pedras - Barra da Tijuca,Transcarioca,Ida,28.697,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+864,Terminal Campo Grande - Terminal Sulacap,Santa Cruz,Volta,18.750,[desvio_obras],Fechamento obra local.,Automática.
+872,Praia de Sepetiba - Terminal Mato Alto,Santa Cruz,Ida,31.408,[desvio_feira],Feira Livre,Automática.
+880,Rio das Pedras - Terminal Alvorada,Transcarioca,Ida,10.279,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+883,Terminal Mato Alto - Terminal Deodoro,Santa Cruz,Ida,32.827,[desvio_obras],Fechamento obra local.,Automática.
+883,Terminal Mato Alto - Terminal Deodoro,Santa Cruz,Volta,33.426,[desvio_obras],Fechamento obra local.,Automática.
+894,Terminal Campo Grande - Jardim Moriçaba,Santa Cruz,Ida,6.709,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+901,Bonsucesso - Bananal,Internorte,Volta,27.032,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+906,Jardim América - Caju,Internorte,Ida,28.922,[desvio_feira],Feira Livre,Automática.
+906,Jardim América - Caju,Internorte,Volta,23.550,[desvio_feira],Feira Livre,Automática.
+908,Terminal Deodoro - Bonsucesso,Internorte,Ida,22.637,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+908,Terminal Deodoro - Bonsucesso,Internorte,Volta,20.022,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+910,Bananal - Irajá,Internorte,Ida,27.353,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+913,Del Castilho - Fundão,Internorte,Ida,16.808,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+913,Del Castilho - Fundão,Internorte,Volta,10.769,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+917,Padre Miguel - Bonsucesso,Internorte,Ida,30.322,[desvio_feira],Feira Livre na Rua Helianto.,Automática.
+917,Padre Miguel - Bonsucesso,Internorte,Volta,27.962,[desvio_feira],Feira Livre na Rua Helianto.,Automática.
+917,Padre Miguel - Bonsucesso,Internorte,Volta,29.294,[desvio_obras],Fechamento obra local.,Automática.
+917,Padre Miguel - Bonsucesso,Internorte,Volta,29.034,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+917,Padre Miguel - Bonsucesso,Internorte,Volta,29.163,[eventos_climaticos_1],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+917,Padre Miguel - Bonsucesso,Internorte,Volta,29.427,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+918,Bangu - Bonsucesso,Santa Cruz,Ida,37.001,[desvio_obras],Fechamento obra local.,Automática.
+918,Bangu - Bonsucesso,Santa Cruz,Volta,37.008,[desvio_obras],Fechamento obra local.,Automática.
+919,Pavuna - Bonsucesso,Internorte,Ida,21.273,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+920,Pavuna - Bonsucesso,Internorte,Ida,19.234,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+920,Pavuna - Bonsucesso,Internorte,Volta,18.135,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+925,Bancários - Aeroporto Internacional do RJ,Internorte,Ida,20.416,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+925,Bancários - Aeroporto Internacional do RJ,Internorte,Volta,21.342,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+926,Senador Camará - Penha,Santa Cruz,Ida,28.833,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+926,Senador Camará - Penha,Santa Cruz,Volta,27.735,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+926,Senador Camará - Penha,Santa Cruz,Ida,27.788,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+926,Senador Camará - Penha,Santa Cruz,Volta,26.607,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+961,Rio das Pedras - Recreio dos Bandeirantes,Transcarioca,Ida,27.431,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+961,Rio das Pedras - Recreio dos Bandeirantes,Transcarioca,Volta,24.336,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+979,Terminal Madureira - Terminal Fundão,Internorte,Ida,23.748,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+979,Terminal Madureira - Terminal Fundão,Internorte,Volta,20.178,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+987,Gardênia Azul - Pechincha,Transcarioca,Ida,29.406,[desvio_feira],Feira Livre,Automática.
+LECD126,Méier - Parque Piedade,Internorte,Ida,14.142,[desvio_lazer],Área de Lazer,Automática.
+LECD133,Metrô São Cristóvão - Leblon,Intersul,Ida,24.107,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+LECD150,Grajaú - Metrô Siqueira Campos,Intersul,Volta,20.221,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+LECD151,Grajaú - Leblon,Intersul,Ida,21.564,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+LECD151,Grajaú - Leblon,Intersul,Ida,24.452,[desvio_maracana_e_tunel],Eventos esportivos no entorno do estádio Maracanã e fechamento do túnel Santa Bárbara,Automática.
+LECD151,Grajaú - Leblon,Intersul,Ida,23.996,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+LECD151,Grajaú - Leblon,Intersul,Volta,25.235,[desvio_tunel],Fechamento do túnel Santa Bárbara.,Automática.
+LECD151,Grajaú - Leblon,Intersul,Volta,22.584,[reversivel],Faixa reversível na Av. Atlântica,Automática.
+LECD153,Metrô São Cristóvão - Metrô Siqueira Campos,Intersul,Volta,10.814,[reversivel],Faixa reversível na Av. Atlântica,Automática.
+LECD155,Grajaú - Gamboa,Intersul,Ida,12.086,[desvio_lazer],Área de Lazer,Automática.
+LECD155,Grajaú - Gamboa,Intersul,Volta,14.160,[desvio_lazer],Área de Lazer,Automática.
+SN133,Largo do Machado - Terminal Gentileza,Intersul,Ida,9.690,[excepicionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN133,Largo do Machado - Terminal Gentileza,Intersul,Volta,12.731,[excepicionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN232,Lins de Vasconcelos - Castelo,Internorte,Ida,18.034,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN319,Terminal Alvorada - Terminal Gentileza,Transcarioca,Ida,37.261,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN319,Terminal Alvorada - Terminal Gentileza,Transcarioca,Volta,37.132,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN328,Bananal - Candelária,Internorte,Ida,34.241,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SN328,Bananal - Candelária,Internorte,Ida,32.814,[excepicionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN328,Bananal - Candelária,Internorte,Volta,38.516,[excepicionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,32.440,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,32.104,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,33.253,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,33.086,[excepcionalidade_1],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Ida,33.344,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN353,Gardênia Azul - Terminal Gentileza,Transcarioca,Volta,31.652,[excepcionalidade_2],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN355,Madureira - Praça Tiradentes,Internorte,Volta,33.352,[desvio_tunel],Fechamento do túnel João Ricardo.,Automática.
+SN363,Vila Valqueire - Candelária,Transcarioca,Ida,26.786,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN368,Riocentro - Candelária,Transcarioca,Ida,38.097,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN368,Riocentro - Candelária,Transcarioca,Ida,34.101,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN383,Realengo - Praça da República,Santa Cruz,Ida,33.664,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN383,Realengo - Praça da República,Santa Cruz,Volta,33.947,[desvio_obras],Fechamento obra local.,Automática.
+SN393,Bangu - Candelária,Santa Cruz,Ida,45.063,[desvio_obras],Fechamento obra local.,Automática.
+SN393,Bangu - Candelária,Santa Cruz,Volta,50.544,[desvio_obras],Fechamento obra local.,Automática.
+SN393,Bangu - Candelária,Santa Cruz,Volta,50.633,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SN497,Penha - Largo do Machado,Internorte,Ida,22.555,[desvio_feira],Feira Livre,Automática.
+SN497,Penha - Largo do Machado,Internorte,Volta,21.166,[desvio_feira],Feira Livre,Automática.
+SN550,Cidade de Deus - Gávea,Transcarioca,Ida,32.044,[desvio_feira],Feira Livre,Automática.
+SN550,Cidade de Deus - Gávea,Transcarioca,Volta,30.466,[desvio_feira],Feira Livre,Automática.
+SN550,Cidade de Deus - Gávea,Transcarioca,Ida,32.819,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN550,Cidade de Deus - Gávea,Transcarioca,Volta,31.531,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN565,Tanque - Gávea,Transcarioca,Volta,28.003,[desvio_feira],Feira Livre,Automática.
+SN565,Tanque - Gávea,Transcarioca,Ida,32.664,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN565,Tanque - Gávea,Transcarioca,Volta,31.329,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SN600,Taquara - Saens Peña,Transcarioca,Ida,33.533,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN600,Taquara - Saens Peña,Transcarioca,Volta,32.331,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN624,Mariópolis - Praça da República,Internorte,Ida,42.500,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SN624,Mariópolis - Praça da República,Internorte,Volta,41.511,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SN629,Irajá - Saens Peña,Internorte,Volta,20.874,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SN636,Merck - Saens Peña,Transcarioca,Ida,24.824,[desvio_lazer],Área de Lazer,Automática.
+SN636,Merck - Saens Peña,Transcarioca,Ida,24.991,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN639,Jardim América - Saens Peña,Internorte,Ida,35.530,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+SN639,Jardim América - Saens Peña,Internorte,Volta,32.938,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+SN639,Jardim América - Saens Peña,Internorte,Volta,34.353,[desvio_feira],Feira Livre,Automática.
+SN696,Méier - Praia do Dendê,Internorte,Volta,37.463,[desvio_feira],Feira Livre,Automática.
+SN696,Méier - Praia do Dendê,Internorte,Ida,35.825,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN696,Méier - Praia do Dendê,Internorte,Volta,38.482,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN731,Campo Grande - Marechal Hermes,Santa Cruz,Ida,33.273,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SN731,Campo Grande - Marechal Hermes,Santa Cruz,Volta,31.702,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SN803,Jabour - Taquara,Santa Cruz,Volta,21.996,[desvio_obras],Fechamento obra local.,Automática.
+SN848,Terminal Campo Grande - Monte Santo,Santa Cruz,Ida,11.248,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SN861,Rio das Pedras - Curicica,Transcarioca,Ida,16.491,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SN880,Rio das Pedras - Terminal Alvorada,Transcarioca,Ida,10.280,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SP328,Bananal - Terminal Fundão,Internorte,Ida,14.774,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SP389,Vila Aliança - Terminal Deodoro,Santa Cruz,Ida,13.008,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SP389,Vila Aliança - Terminal Deodoro,Santa Cruz,Volta,15.697,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SP759,Cesarão - Terminal Deodoro,Santa Cruz,Volta,51.865,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SP803,Jabour - Terminal Sulacap,Santa Cruz,Volta,10.787,[desvio_obras],Fechamento obra local.,Automática.
+SP918,Jardim Violeta - Terminal Deodoro,Santa Cruz,Ida,14.761,[desvio_obras],Fechamento obra local.,Automática.
+SP918,Jardim Violeta - Terminal Deodoro,Santa Cruz,Volta,17.613,[desvio_obras],Fechamento obra local.,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Ida,16.297,[desvio_feira],Feira Livre,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Volta,13.497,[desvio_feira],Feira Livre,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Volta,16.788,[desvio_feira_e_desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Ida,18.235,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Volta,16.812,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SPB550,Tijuquinha - Gávea,Transcarioca,Ida,18.800,[desvio_tunel_e_desvio_feira],Fechamento do túnel Zuzu Angel.,Automática.
+SR328,Bananal - Candelária,Internorte,Ida,28.280,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SR355,Madureira - Praça Tiradentes,Internorte,Volta,32.284,[desvio_tunel],Fechamento do túnel João Ricardo.,Automática.
+SR388,Santa Cruz - Candelária,Santa Cruz,Volta,79.506,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SR393,Bangu - Candelária,Santa Cruz,Ida,44.271,[desvio_obras],Fechamento obra local.,Automática.
+SR393,Bangu - Candelária,Santa Cruz,Volta,45.591,[desvio_obras],Fechamento obra local.,Automática.
+SR393,Bangu - Candelária,Santa Cruz,Volta,45.679,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SV319,Terminal Alvorada - Central do Brasil,Transcarioca,Ida,34.508,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SV319,Terminal Alvorada - Central do Brasil,Transcarioca,Volta,34.974,[desvio_tunel],Fechamento do túnel Zuzu Angel.,Automática.
+SV474,Jacaré - Copacabana,Intersul,Ida,24.807,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+SV474,Jacaré - Copacabana,Intersul,Volta,26.601,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+SV474,Jacaré - Copacabana,Intersul,Ida,24.199,[desvio_tunel_e_via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar,Automática.
+SV474,Jacaré - Copacabana,Intersul,Volta,27.217,[desvio_tunel_e_via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar,Automática.
+SV474,Jacaré - Copacabana,Intersul,Ida,24.514,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+SV474,Jacaré - Copacabana,Intersul,Volta,27.268,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+SV483,General Osório - Penha,Internorte,Ida,31.568,[desvio_tunel],Fechamento do túnel Marcello Alencar,Automática.
+SV483,General Osório - Penha,Internorte,Ida,31.102,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,Automática.
+SV483,General Osório - Penha,Internorte,Ida,32.228,[via_praia_do_flamengo],Área de Lazer no Aterro do Flamengo,Automática.
+SV606,Engenho de Dentro - Terminal Gentileza,Internorte,Ida,19.439,[desvio_lazer],Área de Lazer,Automática.
+SV606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,22.297,[desvio_lazer],Área de Lazer,Automática.
+SV606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,20.358,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SV606,Engenho de Dentro - Terminal Gentileza,Internorte,Volta,20.941,[desvio_maracana_e_desvio_lazer],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SV624,Mariópolis - Praça da Bandeira,Internorte,Ida,36.541,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SV624,Mariópolis - Praça da Bandeira,Internorte,Volta,43.511,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SV669,Pavuna - Méier,Internorte,Ida,29.487,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+SV669,Pavuna - Méier,Internorte,Volta,27.602,[desvio_engenhao],Eventos esportivos no entorno do estádio Nilton Santos.,Automática.
+SV774,Madureira - Jardim América,Transcarioca,Ida,21.277,[desvio_feira],Feira Livre,Automática.
+SV774,Madureira - Jardim América,Transcarioca,Volta,18.476,[desvio_feira],Feira Livre,Automática.
+SV777,Padre Miguel - Madureira,Santa Cruz,Ida,22.624,[desvio_obras],Fechamento obra local.,Automática.
+SV777,Padre Miguel - Madureira,Santa Cruz,Volta,25.679,[desvio_obras],Fechamento obra local.,Automática.
+SV790,Campo Grande - Cascadura,Santa Cruz,Volta,36.206,[desvio_feira],Feira Livre na Rua Laudelino Vieira de Campos.,Automática.
+SV790,Campo Grande - Cascadura,Santa Cruz,Ida,32.273,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SV790,Campo Grande - Cascadura,Santa Cruz,Volta,35.256,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SV863,Rio das Pedras - Barra da Tijuca,Transcarioca,Ida,28.703,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,Automática.
+SV917,Padre Miguel - Bonsucesso,Internorte,Ida,29.210,[desvio_feira],Feira Livre na Rua Helianto.,Automática.
+SV917,Padre Miguel - Bonsucesso,Internorte,Volta,28.247,[desvio_feira],Feira Livre na Rua Helianto.,Automática.
+SV917,Padre Miguel - Bonsucesso,Internorte,Volta,29.577,[desvio_obras],Fechamento obra local.,Automática.
+SV917,Padre Miguel - Bonsucesso,Internorte,Volta,29.318,[eventos_climaticos],Eventos climáticos com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SVA665,Metrô Pavuna - Saens Peña,Internorte,Volta,32.930,[desvio_feira],Feira Livre,Automática.
+SVA665,Metrô Pavuna - Saens Peña,Internorte,Ida,33.336,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SVB665,Pavuna - Saens Peña,Internorte,Volta,30.869,[desvio_feira],Feira Livre,Automática.
+SVB665,Pavuna - Saens Peña,Internorte,Ida,33.897,[desvio_maracana],Eventos esportivos no entorno do estádio Maracanã.,Automática.
+SVB665,Pavuna - Saens Peña,Internorte,Ida,34.270,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SVB665,Pavuna - Saens Peña,Internorte,Volta,28.518,[excepcionalidade],Eventos excepcionais com impacto na circulação regular do serviço.,"Manual, mediante provocação do operador."
+SVB685,Terminal Margaridas - Méier,Internorte,Ida,25.310,[desvio_lazer],Área de Lazer,Automática.
+SVB685,Terminal Margaridas - Méier,Internorte,Volta,24.965,[desvio_lazer],Área de Lazer,Automática.

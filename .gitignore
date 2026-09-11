@@ -1,0 +1,52 @@
+# Bus OS Vault — .gitignore
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# === Node.js ===
+node_modules/
+.next/
+out/
+.turbo/
+
+# === Ambiente & Segredos ===
+.env
+.env.local
+.env.production
+*.key
+*.pem
+
+# === Vector Store & Dados Locais ===
+backend/data/
+*.lance/
+*.lancedb/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Logs ===
+*.log
+logs/
+
+# === Temporários ===
+*.tmp
+*.bak
