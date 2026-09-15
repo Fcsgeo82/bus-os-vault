@@ -1,7 +1,7 @@
 ---
 os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
 schema_version: 1
-title: ANEXO II — Itinerarios Alternativos (174 - OS 2026.08 - Agosto 2º Estudo [ret4])
+title: ANEXO II — Itinerários Alternativos (174 - OS 2026.08 - Agosto 2º Estudo [ret4])
 total_desvios: 475
 type: anexo_operacional
 uid: os-2026-08-estudo-2-ret-4-anexo-ii

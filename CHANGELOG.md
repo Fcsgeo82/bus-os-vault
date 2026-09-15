@@ -7,7 +7,28 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
-## [Unreleased]
+## [0.5.0] - 2026-09-15
+
+### Adicionado
+- **Hubs de Linha com dados reais (schema v2):** novo [line_hub_service.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/line_hub_service.py) que gera hubs em `02_Linhas_e_Servicos/` (formato `Linha {codigo}.md`) com frontmatter `schema_version: 2` (`uid`, `codigo_linha`, `vista`, `consorcio`, `type: linha_servico`, `os_origem`, `vigencia_inicio`, `data_atualizacao`, `tags`). Cada hub traz, por sentido, o resumo operacional e a grade horária completa (distribuição de 14 faixas x 4 tipos de dia: Dia Útil, Sábado, Domingo e Ponto Facultativo), além de itinerários alternativos/desvios, ordens de serviço relacionadas e notas de eventos vinculadas (wikilinks sem `.md`).
+- **Parser do ANEXO I estendido:** [csv_parser.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/csv_parser.py) agora expõe `partidas_ponto_facultativo`, `km_ponto_facultativo` e o dict `hourly` com os 4 tipos de dia; o resumo do anexo ganhou a coluna "Viagens Pt. Fac.".
+- **Integração no fluxo de ingestão:** [ingest.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/ingest.py) sincroniza os hubs toda vez que uma OS é cadastrada (`sync_hubs_for_os`), coletando também as linhas citadas apenas em notas de eventos.
+- **Script de rebuild:** [rebuild_line_hubs.py](file:///c:/github_repositories/bus-os-vault/backend/app/scripts/rebuild_line_hubs.py) regenera os hubs a partir dos CSVs de `referências/`, reconstrói os resumos dos anexos, remove hubs órfãos (`remove_orphans=True` — excluiu o hub `Linha LECD999.md`) e reindexa o RAG (LanceDB + BM25).
+- **Seed atualizado:** [seed_vault.py](file:///c:/github_repositories/bus-os-vault/backend/app/scripts/seed_vault.py) passou a usar `sync_hubs_for_os` com `remove_orphans=True` em vez do bloco MOC hardcoded.
+- **Vault regenerado:** 435 hubs criados/atualizados a partir dos dados reais da OS 174 (817 serviços do ANEXO I com vista única); 2ª execução idempotente (0 criados / 435 atualizados).
+
+### Corrigido
+- **Catálogo de Hubs de Linhas na interface:** o card lateral "Hubs de Linhas (MOC)" exibia uma lista fixa de 4 hubs; agora consome `GET /api/os/lines/all` e lista os 435 hubs reais do cofre (código da linha sem o prefixo "Linha", preview de 24 + "Ver todas" para expandir).
+- **Versão da aplicação:** `APP_VERSION` promovida para `0.5.0` ([config.py](file:///c:/github_repositories/bus-os-vault/backend/app/core/config.py)).
+
+### Testes
+- Novo [test_line_hub_service.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_line_hub_service.py) (7 testes: agrupamento, conteúdo real, sync com remoção de órfãos, sync sem anexos preserva hubs existentes, OS 174 real com 435 hubs).
+- [test_csv_parser.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_csv_parser.py) validando `hourly`, Ponto Facultativo e consistência de partidas; [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) valida hub para linha citada só em evento (LECD999).
+- Suíte completa: **16/16 testes pytest aprovados** e `tsc --noEmit` limpo no frontend.
+
+---
+
+## [0.4.0] - 2026-09-15
 
 ### Adicionado
 - **Exclusão de Ordens de Serviço em cascata:** novo endpoint `DELETE /api/os/{uid}` em [os.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/os.py) que remove a OS mestra, as notas de eventos vinculadas (por `os_origem`), os anexos Markdown em `03_Anexos/` (slug padrão e varredura por referência, cobrindo slugs legados) e os CSVs originais em `data/attachments/`, seguido de reindexação automática do RAG (LanceDB + BM25).
@@ -16,7 +37,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ### Testes
 - Novo `test_excluir_os_e_artefatos_vinculados` em [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) validando o fluxo completo: ingestão temporária → exclusão em cascata → verificação de remoção dos arquivos no Vault → 404 ao consultar → ausência da OS nos resultados do RAG.
-- Suíte completa: **11/11 testes pytest aprovados**.
+- Suíte completa: **11/11 testes pytest aprovados** (16/16 na versão seguinte, 0.5.0).
 
 ---
 

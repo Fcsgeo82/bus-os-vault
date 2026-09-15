@@ -29,6 +29,19 @@ def test_process_anexos_reais():
     assert res_i["total_services"] > 800
     assert "# ANEXO I" in res_i["markdown_content"]
     assert "Consórcio Intersul" in res_i["markdown_content"]
+    assert "Viagens Pt. Fac." in res_i["markdown_content"]
+
+    # Valida os dados estendidos por serviço (grade horária e Ponto Facultativo)
+    servico = res_i["services"][0]
+    assert "hourly" in servico
+    assert set(servico["hourly"].keys()) == {"dia_util", "sabado", "domingo", "ponto_facultativo"}
+    for faixas in servico["hourly"].values():
+        assert len(faixas) == 14
+        assert all("hora" in h and "partidas" in h and "km" in h for h in faixas)
+    assert servico["partidas_ponto_facultativo"] >= 0
+    assert servico["km_ponto_facultativo"] >= 0
+    total_dia_util = sum(h["partidas"] for h in servico["hourly"]["dia_util"])
+    assert total_dia_util == servico["partidas_dia_util"]
 
     # Teste ANEXO II
     res_ii = csv_parser.process_anexo_ii(anexo_ii, "OS 2026.08")

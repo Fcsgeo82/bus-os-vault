@@ -64,7 +64,7 @@ O sistema gerencia as **Ordens de Serviço (OS)** da rede municipal de transport
 - [x] Listagem consolidada de OS com status de vigência em tempo real.
 - [x] Exclusão de OS em cascata (OS mestra + notas de eventos vinculadas + anexos + CSVs) com reindexação RAG automática e confirmação na UI.
 - [ ] Linha do tempo / histórico de retificações de uma OS.
-- [ ] Fichas por linha/serviço agregando todas as menções ao longo das OS.
+- [x] Fichas por linha/serviço agregando todas as menções ao longo das OS — **Hubs de Linha com dados reais** (grade horária, desvios e eventos vinculados, schema v2).
 
 ---
 
@@ -80,7 +80,7 @@ vault/
 │   ├── NOTA-2026.01-01-INC-LECD131.md
 │   ├── NOTA-2026.01-02-REM-Linha-443.md
 │   └── NOTA-2026.01-03-AJU-LECD128.md
-├── 02_Linhas_e_Servicos/        # Hubs de consulta por Linha (Map of Content - MOC)
+├── 02_Linhas_e_Servicos/        # Hubs operacionais por Linha (dados reais, schema v2)
 │   ├── Linha 006.md
 │   └── Linha LECD128.md
 └── 03_Anexos/                   # Anexos operacionais convertidos em Markdown sumarizado
@@ -159,6 +159,45 @@ Inclusão do planejamento de viagens das linhas experimentais LECD131 e LECD132.
 Atendimento a demanda identificada pelo estudo de transporte na região norte.
 ```
 
+### 4.3 Schema do Hub de Linha (`02_Linhas_e_Servicos/`)
+
+> **Importante:** hubs de linha usam `schema_version: 2` (dados reais). A v1 era MOC/placeholder e não é mais gravada.
+
+```yaml
+---
+uid: "hub-linha-006"
+codigo_linha: "006"
+vista: "Silvestre - Castelo"
+consorcio: "Intersul"
+type: linha_servico
+os_origem: "174 - OS 2026.08 - Agosto 2º Estudo [ret4]"
+vigencia_inicio: 2026-08-16
+data_atualizacao: 2026-09-15
+tags: [linha/006, consorcio/intersul, tipo/municipal]
+schema_version: 2
+---
+
+# Linha 006
+
+## Planejamento Operacional de Viagens
+
+### Ida (Silvestre → Castelo)
+[resumo de partidas/km por tipo de dia + tabela "Distribuição Horária" de 9 colunas × 14 faixas]
+
+## Itinerários Alternativos e Desvios
+[desvios do ANEXO II agrupados por evento/ativação]
+
+## Ordens de Serviço Relacionadas
+- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+
+## Notas de Eventos Vinculadas
+- [[NOTA-2026.08-01-AJU-Intersul]]: ...
+```
+
+- **Geração:** `line_hub_service.sync_hubs_for_os()` integrado ao fluxo de ingestão (`POST /api/os/ingest`).
+- **Regeneração:** `rebuild_line_hubs.py` reconstrói hubs e resumos de anexos a partir dos CSVs de `referências/`, com remoção de hubs órfãos (`remove_orphans=True`) — ingestões rotineiras **não** removem hubs.
+- **Linhas citadas só em eventos** criam hub mínimo apenas se ainda não existirem (sem sobrescrever dados reais).
+
 ---
 
 ## 5. Especificação dos Anexos Operacionais
@@ -177,7 +216,8 @@ Atendimento a demanda identificada pelo estudo de transporte na região norte.
      - 2 métricas por faixa: `Partidas` e `Quilometragem`.
 * **Estratégia de Ingestão para RAG:**
   - Preservar o CSV íntegro no backend.
-  - Gerar arquivo Markdown sumarizado (`ANEXO_I_Viagens_Resumo.md`) por serviço, apresentando: totais de partidas por período do dia (Manhã, Tarde, Noite, Madrugada) e quilometragem total por tipo de dia.
+  - Gerar arquivo Markdown sumarizado (`ANEXO_I_Viagens_Resumo.md`) por serviço, apresentando: totais de partidas por período do dia (Manhã, Tarde, Noite, Madrugada), quilometragem total por tipo de dia (incluindo Ponto Facultativo) e a coluna "Viagens Pt. Fac.".
+  - O parser expõe também o dict `hourly` (14 faixas × 4 tipos de dia) e campos `partidas_ponto_facultativo`/`km_ponto_facultativo`, usados pelos Hubs de Linha (grade horária completa).
 
 ### 5.2 ANEXO II — Itinerários Alternativos (`.csv`)
 * **Volume típico:** ~400 a 500 desvios operacionais.
@@ -222,3 +262,6 @@ Atendimento a demanda identificada pelo estudo de transporte na região norte.
 | 2026-09-11 | Banner de acesso no startup (URLs Local/Rede/Docs). Compartilhamento externo via túnel (`TUNNEL_ENABLED`) após constatar bloqueio do firewall sem admin. |
 | 2026-09-15 | Exclusão de OS em cascata (`DELETE /api/os/{uid}`) com botão na UI, confirmação nativa e Toast de feedback; reindexação RAG automática após remoção. |
 | 2026-09-15 | Testes do fluxo de exclusão adicionados; suíte ampliada para 11/11 aprovados. |
+| 2026-09-15 | **Hubs de Linha com dados reais (schema v2):** `line_hub_service` integrado ao ingest; grade horária completa (14 faixas × 4 tipos de dia), desvios e eventos vinculados. 435 hubs gerados para a OS 174. |
+| 2026-09-15 | Parser ANEXO I expõe Ponto Facultativo e dict `hourly`; resumo do anexo com coluna "Viagens Pt. Fac.". Remoção de hubs órfãos somente no rebuild (`remove_orphans=True`), nunca em ingestões rotineiras. Hub órfão `Linha LECD999.md` excluído. Suíte ampliada para 16/16 testes. |
+| 2026-09-15 | Interface: card "Hubs de Linhas" passa a consumir o catálogo real (`GET /api/os/lines/all`) no lugar da lista MOC fixa. `APP_VERSION` promovida para `0.5.0`. |

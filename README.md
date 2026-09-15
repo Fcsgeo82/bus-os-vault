@@ -10,7 +10,8 @@ O **Bus OS Vault** é uma aplicação web fullstack que oferece:
 
 1. **Painel RAG (Consulta Inteligente)** — Interface de chat para perguntas sobre o acervo de Ordens de Serviço, com busca semântica híbrida (vetorial + lexical).
 2. **Formulário de Entrada** — Cadastro padronizado de novas OS com validação de campos, importação de planilhas CSV (viagens e itinerários) e geração automática de arquivos Markdown estruturados.
-3. **Gestão de Acervo** — Exclusão de OS com confirmação, remoção em cascata de eventos e anexos (incluindo slugs legados), e reindexação automática do RAG.
+3. **Catálogo de Linhas** — Hubs por linha com dados reais das OS (grade horária completa em 4 tipos de dia, desvios/itinerários alternativos e notas de eventos vinculadas), gerados automaticamente na ingestão.
+4. **Gestão de Acervo** — Exclusão de OS com confirmação, remoção em cascata de eventos e anexos (incluindo slugs legados), e reindexação automática do RAG.
 
 ## Stack Tecnológica
 
@@ -66,8 +67,8 @@ bus-os-vault/
 # Backend
 cd backend
 python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# .venv\Scripts\activate   # Windows
+# source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate   # Windows
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0
 
@@ -118,7 +119,7 @@ Exemplo de saída no terminal:
 Iniciando túnel público (Cloudflare/localtunnel)...
 Túnel público ativo (localtunnel).
 ============================================================
-Bus OS Vault v0.3.0 pronto!
+Bus OS Vault v0.5.0 pronto!
   Local:  http://127.0.0.1:8000
   Rede:   http://10.31.4.229:8000
   Docs:   http://10.31.4.229:8000/docs

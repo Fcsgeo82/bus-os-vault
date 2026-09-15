@@ -11,6 +11,7 @@ from app.core.config import settings
 from app.models.os_schema import OSIngestPayload, OSIngestResponse
 from app.services.vault.vault_writer import vault_writer
 from app.services.vault.csv_parser import csv_parser
+from app.services.vault.line_hub_service import line_hub_service
 from app.services.rag.indexer import vault_indexer
 
 router = APIRouter(prefix="/api/os", tags=["Ingestão de Dados"])
@@ -43,6 +44,8 @@ async def ingest_ordem_de_servico(
     total_desvios = 0
     anexo_i_link = None
     anexo_ii_link = None
+    parsed_i = None
+    parsed_ii = None
 
     # 2. Processamento do ANEXO I (Viagens CSV)
     if anexo_i and anexo_i.filename:
@@ -100,6 +103,7 @@ async def ingest_ordem_de_servico(
 
     # 4. Gravação das Notas de Eventos associadas
     eventos_links = []
+    eventos_hub_meta = []
     for idx, ev in enumerate(data.notas_eventos, 1):
         ev_slug = slugify(f"{idx:02d}-{ev.title[:30]}")
         ev_uid = f"evt-{os_slug}-{ev_slug}"
@@ -140,32 +144,23 @@ async def ingest_ordem_de_servico(
 """
         vault_writer.write_note("01_Notas_de_Eventos", ev_filename, ev_meta, ev_content)
         eventos_links.append(f"- [[{ev_filename}]]: {ev.title}")
+        eventos_hub_meta.append({
+            "title": ev.title,
+            "filename": ev_filename,
+            "linhas_afetadas": ev.linhas_afetadas,
+        })
 
-        # Atualiza ou cria Hub de Linha para cada linha citada
-        for l_cod in ev.linhas_afetadas:
-            linha_file = settings.VAULT_DIR / "02_Linhas_e_Servicos" / f"Linha {l_cod}.md"
-            if not linha_file.exists():
-                l_meta = {
-                    "uid": f"linha-{slugify(l_cod)}",
-                    "codigo_linha": l_cod,
-                    "type": "linha_servico",
-                    "schema_version": 1,
-                }
-                l_content = f"""# Linha {l_cod}
+    # 5. Sincroniza Hubs de Linha com dados reais dos anexos e eventos
+    hub_sync = line_hub_service.sync_hubs_for_os(
+        os_title=data.title,
+        vigencia_inicio=data.inicio_vigencia.isoformat() if data.inicio_vigencia else None,
+        anexo_i_services=(parsed_i or {}).get("services", []) if parsed_i else [],
+        anexo_ii_desvios=(parsed_ii or {}).get("desvios", []) if parsed_ii else [],
+        eventos=eventos_hub_meta,
+    )
+    print(f"[INFO] Hubs de linha sincronizados: {hub_sync}")
 
-**Código do Serviço:** {l_cod}  
-
----
-
-## Ordens de Serviço Relacionadas
-- [[{data.title}]]
-
-## Eventos e Alterações Cadastradas
-- [[{ev_filename}]]
-"""
-                vault_writer.write_note("02_Linhas_e_Servicos", f"Linha {l_cod}", l_meta, l_content)
-
-    # 5. Se esta OS retifica outra, atualiza a OS anterior
+    # 6. Se esta OS retifica outra, atualiza a OS anterior
     if data.retifica_os:
         clean_retifica = data.retifica_os.replace("[[", "").replace("]]", "").strip()
         os_dir = settings.VAULT_DIR / "00_Ordens_de_Servico"
@@ -180,7 +175,7 @@ async def ingest_ordem_de_servico(
                     f.write(serialized)
                 break
 
-    # 6. Grava a nova OS Mestra
+    # 7. Grava a nova OS Mestra
     os_meta = {
         "uid": os_uid,
         "title": data.title,
@@ -234,7 +229,7 @@ async def ingest_ordem_de_servico(
 """
     vault_writer.write_note("00_Ordens_de_Servico", data.title, os_meta, content_os)
 
-    # 7. Sincroniza o RAG automaticamente
+    # 8. Sincroniza o RAG automaticamente
     try:
         vault_indexer.index_entire_vault()
     except Exception as e:

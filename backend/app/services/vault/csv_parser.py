@@ -18,6 +18,33 @@ def _parse_br_float(val: Any) -> float:
         return 0.0
 
 
+DAY_TYPE_SUFFIXES = {
+    "dia_util": "Dia Útil",
+    "sabado": "Sábado",
+    "domingo": "Domingo",
+    "ponto_facultativo": "Ponto Facultativo",
+}
+
+
+def _build_hourly_columns(df: pd.DataFrame) -> Dict[str, tuple]:
+    """Mapeia, para cada tipo de dia, as colunas de partidas/km horárias existentes no CSV."""
+    hourly_columns: Dict[str, tuple] = {}
+    for key, suffix in DAY_TYPE_SUFFIXES.items():
+        p_cols, k_cols = [], []
+        for c in df.columns:
+            cs = str(c)
+            if not cs.endswith(suffix):
+                continue
+            if "Partidas" in cs:
+                p_cols.append((cs.split(" - ")[0].replace("Partidas ", "").strip(), c))
+            elif "Quilometragem" in cs:
+                k_cols.append((cs.split(" - ")[0].replace("Quilometragem ", "").strip(), c))
+        p_cols.sort(key=lambda t: t[0])
+        k_cols.sort(key=lambda t: t[0])
+        hourly_columns[key] = (p_cols, k_cols)
+    return hourly_columns
+
+
 class CSVAttachmentParser:
     """Processa e sumariza os anexos CSV em formato Markdown legível para RAG."""
 
@@ -26,14 +53,22 @@ class CSVAttachmentParser:
         """Lê o ANEXO I (117 colunas de viagens/km) e sintetiza em dados estruturados."""
         df = pd.read_csv(csv_path, encoding="utf-8-sig")
 
-        # Identifica colunas de partidas
+        # Identifica colunas de partidas/quilometragem por tipo de dia
         partidas_util_cols = [c for c in df.columns if "Partidas" in c and "Dia Útil" in c]
         km_util_cols = [c for c in df.columns if "Quilometragem" in c and "Dia Útil" in c]
-        partidas_sab_cols = [c for c in df.columns if "Partidas" in c and "Sábado" in c]
-        partidas_dom_cols = [c for c in df.columns if "Partidas" in c and "Domingo" in c]
+        partidas_cols_by_type = {
+            key: [c for c in df.columns if "Partidas" in c and c.endswith(suffix)]
+            for key, suffix in DAY_TYPE_SUFFIXES.items()
+        }
+        km_cols_by_type = {
+            key: [c for c in df.columns if "Quilometragem" in c and c.endswith(suffix)]
+            for key, suffix in DAY_TYPE_SUFFIXES.items()
+        }
 
         pico_manha_cols = [c for c in df.columns if "06h à 09h - Dia Útil" in c and "Partidas" in c]
         pico_noite_cols = [c for c in df.columns if "18h à 21h - Dia Útil" in c and "Partidas" in c]
+
+        hourly_columns = _build_hourly_columns(df)
 
         services_summary: List[Dict[str, Any]] = []
 
@@ -46,11 +81,27 @@ class CSVAttachmentParser:
 
             tot_partidas_util = sum(_parse_br_float(row[c]) for c in partidas_util_cols)
             tot_km_util = sum(_parse_br_float(row[c]) for c in km_util_cols)
-            tot_partidas_sab = sum(_parse_br_float(row[c]) for c in partidas_sab_cols)
-            tot_partidas_dom = sum(_parse_br_float(row[c]) for c in partidas_dom_cols)
+
+            partidas_sabado = int(round(sum(_parse_br_float(row[c]) for c in partidas_cols_by_type["sabado"])))
+            partidas_domingo = int(round(sum(_parse_br_float(row[c]) for c in partidas_cols_by_type["domingo"])))
+            partidas_ptfac = int(round(sum(_parse_br_float(row[c]) for c in partidas_cols_by_type["ponto_facultativo"])))
+            km_ptfac = sum(_parse_br_float(row[c]) for c in km_cols_by_type["ponto_facultativo"])
 
             pico_manha = sum(_parse_br_float(row[c]) for c in pico_manha_cols)
             pico_noite = sum(_parse_br_float(row[c]) for c in pico_noite_cols)
+
+            # Distribuição horária por tipo de dia (14 faixas cada)
+            hourly = {
+                key: [
+                    {
+                        "hora": slot,
+                        "partidas": int(round(_parse_br_float(row[p]))),
+                        "km": round(_parse_br_float(row[k]), 2),
+                    }
+                    for (slot, p), (_, k) in zip(p_cols, k_cols)
+                ]
+                for key, (p_cols, k_cols) in hourly_columns.items()
+            }
 
             services_summary.append({
                 "servico": servico,
@@ -60,10 +111,13 @@ class CSVAttachmentParser:
                 "extensao_km": round(extensao, 3),
                 "partidas_dia_util": int(round(tot_partidas_util)),
                 "km_dia_util": round(tot_km_util, 2),
-                "partidas_sabado": int(round(tot_partidas_sab)),
-                "partidas_domingo": int(round(tot_partidas_dom)),
+                "partidas_sabado": partidas_sabado,
+                "partidas_domingo": partidas_domingo,
+                "partidas_ponto_facultativo": partidas_ptfac,
+                "km_ponto_facultativo": round(km_ptfac, 2),
                 "pico_manha_partidas": int(round(pico_manha)),
                 "pico_noite_partidas": int(round(pico_noite)),
+                "hourly": hourly,
             })
 
         # Geração do Markdown sumarizado
@@ -73,7 +127,7 @@ class CSVAttachmentParser:
             f"**OS de Referência:** [[{os_title}]]  ",
             f"**Total de Serviços/Linhas Analisados:** {len(services_summary)}  ",
             f"",
-            f"Este documento sumariza a grade horária e quilometragens das linhas municipais, consolidando os 4 tipos de dia.",
+            f"Este documento sumariza a grade horária e quilometragens das linhas municipais, consolidando os 4 tipos de dia (Dia Útil, Sábado, Domingo e Ponto Facultativo).",
             f"",
         ]
 
@@ -83,13 +137,17 @@ class CSVAttachmentParser:
             for consorcio, group in df_summary.groupby("consorcio"):
                 md_lines.append(f"## Consórcio {consorcio}")
                 md_lines.append("")
-                md_lines.append("| Linha | Vista | Sentido | Ext. (km) | Viagens Dia Útil | Km Dia Útil | Viagens Sáb | Viagens Dom | Pico Manhã | Pico Noite |")
-                md_lines.append("|---|---|---|---|---|---|---|---|---|---|")
+                md_lines.append(
+                    "| Linha | Vista | Sentido | Ext. (km) | Viagens Dia Útil | Km Dia Útil | "
+                    "Viagens Sáb | Viagens Dom | Viagens Pt. Fac. | Pico Manhã | Pico Noite |"
+                )
+                md_lines.append("|---|---|---|---|---|---|---|---|---|---|---|")
                 for _, item in group.iterrows():
                     md_lines.append(
                         f"| **{item['servico']}** | {item['vista']} | {item['sentido']} | {item['extensao_km']} | "
                         f"{item['partidas_dia_util']} | {item['km_dia_util']} | {item['partidas_sabado']} | "
-                        f"{item['partidas_domingo']} | {item['pico_manha_partidas']} | {item['pico_noite_partidas']} |"
+                        f"{item['partidas_domingo']} | {item['partidas_ponto_facultativo']} | "
+                        f"{item['pico_manha_partidas']} | {item['pico_noite_partidas']} |"
                     )
                 md_lines.append("")
 

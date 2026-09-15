@@ -14,6 +14,7 @@ if hasattr(sys.stdout, "reconfigure"):
 from app.core.config import settings
 from app.services.vault.vault_writer import vault_writer
 from app.services.vault.csv_parser import csv_parser
+from app.services.vault.line_hub_service import line_hub_service
 
 
 def run_seed():
@@ -173,43 +174,29 @@ Autorização de itinerários alternativos de ativação automática nos seguint
 """
     vault_writer.write_note("00_Ordens_de_Servico", "174 - OS 2026.08 - Agosto 2º Estudo [ret4]", os_meta, content_os)
 
-    # 4. Grava Hubs de Linhas (MOC)
-    print("[INFO] Criando Hubs de Linhas (MOC)...")
-    linhas_exemplo = [
-        ("006", "Silvestre - Castelo", "Intersul"),
-        ("104", "São Conrado - Terminal Gentileza", "Intersul"),
-        ("117", "Central - Cosme Velho", "Intersul"),
-        ("169", "Terminal Gentileza - General Osório", "Intersul"),
+    # 4. Grava Hubs de Linhas com dados reais (grade horária, desvios e eventos)
+    print("[INFO] Gerando Hubs de Linha com dados reais...")
+    evento_links = [
+        {
+            "title": evento_1["title"],
+            "filename": "NOTA-2026.08-01-AJU-Intersul",
+            "linhas_afetadas": evento_1["linhas_afetadas"],
+        },
+        {
+            "title": evento_2["title"],
+            "filename": "NOTA-2026.08-02-INC-Desvios",
+            "linhas_afetadas": evento_2["linhas_afetadas"],
+        },
     ]
-
-    for codigo, vista, consorcio in linhas_exemplo:
-        linha_meta = {
-            "uid": f"linha-{codigo}",
-            "codigo_linha": codigo,
-            "vista": vista,
-            "consorcio": consorcio,
-            "type": "linha_servico",
-            "schema_version": 1,
-        }
-        linha_content = f"""# Linha {codigo} — {vista}
-
-**Consórcio:** {consorcio}  
-**Código do Serviço:** {codigo}  
-
----
-
-## Ordens de Serviço Relacionadas
-- [[{os_title}]] (Vigente a partir de 16/08/2026)
-
-## Eventos e Alterações Cadastradas
-- [[NOTA-2026.08-01-AJU-Intersul]]
-- [[NOTA-2026.08-02-INC-Desvios]]
-
-## Desvios e Itinerários Alternativos
-Consulte os desvios autorizados desta linha em: [[ANEXO_II_Itinerarios#{codigo}]]
-"""
-        vault_writer.write_note("02_Linhas_e_Servicos", f"Linha {codigo}", linha_meta, linha_content)
-
+    sync_result = line_hub_service.sync_hubs_for_os(
+        os_title=os_title,
+        vigencia_inicio="2026-08-16",
+        anexo_i_services=anexo_i_result["services"],
+        anexo_ii_desvios=anexo_ii_result["desvios"],
+        eventos=evento_links,
+        remove_orphans=True,
+    )
+    print(f"[OK] Hubs de Linha sincronizados: {sync_result}")
     print("[OK] Seed do Vault concluído com sucesso!")
 
 

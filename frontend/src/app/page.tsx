@@ -19,6 +19,8 @@ import { DataEntryForm } from "@/components/entry/DataEntryForm";
 import { Toast, ToastData } from "@/components/ui/Toast";
 import { RAGFilters, OSMestra } from "@/lib/types";
 
+const HUB_PREVIEW_LIMIT = 24;
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"consulta" | "entrada">("consulta");
   const [filters, setFilters] = useState<RAGFilters>({
@@ -30,6 +32,7 @@ export default function Home() {
   const [osList, setOsList] = useState<OSMestra[]>([]);
   const [availableLines, setAvailableLines] = useState<LineOption[]>([]);
   const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
+  const [hubLimitVisible, setHubLimitVisible] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncSuccess, setSyncSuccess] = useState(false);
   const [toasts, setToasts] = useState<ToastData[]>([]);
@@ -354,20 +357,47 @@ export default function Home() {
             <div className="glass-panel" style={{ padding: "18px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
                 <Layers size={16} style={{ color: "var(--accent-emerald)" }} />
-                <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Hubs de Linhas (MOC)</h3>
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Hubs de Linhas</h3>
+                <span style={{ color: "var(--text-muted)", fontSize: "0.72rem" }}>
+                  ({availableLines.length})
+                </span>
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {["006", "104", "117", "169"].map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => setSelectedNote(`Linha ${l}`)}
-                    className="btn-secondary"
-                    style={{ fontSize: "0.78rem", padding: "4px 10px" }}
-                  >
-                    Linha {l}
-                  </button>
-                ))}
-              </div>
+              {availableLines.length === 0 ? (
+                <div style={{ color: "var(--text-muted)", fontSize: "0.78rem" }}>
+                  Nenhuma linha catalogada.
+                </div>
+              ) : (
+                <>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {(hubLimitVisible ? availableLines : availableLines.slice(0, HUB_PREVIEW_LIMIT)).map((l) => (
+                      <button
+                        key={l.codigo}
+                        onClick={() => setSelectedNote(`Linha ${l.codigo}`)}
+                        className="btn-secondary"
+                        style={{ fontSize: "0.78rem", padding: "4px 10px" }}
+                      >
+                        {l.codigo}
+                      </button>
+                    ))}
+                  </div>
+                  {availableLines.length > HUB_PREVIEW_LIMIT && (
+                    <button
+                      onClick={() => setHubLimitVisible((v) => !v)}
+                      style={{
+                        marginTop: "10px",
+                        fontSize: "0.78rem",
+                        color: "var(--accent-emerald)",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      {hubLimitVisible ? "Mostrar menos" : `Ver todas (${availableLines.length})`}
+                    </button>
+                  )}
+                </>
+              )}
             </div>
           </aside>
 

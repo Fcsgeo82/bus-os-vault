@@ -43,10 +43,15 @@ async def test_ingest_nova_os_e_sincronizacao_rag():
     assert res_json["status"] == "success"
     assert res_json["total_notas_criadas"] == 1
     assert "180 - OS 2026.10" in res_json["os_title"]
+    os_uid = res_json["os_uid"]
 
     # Verifica se a nota da OS foi criada no Vault
     os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{payload_data['title']}.md"
     assert os_file.exists()
+
+    # Verifica se o hub da linha do evento foi criado (linha só citada em evento)
+    linha_file = settings.VAULT_DIR / "02_Linhas_e_Servicos" / "Linha LECD999.md"
+    assert linha_file.exists()
 
     # Verifica se a busca no RAG encontra a nova linha criada
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
@@ -56,6 +61,13 @@ async def test_ingest_nova_os_e_sincronizacao_rag():
     search_data = search_res.json()
     assert search_data["total"] > 0
     assert any("LECD999" in r["trecho"] or "LECD999" in r["nota_titulo"] for r in search_data["results"])
+
+    # Limpeza: remove a OS criada e o hub de linha gerado para não poluir o cofre real
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        del_res = await ac.delete(f"/api/os/{os_uid}")
+    assert del_res.status_code == 200
+    if linha_file.exists():
+        linha_file.unlink()
 
 
 @pytest.mark.asyncio

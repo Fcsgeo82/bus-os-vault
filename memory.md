@@ -66,9 +66,23 @@
    - **Slugs legados:** os anexos da OS 174 usam slug fora do padrão (`OS_2026.08_Estudo2_ret4` ≠ `slugify(title)`); por isso a exclusão não depende apenas do slug — também varre `03_Anexos/` e `data/attachments/` inspecionando notas por `os_origem` e nomes de arquivo.
    - UI: confirmação nativa (`window.confirm`) + Toast de feedback; testes end-to-end em `test_ingest.py` (11/11 aprovados).
 
+10. **Hubs de Linha com Dados Reais (schema v2, não-MOC):**
+    - `line_hub_service.sync_hubs_for_os()` gera hubs em `02_Linhas_e_Servicos/` no formato `Linha {codigo}.md` com frontmatter `schema_version: 2` — a **única versão de schema** (v1 era MOC/placeholder; hubs reais exigem v2) → documentado em CONTEXT.md.
+    - Campos do frontmatter: `uid`, `codigo_linha`, `vista`, `consorcio`, `type: linha_servico`, `os_origem`, `vigencia_inicio`, `data_atualizacao`, `tags` (`linha/{codigo}`, `consorcio/{slug}`, `tipo/municipal`).
+    - Conteúdo por sentido (Ida/Volta): "## Planejamento Operacional de Viagens" (resumo + tabela "Distribuição Horária" de 9 colunas × 14 faixas por tipo de dia), "## Itinerários Alternativos e Desvios" (por evento), "## Ordens de Serviço Relacionadas" e "## Notas de Eventos Vinculadas" (wikilinks **sem** `.md`).
+    - **Linhas citadas só em eventos** ("event-only"): criam hub mínimo apenas se ainda não existirem; nunca sobrescreve hub com dados reais.
+    - **remove_orphans é opt-in** (`False` por padrão): ingestões rotineiras nunca apagam hubs (evita remover hubs de outras OS); somente `rebuild_line_hubs.py` e `seed_vault.py` usam `remove_orphans=True`.
+    - Rebuild idempotente: 2ª execução → 0 criados / 435 atualizados; hub órfão `Linha LECD999.md` (OS 180 excluída, sem dono no vault) removido.
+    - **Frontend:** o card lateral "Hubs de Linhas" consome `GET /api/os/lines/all` (não mais a lista MOC fixa); exibe apenas o código da linha (sem o prefixo "Linha"), com preview de 24 e link "Ver todas (N)" para expandir.
+
+11. **Parser ANEXO I com grade horária completa:**
+    - `csv_parser.py` expõe `partidas_ponto_facultativo` / `km_ponto_facultativo` e o dict `hourly` com os 4 tipos de dia (`dia_util`, `sabado`, `domingo`, `ponto_facultativo`) × 14 faixas (`00-01`…`23-24`).
+    - Resumo do anexo (`ANEXO_I_Viagens_Resumo.md`) ganhou a coluna "Viagens Pt. Fac."; linha de rodapé do resumo passou a citar os 4 tipos de dia.
+    - Script `rebuild_line_hubs.py` regenera os hubs e também os resumos dos anexos a partir dos CSVs de `referências/`, seguido de `index_entire_vault()`.
+
 ---
 
-## 3. Estado de Entrega (v0.3.0 Concluído)
+## 3. Estado de Entrega (v0.5.0 Concluído)
 
 - [x] Documentos em `docs/`: `architectural_analysis.md`, `implementation_plan.md` (Fase 1) e `implementation_plan_fase2_ingestao.md` (Fase 2).
 - [x] Seed do cofre com dados reais em `backend/vault/`.
@@ -81,5 +95,7 @@
 - [x] Banner de acesso no startup: URLs Local, Rede, Docs e Túnel público (via TUNNEL_ENABLED).
 - [x] Exclusão de OS em cascata (`DELETE /api/os/{uid}`) com remoção de eventos, anexos e CSVs, e reindexação RAG automática.
 - [x] Feedback via Toast e confirmação nativa na UI de exclusão.
-- [x] 11 de 11 testes automatizados com pytest (100% de sucesso).
+- [x] Hubs de linha com dados reais (435 hubs da OS 174, `schema_version: 2`) com grade horária completa (14 faixas × 4 tipos de dia), desvios e notas de eventos vinculadas.
+- [x] Script de rebuild (`rebuild_line_hubs.py`) com `remove_orphans=True`, regeneração dos resumos dos anexos e reindexação RAG; seed atualizado para usar o serviço de hubs.
+- [x] 16 de 16 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.
