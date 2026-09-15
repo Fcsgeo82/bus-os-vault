@@ -7,6 +7,19 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [Unreleased]
+
+### Adicionado
+- **Exclusão de Ordens de Serviço em cascata:** novo endpoint `DELETE /api/os/{uid}` em [os.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/os.py) que remove a OS mestra, as notas de eventos vinculadas (por `os_origem`), os anexos Markdown em `03_Anexos/` (slug padrão e varredura por referência, cobrindo slugs legados) e os CSVs originais em `data/attachments/`, seguido de reindexação automática do RAG (LanceDB + BM25).
+- **Botão de exclusão na interface:** ícone `Trash2` em cada card de OS na sidebar de consulta ([page.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/app/page.tsx)) com confirmação nativa (`window.confirm`) antes da exclusão e atualização imediata da lista.
+- **Feedback visual via Toast:** novo componente [Toast.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/ui/Toast.tsx) com notificações de sucesso/erro após a exclusão (auto-dismiss em 5s, estilo glassmorphism consistente com o design system).
+
+### Testes
+- Novo `test_excluir_os_e_artefatos_vinculados` em [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) validando o fluxo completo: ingestão temporária → exclusão em cascata → verificação de remoção dos arquivos no Vault → 404 ao consultar → ausência da OS nos resultados do RAG.
+- Suíte completa: **11/11 testes pytest aprovados**.
+
+---
+
 ## [0.3.0] - 2026-09-11
 
 ### Corrigido

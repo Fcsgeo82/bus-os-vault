@@ -61,7 +61,8 @@ O sistema gerencia as **Ordens de Serviço (OS)** da rede municipal de transport
   - ANEXO II (Itinerários Alternativos): Validação de desvios operacionais e conversão para tabela Markdown.
 
 ### RF-03: Visualização e Gestão do Acervo
-- [ ] Listagem consolidada de OS com status de vigência em tempo real.
+- [x] Listagem consolidada de OS com status de vigência em tempo real.
+- [x] Exclusão de OS em cascata (OS mestra + notas de eventos vinculadas + anexos + CSVs) com reindexação RAG automática e confirmação na UI.
 - [ ] Linha do tempo / histórico de retificações de uma OS.
 - [ ] Fichas por linha/serviço agregando todas as menções ao longo das OS.
 
@@ -219,3 +220,5 @@ Atendimento a demanda identificada pelo estudo de transporte na região norte.
 | 2026-09-11 | Embeddings locais (Sentence-Transformers `all-MiniLM-L6-v2`) como primário; Gemini `gemini-embedding-001` e hash como fallbacks. |
 | 2026-09-11 | Filtros RAG com popup em portal: busca por linhas/consórcios reais e opção de vigência. |
 | 2026-09-11 | Banner de acesso no startup (URLs Local/Rede/Docs). Compartilhamento externo via túnel (`TUNNEL_ENABLED`) após constatar bloqueio do firewall sem admin. |
+| 2026-09-15 | Exclusão de OS em cascata (`DELETE /api/os/{uid}`) com botão na UI, confirmação nativa e Toast de feedback; reindexação RAG automática após remoção. |
+| 2026-09-15 | Testes do fluxo de exclusão adicionados; suíte ampliada para 11/11 aprovados. |

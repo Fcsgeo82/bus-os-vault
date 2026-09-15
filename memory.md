@@ -60,6 +60,12 @@
    - Binários portáteis: `cloudflared.exe` em `%TEMP%` e cliente `localtunnel` em `%TEMP%\bus-os-lt\` (Node.js requerido). Provisionamento sem admin.
    - O processo do túnel é iniciado no lifespan e encerrado no shutdown do uvicorn.
 
+9. **Exclusão de OS em Cascata (Delete):**
+   - Novo endpoint `DELETE /api/os/{uid}`; não conflita com `GET /api/os/{uid}` nem `GET /api/os/notes/{uid}` (métodos distintos).
+   - Remoção em ordem: notas de eventos (`01_Notas_de_Eventos/`, por `os_origem`) → anexos (`03_Anexos/`) → CSVs (`data/attachments/`) → nota mestra (`00_Ordens_de_Servico/`) → reindexação RAG.
+   - **Slugs legados:** os anexos da OS 174 usam slug fora do padrão (`OS_2026.08_Estudo2_ret4` ≠ `slugify(title)`); por isso a exclusão não depende apenas do slug — também varre `03_Anexos/` e `data/attachments/` inspecionando notas por `os_origem` e nomes de arquivo.
+   - UI: confirmação nativa (`window.confirm`) + Toast de feedback; testes end-to-end em `test_ingest.py` (11/11 aprovados).
+
 ---
 
 ## 3. Estado de Entrega (v0.3.0 Concluído)
@@ -73,5 +79,7 @@
 - [x] Embeddings locais Sentence-Transformers (`all-MiniLM-L6-v2`) com fallbacks Gemini/hash.
 - [x] Filtros RAG com popup em portal: busca por linhas/consórcios reais e opção de vigência.
 - [x] Banner de acesso no startup: URLs Local, Rede, Docs e Túnel público (via TUNNEL_ENABLED).
-- [x] 10 de 10 testes automatizados com pytest (100% de sucesso).
+- [x] Exclusão de OS em cascata (`DELETE /api/os/{uid}`) com remoção de eventos, anexos e CSVs, e reindexação RAG automática.
+- [x] Feedback via Toast e confirmação nativa na UI de exclusão.
+- [x] 11 de 11 testes automatizados com pytest (100% de sucesso).
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

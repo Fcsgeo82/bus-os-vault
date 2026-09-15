@@ -10,6 +10,7 @@ O **Bus OS Vault** é uma aplicação web fullstack que oferece:
 
 1. **Painel RAG (Consulta Inteligente)** — Interface de chat para perguntas sobre o acervo de Ordens de Serviço, com busca semântica híbrida (vetorial + lexical).
 2. **Formulário de Entrada** — Cadastro padronizado de novas OS com validação de campos, importação de planilhas CSV (viagens e itinerários) e geração automática de arquivos Markdown estruturados.
+3. **Gestão de Acervo** — Exclusão de OS com confirmação, remoção em cascata de eventos e anexos (incluindo slugs legados), e reindexação automática do RAG.
 
 ## Stack Tecnológica
 

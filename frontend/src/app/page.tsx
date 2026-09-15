@@ -10,11 +10,13 @@ import {
   CheckCircle,
   MessageSquare,
   FilePlus,
+  Trash2,
 } from "lucide-react";
 import { ChatContainer } from "@/components/chat/ChatContainer";
 import { FilterBar, LineOption } from "@/components/filters/FilterBar";
 import { NoteViewerModal } from "@/components/vault/NoteViewerModal";
 import { DataEntryForm } from "@/components/entry/DataEntryForm";
+import { Toast, ToastData } from "@/components/ui/Toast";
 import { RAGFilters, OSMestra } from "@/lib/types";
 
 export default function Home() {
@@ -30,6 +32,38 @@ export default function Home() {
   const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
   const [syncing, setSyncing] = useState(false);
   const [syncSuccess, setSyncSuccess] = useState(false);
+  const [toasts, setToasts] = useState<ToastData[]>([]);
+
+  const pushToast = (type: "success" | "error", message: string) => {
+    const id = Date.now() + Math.random();
+    setToasts((prev) => [...prev, { id, type, message }]);
+    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 5000);
+  };
+
+  const dismissToast = (id: number) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  const handleDeleteOs = async (os: OSMestra) => {
+    const confirmed = window.confirm(
+      `Excluir a Ordem de Serviço "${os.title}"?\n\nIsso removerá também as notas de eventos vinculadas, anexos e arquivos CSV.`
+    );
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/os/${os.uid}`, { method: "DELETE" });
+      const data = await res.json();
+      if (res.ok) {
+        pushToast("success", data.message || `OS "${os.title}" excluída com sucesso.`);
+        fetchOsList();
+      } else {
+        pushToast("error", data.detail || "Erro ao excluir a Ordem de Serviço.");
+      }
+    } catch (err) {
+      console.error("Erro ao excluir OS:", err);
+      pushToast("error", "Erro de conexão ao tentar excluir a Ordem de Serviço.");
+    }
+  };
 
   const fetchOsList = () => {
     fetch("/api/os")
@@ -230,9 +264,38 @@ export default function Home() {
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                        <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }}>
-                          {os.title}
-                        </span>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px", minWidth: "0" }}>
+                          <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }}>
+                            {os.title}
+                          </span>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteOs(os);
+                            }}
+                            title={`Excluir ${os.title}`}
+                            aria-label={`Excluir ${os.title}`}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "var(--text-muted)",
+                              cursor: "pointer",
+                              padding: "2px",
+                              display: "flex",
+                              alignItems: "center",
+                              borderRadius: "6px",
+                              transition: "all 0.2s",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "#f87171";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "var(--text-muted)";
+                            }}
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
                         <span className={`badge ${os.status_vigencia === "Vigente" ? "badge-vigente" : "badge-retificada"}`}>
                           {os.status_vigencia}
                         </span>
@@ -323,6 +386,11 @@ export default function Home() {
 
       {/* Drawer Lateral de Visualização de Notas */}
       <NoteViewerModal noteIdentifier={selectedNote} onClose={() => setSelectedNote(null)} />
+
+      {/* Toasts */}
+      {toasts.map((t) => (
+        <Toast key={t.id} toast={t} onDismiss={dismissToast} />
+      ))}
     </main>
   );
 }

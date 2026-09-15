@@ -1,10 +1,13 @@
 """Endpoints da API para consulta e visualização de notas do cofre Obsidian."""
 
+import shutil
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, HTTPException
+from slugify import slugify
 import frontmatter
 from app.core.config import settings
+from app.services.rag.indexer import vault_indexer
 
 router = APIRouter(prefix="/api/os", tags=["Ordens de Serviço"])
 
@@ -117,3 +120,85 @@ async def list_lines():
                 "filename": doc["filename"],
             })
     return lines
+
+
+@router.delete("/{uid}")
+async def delete_ordem_de_servico(uid: str):
+    """Exclui uma OS e seus artefatos vinculados (notas de eventos, anexos e CSVs)."""
+    os_dir = settings.VAULT_DIR / "00_Ordens_de_Servico"
+    target_name = None
+    os_title = None
+    for f in os_dir.glob("*.md"):
+        doc = _read_markdown_file(f)
+        if doc and doc["metadata"].get("uid") == uid:
+            target_name = f.name
+            os_title = doc["metadata"].get("title")
+            break
+
+    if not target_name or not os_title:
+        raise HTTPException(status_code=404, detail="Ordem de Serviço não encontrada")
+
+    os_slug = slugify(os_title)
+
+    # 1. Exclui notas de eventos vinculadas
+    eventos_removidos = 0
+    event_dir = settings.VAULT_DIR / "01_Notas_de_Eventos"
+    if event_dir.exists():
+        for ev_file in event_dir.glob("*.md"):
+            ev_doc = _read_markdown_file(ev_file)
+            if ev_doc:
+                origem = ev_doc["metadata"].get("os_origem", "")
+                if os_title in origem or uid in origem:
+                    ev_file.unlink()
+                    eventos_removidos += 1
+
+    anexos_removidos = 0
+
+    # 2. Exclui pasta de anexos Markdown com slug padrão (03_Anexos/<slug>)
+    anexos_dir = settings.VAULT_DIR / "03_Anexos" / os_slug
+    if anexos_dir.exists():
+        shutil.rmtree(anexos_dir)
+        anexos_removidos += 1
+
+    # 3. Varre 03_Anexos em busca de pastas cujas notas referenciam esta OS
+    #    (cobre slugs fora do padrão, como backups manuais/legados)
+    anexos_base = settings.VAULT_DIR / "03_Anexos"
+    if anexos_base.exists():
+        for sub in list(anexos_base.iterdir()):
+            if sub.is_dir():
+                for md in sub.glob("*.md"):
+                    doc = _read_markdown_file(md)
+                    if doc:
+                        origem = doc["metadata"].get("os_origem", "")
+                        if os_title in origem or uid in origem:
+                            shutil.rmtree(sub)
+                            anexos_removidos += 1
+                            break
+
+    # 4. Exclui arquivos CSV de anexos (data/attachments/<slug> e variantes)
+    attachments_base = settings.DATA_DIR / "attachments"
+    if attachments_base.exists():
+        for att_dir in list(attachments_base.iterdir()):
+            if att_dir.is_dir():
+                if att_dir.name == os_slug or any(
+                    f.name.startswith(f"{os_slug}-") for f in att_dir.glob("*")
+                ):
+                    shutil.rmtree(att_dir)
+
+    # 5. Exclui a nota mestra da OS
+    (os_dir / target_name).unlink()
+
+    # 6. Reindexa o RAG (LanceDB + BM25) após a remoção
+    try:
+        vault_indexer.index_entire_vault()
+    except Exception as e:
+        print(f"[AVISO] Falha ao reindexar RAG após exclusão: {e}")
+
+    return {
+        "status": "success",
+        "message": f"Ordem de Serviço '{os_title}' excluída com sucesso.",
+        "os_uid": uid,
+        "os_title": os_title,
+        "notas_eventos_removidas": eventos_removidos,
+        "anexos_removidos": anexos_removidos,
+    }

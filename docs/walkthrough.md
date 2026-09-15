@@ -39,6 +39,7 @@ Concluímos a implementação de ponta a ponta do MVP do **Bus OS Vault**, prior
 - `GET /api/os`: Listagem das Ordens de Serviço cadastradas.
 - `GET /api/os/{uid}`: Ficha completa da OS com notas vinculadas.
 - `GET /api/os/notes/{uid}`: Inspeção do conteúdo Markdown e do Frontmatter YAML de qualquer nota.
+- `DELETE /api/os/{uid}`: Exclusão em cascata da OS (mestra + notas de eventos + anexos + CSVs) com reindexação RAG automática.
 
 ---
 
