@@ -65,6 +65,7 @@ O sistema gerencia as **Ordens de Serviço (OS)** da rede municipal de transport
 - [x] Exclusão de OS em cascata (OS mestra + notas de eventos vinculadas + anexos + CSVs) com reindexação RAG automática e confirmação na UI.
 - [ ] Linha do tempo / histórico de retificações de uma OS.
 - [x] Fichas por linha/serviço agregando todas as menções ao longo das OS — **Hubs de Linha com dados reais** (grade horária, desvios e eventos vinculados, schema v2).
+- [x] Correção/edição de OS (`POST /api/os/{uid}/correct`) com retitulação em cascata (UID, wikilinks, hubs, anexos e CSVs) e correção de campos escalares, com reindexação RAG automática.
 
 ---
 
@@ -265,3 +266,4 @@ schema_version: 2
 | 2026-09-15 | **Hubs de Linha com dados reais (schema v2):** `line_hub_service` integrado ao ingest; grade horária completa (14 faixas × 4 tipos de dia), desvios e eventos vinculados. 435 hubs gerados para a OS 174. |
 | 2026-09-15 | Parser ANEXO I expõe Ponto Facultativo e dict `hourly`; resumo do anexo com coluna "Viagens Pt. Fac.". Remoção de hubs órfãos somente no rebuild (`remove_orphans=True`), nunca em ingestões rotineiras. Hub órfão `Linha LECD999.md` excluído. Suíte ampliada para 16/16 testes. |
 | 2026-09-15 | Interface: card "Hubs de Linhas" passa a consumir o catálogo real (`GET /api/os/lines/all`) no lugar da lista MOC fixa. `APP_VERSION` promovida para `0.5.0`. |
+| 2026-09-16 | **Correção/Edição de OS (v0.6.0):** `POST /api/os/{uid}/correct` com retitulação em cascata (UID/wikilinks/hubs/anexos/CSVs) + correção escalar; validação de título unificada em `vault_writer` (422); guard `old_slug != new_slug` protege anexos em correções só de acento. Aplicado no cofre real: OS 179 → 178 (414 arquivos, RAG reindexado). Suíte ampliada para 25/25 testes. |

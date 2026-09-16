@@ -80,9 +80,17 @@
     - Resumo do anexo (`ANEXO_I_Viagens_Resumo.md`) ganhou a coluna "Viagens Pt. Fac."; linha de rodapé do resumo passou a citar os 4 tipos de dia.
     - Script `rebuild_line_hubs.py` regenera os hubs e também os resumos dos anexos a partir dos CSVs de `referências/`, seguido de `index_entire_vault()`.
 
+12. **Correção/Edição de OS (retitulação em cascata):**
+    - Endpoint `POST /api/os/{uid}/correct`; campos escalares (tipo, status, processo, despacho, datas, GTFS) e `title` via `OSCorrectionPayload`.
+    - **Retitulação propaga tudo:** UID, nome do arquivo mestra, wikilinks `[[...]]`, notas de eventos (`01_`), hubs de linha (`02_`, campo `os_origem`), anexos (`03_`) e CSVs em `data/attachments/` — inclusive renomeando o diretório `<old_slug>` → `<new_slug>` e os arquivos internos `<old_slug>-anexo-*.csv` → `<new_slug>-anexo-*.csv`. Termina com `index_entire_vault()`.
+    - **Guard `old_slug != new_slug`:** quando o slug não muda (ex.: corrigir `1o` → `1º`), pastas de anexos/`attachments` **não** são renomeadas nem removidas — o bug real foi `shutil.rmtree(new_dir)` com old==new apagando a pasta do próprio anexo; coberto por teste de regressão.
+    - **Validação compartilhada:** `vault_writer.validate_os_title_for_filename()` alimenta ingestão e correção (ValueError → 422); registros inválidos rejeitados antes de qualquer escrita.
+    - Aplicação real: OS "179 …" → **178** no cofre (414 arquivos atualizados, 2 pastas + 1 arquivo renomeados, RAG reindexado; zero referências a "179").
+    - UI: botão de lápis + `OSCorrectionModal` com aviso de propagação; listagem de OS expõe `fim_vigencia` e `arquivo_gtfs`.
+
 ---
 
-## 3. Estado de Entrega (v0.5.0 Concluído)
+## 3. Estado de Entrega (v0.6.0 Concluído)
 
 - [x] Documentos em `docs/`: `architectural_analysis.md`, `implementation_plan.md` (Fase 1) e `implementation_plan_fase2_ingestao.md` (Fase 2).
 - [x] Seed do cofre com dados reais em `backend/vault/`.
@@ -97,5 +105,7 @@
 - [x] Feedback via Toast e confirmação nativa na UI de exclusão.
 - [x] Hubs de linha com dados reais (435 hubs da OS 174, `schema_version: 2`) com grade horária completa (14 faixas × 4 tipos de dia), desvios e notas de eventos vinculadas.
 - [x] Script de rebuild (`rebuild_line_hubs.py`) com `remove_orphans=True`, regeneração dos resumos dos anexos e reindexação RAG; seed atualizado para usar o serviço de hubs.
-- [x] 16 de 16 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
+- [x] **Correção/Edição de OS** (`POST /api/os/{uid}/correct`) com retitulação em cascata (UID, wikilinks, hubs, anexos e CSVs) e correção escalar; validação de título unificada; guard de slug idêntico.
+- [x] **Vault corrigido para v0.6.0:** OS 179 → 178 aplicada no cofre real (mestra, nota, hubs, anexos e CSVs consistente; RAG reindexado).
+- [x] 25 de 25 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

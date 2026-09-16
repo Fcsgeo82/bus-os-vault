@@ -7,6 +7,26 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.6.0] - 2026-09-16
+
+### Adicionado
+- **Correção/Edição de Ordens de Serviço:** novo endpoint `POST /api/os/{uid}/correct` em [os.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/os.py) com suporte a correção de campos escalares (`tipo_os`, `status_vigencia`, `processo_rio`, `despacho`, `data_publicacao`, `inicio_vigencia`, `fim_vigencia`, `arquivo_gtfs`) e retitulação completa da OS.
+- **Serviço de correção com propagação em cascata:** novo [os_correction_service.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/os_correction_service.py) que, ao alterar o `title`, propaga a mudança para o UID, nome do arquivo mestra, wikilinks `[[...]]`, notas de eventos, hubs de linha (`02_Linhas_e_Servicos/`), anexos (`03_Anexos/`), diretórios e CSVs internos em `data/attachments/` (prefixo `<slug>-anexo-i/ii.csv`), seguido de reindexação automática do RAG (LanceDB + BM25). Resumo da operação retorna `arquivos_atualizados`, `pastas_renomeadas`, `arquivos_renomeados` e `rag_reindexado`.
+- **Validação de título unificada:** `validate_os_title_for_filename()` em [vault_writer.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/vault_writer.py) (raises `ValueError`; rejeita `<>:"/\\|?*`, espaços nas bordas, ponto final e nomes reservados do Windows), compartilhada entre ingestão e correção — título inválido vira `422 Unprocessable Entity`.
+- **Guard slug idêntico:** correções em que o slug não muda (ex.: `1o` → `1º`) não renomeiam nem removem pastas de anexos/`attachments` (evita `os.replace` com origem=destino e deleção acidental de anexos).
+- **Interface de correção:** modal [OSCorrectionModal.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/entry/OSCorrectionModal.tsx) acessado pelo botão de lápis em cada card de OS na sidebar de consulta ([page.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/app/page.tsx)), com aviso de propagação quando o título é alterado e atualização imediata da listagem após salvar. A listagem de OS passa a expor `fim_vigencia` e `arquivo_gtfs`.
+- **Vault corrigido em produção:** OS "179 - OS 2026.09 - Setembro 1º Estudo" retificada para **178** no cofre real (mestra, nota de evento, 410+ hubs de linha, anexos e CSVs; 414 arquivos atualizados, RAG reindexado; zero referências residuais).
+
+### Corrigido
+- **`NameError` na coleta do pytest:** o `@app.exception_handler(Exception)` era registrado antes da criação de `app = FastAPI(...)` em [main.py](file:///c:/github_repositories/bus-os-vault/backend/app/main.py); movido para depois da instância.
+
+### Testes
+- Novo [test_os_correction.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_os_correction.py) (5 testes): retitulação completa com renomeação de hub/apostilha e anexo simulado (181→180), correção de campo escalar, título inválido → 422, OS inexistente → 404 e regressão do caso "slug idêntico" preservando anexos/CSVs.
+- [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) e [test_line_hub_service.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_line_hub_service.py) ampliados para cobrir o novo fluxo de correção.
+- Suíte completa: **25/25 testes pytest aprovados** e `tsc --noEmit`/`npm run build` limpos no frontend.
+
+---
+
 ## [0.5.0] - 2026-09-15
 
 ### Adicionado
