@@ -1,8 +1,8 @@
 ---
 codigo_linha: '621'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/621
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-621
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Penha - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Penha - Saens Peña
 
 **Código do Serviço:** 621  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -63,13 +63,13 @@ vista: Penha - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 38.615 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 37.837 | Automática. |
+| `[excepcionalidade]` | nan | 38.615 | nan |
+| `[excepcionalidade_1]` | nan | 37.837 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

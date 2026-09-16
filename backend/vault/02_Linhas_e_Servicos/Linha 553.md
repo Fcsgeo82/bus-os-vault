@@ -1,8 +1,8 @@
 ---
 codigo_linha: '553'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/553
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-553
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Recreio dos Bandeirantes - Rio Sul
 ---
 
@@ -18,8 +18,8 @@ vista: Recreio dos Bandeirantes - Rio Sul
 
 **Código do Serviço:** 553  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,18 +95,18 @@ vista: Recreio dos Bandeirantes - Rio Sul
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 44.125 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 44.549 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 41.505 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 38.749 | Manual, mediante provocação do operador. |
-| `[reversivel]` | Faixa reversível na Av. Atlântica e Av. Niemeyer | 40.23 | Automática. |
-| `[via_barata_ribeiro]` | Eventos excepcionais com impacto na circulação regular do serviço. | 40.992 | Manual, mediante provocação do operador. |
-| `[via_visconde_de_piraja]` | Eventos excepcionais com impacto na circulação regular do serviço. | 42.712 | Manual, mediante provocação do operador. |
+| `[desvio_tunel]` | nan | 44.125 | nan |
+| `[desvio_tunel]` | nan | 44.549 | nan |
+| `[excepcionalidade]` | nan | 41.505 | nan |
+| `[excepcionalidade]` | nan | 38.749 | nan |
+| `[reversivel]` | nan | 40.23 | nan |
+| `[via_barata_ribeiro]` | nan | 40.992 | nan |
+| `[via_visconde_de_piraja]` | nan | 42.712 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

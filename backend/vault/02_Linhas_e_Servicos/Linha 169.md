@@ -1,8 +1,8 @@
 ---
 codigo_linha: '169'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/169
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-169
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Gentileza - General Osório
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Gentileza - General Osório
 
 **Código do Serviço:** 169  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Terminal Gentileza - General Osório
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_aterro]` | Área de Lazer no Aterro do Flamengo | 17.474 | Automática. |
-| `[desvio_aterro]` | Área de Lazer no Aterro do Flamengo | 19.926 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 17.408 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Rio 450 | 20.142 | Automática. |
-| `[desvio_tunel_e_desvio_aterro]` | Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar | 16.783 | Automática. |
-| `[desvio_tunel_e_desvio_aterro]` | Área de Lazer no Aterro do Flamengo e Fechamento do túnel Rio 450 | 20.779 | Automática. |
+| `[desvio_aterro]` | nan | 17.474 | nan |
+| `[desvio_aterro]` | nan | 19.926 | nan |
+| `[desvio_tunel]` | nan | 17.408 | nan |
+| `[desvio_tunel]` | nan | 20.142 | nan |
+| `[desvio_tunel_e_desvio_aterro]` | nan | 16.783 | nan |
+| `[desvio_tunel_e_desvio_aterro]` | nan | 20.779 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-02-INC-Desvios]]: Inclusão de desvios operacionais por fechamento do Túnel Santa Bárbara e Feiras
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

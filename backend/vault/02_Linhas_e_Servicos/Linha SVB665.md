@@ -1,8 +1,8 @@
 ---
 codigo_linha: SVB665
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/svb665
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-svb665
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Pavuna - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Pavuna - Saens Peña
 
 **Código do Serviço:** SVB665  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Pavuna - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 30.869 | Automática. |
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 33.897 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 34.27 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 28.518 | Manual, mediante provocação do operador. |
+| `[desvio_feira]` | nan | 30.869 | nan |
+| `[desvio_maracana]` | nan | 33.897 | nan |
+| `[excepcionalidade]` | nan | 34.27 | nan |
+| `[excepcionalidade]` | nan | 28.518 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

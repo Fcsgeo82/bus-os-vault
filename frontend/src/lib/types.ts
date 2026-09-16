@@ -37,6 +37,8 @@ export interface OSMestra {
   despacho?: string;
   data_publicacao?: string;
   inicio_vigencia?: string;
+  fim_vigencia?: string;
+  arquivo_gtfs?: string;
   retifica_os?: string;
   tags: string[];
   filename: string;

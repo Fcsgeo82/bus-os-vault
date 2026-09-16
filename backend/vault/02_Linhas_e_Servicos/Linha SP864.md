@@ -1,8 +1,8 @@
 ---
 codigo_linha: SP864
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sp864
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sp864
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Campo Grande - Bangu
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Campo Grande - Bangu
 
 **Código do Serviço:** SP864  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -92,7 +92,7 @@ vista: Terminal Campo Grande - Bangu
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '319'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/319
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-319
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Alvorada - Central do Brasil
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Alvorada - Central do Brasil
 
 **Código do Serviço:** 319  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Terminal Alvorada - Central do Brasil
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel_1]` | Fechamento do túnel Santa Bárbara. | 31.928 | Automática. |
-| `[desvio_tunel_1]` | Fechamento do túnel Santa Bárbara. | 33.306 | Automática. |
-| `[desvio_tunel_2]` | Fechamento do túnel Acústico Rafael Mascarenhas. | 31.925 | Automática. |
-| `[desvio_tunel_2]` | Fechamento do túnel Acústico Rafael Mascarenhas. | 33.368 | Automática. |
-| `[desvio_tunel_3]` | Fechamento dos túneis Santa Bárbara e Acústico Rafael Mascarenhas. | 34.298 | Automática. |
-| `[desvio_tunel_3]` | Fechamento dos túneis Santa Bárbara e Acústico Rafael Mascarenhas. | 36.608 | Automática. |
+| `[desvio_tunel_1]` | nan | 31.928 | nan |
+| `[desvio_tunel_1]` | nan | 33.306 | nan |
+| `[desvio_tunel_2]` | nan | 31.925 | nan |
+| `[desvio_tunel_2]` | nan | 33.368 | nan |
+| `[desvio_tunel_3]` | nan | 34.298 | nan |
+| `[desvio_tunel_3]` | nan | 36.608 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

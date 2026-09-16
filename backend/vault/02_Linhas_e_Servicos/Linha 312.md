@@ -1,8 +1,8 @@
 ---
 codigo_linha: '312'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/312
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-312
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Olaria - Candelária
 ---
 
@@ -18,8 +18,8 @@ vista: Olaria - Candelária
 
 **Código do Serviço:** 312  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -27,14 +27,14 @@ vista: Olaria - Candelária
 
 ### Ida
 
-**Extensão:** 19.075 km  
+**Extensão:** 19.077 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 85 | 1621.38 |
-| Sábado | 46 | 877.45 |
-| Domingo | 35 | 667.62 |
-| Ponto Facultativo | 53 | 1010.98 |
+| Dia Útil | 85 | 1621.55 |
+| Sábado | 46 | 877.54 |
+| Domingo | 35 | 667.68 |
+| Ponto Facultativo | 53 | 1011.08 |
 | Pico Manhã (06h-09h) | 26 | — |
 | Pico Noite (18h-21h) | 10 | — |
 
@@ -47,13 +47,13 @@ vista: Olaria - Candelária
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 04h à 05h | 3 | 57.23 | 2 | 38.15 | 2 | 38.15 | 2 | 38.15 |
-| 05h à 06h | 8 | 152.6 | 3 | 57.23 | 2 | 38.15 | 5 | 95.38 |
-| 06h à 09h | 26 | 495.95 | 11 | 209.82 | 6 | 114.45 | 16 | 305.2 |
-| 09h à 12h | 13 | 247.97 | 9 | 171.68 | 6 | 114.45 | 8 | 152.6 |
-| 12h à 15h | 10 | 190.75 | 8 | 152.6 | 6 | 114.45 | 6 | 114.45 |
-| 15h à 18h | 14 | 267.05 | 6 | 114.45 | 6 | 114.45 | 9 | 171.68 |
-| 18h à 21h | 10 | 190.75 | 6 | 114.45 | 6 | 114.45 | 6 | 114.45 |
-| 21h à 22h | 1 | 19.07 | 1 | 19.07 | 1 | 19.07 | 1 | 19.07 |
+| 05h à 06h | 8 | 152.62 | 3 | 57.23 | 2 | 38.15 | 5 | 95.39 |
+| 06h à 09h | 26 | 496.0 | 11 | 209.85 | 6 | 114.46 | 16 | 305.23 |
+| 09h à 12h | 13 | 248.0 | 9 | 171.69 | 6 | 114.46 | 8 | 152.62 |
+| 12h à 15h | 10 | 190.77 | 8 | 152.62 | 6 | 114.46 | 6 | 114.46 |
+| 15h à 18h | 14 | 267.08 | 6 | 114.46 | 6 | 114.46 | 9 | 171.69 |
+| 18h à 21h | 10 | 190.77 | 6 | 114.46 | 6 | 114.46 | 6 | 114.46 |
+| 21h à 22h | 1 | 19.08 | 1 | 19.08 | 1 | 19.08 | 1 | 19.08 |
 | 22h à 23h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 23h à 24h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 
@@ -95,18 +95,18 @@ vista: Olaria - Candelária
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Área de Lazer | 19.723 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 18.252 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 19.059 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 49.751 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 18.871 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 18.332 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 18.781 | Automática. |
+| `[desvio_lazer]` | nan | 19.723 | nan |
+| `[excepcionalidade]` | nan | 18.252 | nan |
+| `[excepcionalidade]` | nan | 19.059 | nan |
+| `[excepcionalidade_1]` | nan | 19.636 | nan |
+| `[excepcionalidade_1]` | nan | 18.871 | nan |
+| `[excepcionalidade_2]` | nan | 18.332 | nan |
+| `[excepcionalidade_2]` | nan | 18.781 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

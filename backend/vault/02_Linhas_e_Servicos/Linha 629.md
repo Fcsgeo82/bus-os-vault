@@ -1,8 +1,8 @@
 ---
 codigo_linha: '629'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/629
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-629
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Irajá - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Irajá - Saens Peña
 
 **Código do Serviço:** 629  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,12 +95,12 @@ vista: Irajá - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 20.87 | Automática. |
+| `[desvio_maracana]` | nan | 20.87 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

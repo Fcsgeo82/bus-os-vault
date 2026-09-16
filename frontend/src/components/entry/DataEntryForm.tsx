@@ -165,12 +165,30 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
       });
 
       if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(errData.detail || "Erro desconhecido ao processar ingestão.");
+        const raw = await res.text();
+        let detail = `Erro ${res.status} ao processar ingestão${res.statusText ? ` (${res.statusText})` : ""}.`;
+        if (raw) {
+          try {
+            const parsed = JSON.parse(raw);
+            detail = parsed.detail || detail;
+          } catch {
+            detail = `${detail} ${raw.slice(0, 300)}`;
+          }
+        }
+        throw new Error(detail);
       }
 
-      const resJson = await res.json();
-      setStatusMsg({ type: "success", text: resJson.message });
+      const successText = await res.text();
+      let message = "Ordem de Serviço salva com sucesso.";
+      if (successText) {
+        try {
+          const parsed = JSON.parse(successText);
+          message = parsed.message || message;
+        } catch {
+          // Corpo não-JSON: mantém a mensagem padrão de sucesso.
+        }
+      }
+      setStatusMsg({ type: "success", text: message });
       setTimeout(() => {
         onSuccess(title.trim());
       }, 1500);

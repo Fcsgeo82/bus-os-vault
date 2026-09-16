@@ -1,8 +1,8 @@
 ---
 codigo_linha: '926'
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/926
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-926
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Senador Camará - Penha
 ---
 
@@ -18,8 +18,8 @@ vista: Senador Camará - Penha
 
 **Código do Serviço:** 926  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Senador Camará - Penha
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 28.833 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 27.735 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 27.788 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 26.607 | Manual, mediante provocação do operador. |
+| `[excepcionalidade_1]` | nan | 28.833 | nan |
+| `[excepcionalidade_1]` | nan | 27.735 | nan |
+| `[excepcionalidade_2]` | nan | 27.788 | nan |
+| `[excepcionalidade_2]` | nan | 26.607 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

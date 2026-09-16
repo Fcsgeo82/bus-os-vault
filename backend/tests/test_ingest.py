@@ -71,9 +71,46 @@ async def test_ingest_nova_os_e_sincronizacao_rag():
 
 
 @pytest.mark.asyncio
+async def test_ingest_titulo_com_caracter_invalido_retorna_422():
+    """Título com caractere inválido para nome de arquivo no Windows deve retornar 422 JSON claro."""
+    payload_data = {
+        "title": "180 - OS 2026.10 - Outubro/Novo Estudo",
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/10",
+    }
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+
+    assert response.status_code == 422
+    detail = response.json()["detail"]
+    assert "caracteres inválidos" in detail
+    assert "/" in detail
+
+
+@pytest.mark.asyncio
+async def test_ingest_titulo_com_espacos_ou_ponto_final_retorna_422():
+    """Títulos que quebrariam o nome de arquivo (espaços nas bordas / ponto final) devem ser rejeitados."""
+    for titulo in ["180 - OS 2026.10 - Outubro  ", "180 - OS 2026.10 - Outubro."]:
+        payload_data = {
+            "title": titulo,
+            "tipo_os": "Normal",
+            "status_vigencia": "Vigente",
+            "ano_mes_referencia": "2026/10",
+        }
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+            response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+        assert response.status_code == 422
+        assert response.json()["detail"]
+
+
+@pytest.mark.asyncio
 async def test_excluir_os_e_artefatos_vinculados():
     """Testa a exclusão em cascata de uma OS: notas de eventos, anexos e CSVs."""
     # 1. Cria uma OS temporária com notas de eventos
+    notas_dir = settings.VAULT_DIR / "01_Notas_de_Eventos"
+    notas_anteriores = set(notas_dir.glob("NOTA-2026-09-*.md"))
     payload_data = {
         "title": "999 - OS 2026.09 - Estudo de Exclusão",
         "tipo_os": "Normal",
@@ -103,8 +140,9 @@ async def test_excluir_os_e_artefatos_vinculados():
     # 2. Confirma que os artefatos existem no Vault
     os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{payload_data['title']}.md"
     assert os_file.exists()
-    event_files = list((settings.VAULT_DIR / "01_Notas_de_Eventos").glob("NOTA-2026-09-*.md"))
-    assert any(f.exists() for f in event_files)
+    event_files = set((settings.VAULT_DIR / "01_Notas_de_Eventos").glob("NOTA-2026-09-*.md"))
+    criadas_pelo_teste = event_files - notas_anteriores
+    assert len(criadas_pelo_teste) > 0
 
     # 3. Exclui a OS
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
@@ -115,9 +153,9 @@ async def test_excluir_os_e_artefatos_vinculados():
     assert data["status"] == "success"
     assert data["notas_eventos_removidas"] >= 1
 
-    # 4. Verifica que a OS mestra e os eventos foram removidos
+    # 4. Verifica que a OS mestra e os eventos criados pelo teste foram removidos
     assert not os_file.exists()
-    assert not any(f.exists() for f in event_files)
+    assert not any(f.exists() for f in criadas_pelo_teste)
 
     # 5. Verifica 404 ao tentar consultar novamente
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:

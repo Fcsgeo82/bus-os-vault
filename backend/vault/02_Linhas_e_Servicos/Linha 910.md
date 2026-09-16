@@ -1,8 +1,8 @@
 ---
 codigo_linha: '910'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/910
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-910
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Bananal - Irajá
 ---
 
@@ -18,8 +18,8 @@ vista: Bananal - Irajá
 
 **Código do Serviço:** 910  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,12 +95,13 @@ vista: Bananal - Irajá
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 27.353 | Automática. |
+| `[eventos_climaticos]` | nan | 27.353 | nan |
+| `[eventos_climaticos_2]` | nan | 27.025 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

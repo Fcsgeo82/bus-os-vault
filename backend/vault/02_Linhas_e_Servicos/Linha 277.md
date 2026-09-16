@@ -1,8 +1,8 @@
 ---
 codigo_linha: '277'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/277
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-277
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Rocha Miranda - Candelária
 ---
 
@@ -18,8 +18,8 @@ vista: Rocha Miranda - Candelária
 
 **Código do Serviço:** 277  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Rocha Miranda - Candelária
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 26.898 | Automática. |
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 30.294 | Automática. |
+| `[desvio_engenhao]` | nan | 26.898 | nan |
+| `[desvio_engenhao]` | nan | 30.294 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

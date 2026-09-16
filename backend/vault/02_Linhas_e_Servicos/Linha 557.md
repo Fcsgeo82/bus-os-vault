@@ -1,8 +1,8 @@
 ---
 codigo_linha: '557'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/557
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-557
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Rio das Pedras - Copacabana
 ---
 
@@ -18,8 +18,8 @@ vista: Rio das Pedras - Copacabana
 
 **Código do Serviço:** 557  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Rio das Pedras - Copacabana
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 30.525 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 26.858 | Automática. |
-| `[reversivel]` | Faixa reversível na Av. Atlântica e Av. Niemeyer | 30.323 | Automática. |
-| `[reversivel]` | Faixa reversível na Av. Atlântica e Av. Niemeyer | 26.363 | Automática. |
+| `[excepcionalidade]` | nan | 30.525 | nan |
+| `[excepcionalidade]` | nan | 26.858 | nan |
+| `[reversivel]` | nan | 30.323 | nan |
+| `[reversivel]` | nan | 26.363 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '794'
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/794
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-794
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Bangu - Cascadura
 ---
 
@@ -18,8 +18,8 @@ vista: Bangu - Cascadura
 
 **Código do Serviço:** 794  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -59,14 +59,14 @@ vista: Bangu - Cascadura
 
 ### Volta
 
-**Extensão:** 23.374 km  
+**Extensão:** 23.976 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 76 | 1776.42 |
-| Sábado | 53 | 1238.84 |
-| Domingo | 34 | 794.7 |
-| Ponto Facultativo | 46 | 1075.2 |
+| Dia Útil | 76 | 1822.18 |
+| Sábado | 53 | 1270.71 |
+| Domingo | 34 | 815.2 |
+| Ponto Facultativo | 46 | 1102.9 |
 | Pico Manhã (06h-09h) | 15 | — |
 | Pico Noite (18h-21h) | 12 | — |
 
@@ -79,20 +79,20 @@ vista: Bangu - Cascadura
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 04h à 05h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 05h à 06h | 4 | 93.5 | 2 | 46.75 | 1 | 23.37 | 2 | 46.75 |
-| 06h à 09h | 15 | 350.61 | 9 | 210.37 | 6 | 140.24 | 9 | 210.37 |
-| 09h à 12h | 15 | 350.61 | 9 | 210.37 | 6 | 140.24 | 9 | 210.37 |
-| 12h à 15h | 10 | 233.74 | 8 | 186.99 | 5 | 116.87 | 6 | 140.24 |
-| 15h à 18h | 14 | 327.24 | 12 | 280.49 | 6 | 140.24 | 9 | 210.37 |
-| 18h à 21h | 12 | 280.49 | 9 | 210.37 | 6 | 140.24 | 7 | 163.62 |
-| 21h à 22h | 3 | 70.12 | 2 | 46.75 | 2 | 46.75 | 2 | 46.75 |
-| 22h à 23h | 3 | 70.12 | 2 | 46.75 | 2 | 46.75 | 2 | 46.75 |
+| 05h à 06h | 4 | 95.9 | 2 | 47.95 | 1 | 23.98 | 2 | 47.95 |
+| 06h à 09h | 15 | 359.64 | 9 | 215.78 | 6 | 143.86 | 9 | 215.78 |
+| 09h à 12h | 15 | 359.64 | 9 | 215.78 | 6 | 143.86 | 9 | 215.78 |
+| 12h à 15h | 10 | 239.76 | 8 | 191.81 | 5 | 119.88 | 6 | 143.86 |
+| 15h à 18h | 14 | 335.66 | 12 | 287.71 | 6 | 143.86 | 9 | 215.78 |
+| 18h à 21h | 12 | 287.71 | 9 | 215.78 | 6 | 143.86 | 7 | 167.83 |
+| 21h à 22h | 3 | 71.93 | 2 | 47.95 | 2 | 47.95 | 2 | 47.95 |
+| 22h à 23h | 3 | 71.93 | 2 | 47.95 | 2 | 47.95 | 2 | 47.95 |
 | 23h à 24h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '685'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/685
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-685
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Margaridas - Méier
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Margaridas - Méier
 
 **Código do Serviço:** 685  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,14 @@ vista: Terminal Margaridas - Méier
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Área de Lazer | 24.631 | Automática. |
-| `[desvio_lazer]` | Área de Lazer | 24.976 | Automática. |
+| `[desvio_lazer]` | nan | 24.631 | nan |
+| `[desvio_lazer]` | nan | 24.976 | nan |
+| `[desvio_lazer_2]` | nan | 24.596 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

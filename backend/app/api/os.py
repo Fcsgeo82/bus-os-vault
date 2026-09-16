@@ -7,7 +7,12 @@ from fastapi import APIRouter, HTTPException
 from slugify import slugify
 import frontmatter
 from app.core.config import settings
+from app.models.os_schema import OSCorrectionPayload
 from app.services.rag.indexer import vault_indexer
+from app.services.vault.os_correction_service import (
+    OSNotFoundException,
+    os_correction_service,
+)
 
 router = APIRouter(prefix="/api/os", tags=["Ordens de Serviço"])
 
@@ -48,6 +53,8 @@ async def list_ordens_de_servico():
                 "despacho": meta.get("despacho"),
                 "data_publicacao": meta.get("data_publicacao"),
                 "inicio_vigencia": meta.get("inicio_vigencia"),
+                "fim_vigencia": meta.get("fim_vigencia"),
+                "arquivo_gtfs": meta.get("arquivo_gtfs"),
                 "retifica_os": meta.get("retifica_os"),
                 "tags": meta.get("tags", []),
                 "filename": doc["filename"],
@@ -120,6 +127,20 @@ async def list_lines():
                 "filename": doc["filename"],
             })
     return lines
+
+
+@router.post("/{uid}/correct")
+async def correct_ordem_de_servico(uid: str, correction: OSCorrectionPayload):
+    """Corrige campos de uma OS; alterações de título propagam o renaming para artefatos vinculados."""
+    fields = correction.model_dump(exclude_unset=True)
+    if not fields:
+        raise HTTPException(status_code=422, detail="Nenhum campo de correção informado.")
+    try:
+        return os_correction_service.correct_os(uid, fields)
+    except OSNotFoundException as err:
+        raise HTTPException(status_code=404, detail=str(err))
+    except ValueError as err:
+        raise HTTPException(status_code=422, detail=str(err))
 
 
 @router.delete("/{uid}")

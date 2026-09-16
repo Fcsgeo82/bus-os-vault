@@ -1,8 +1,8 @@
 ---
 codigo_linha: SV606
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sv606
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sv606
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Engenho de Dentro - Terminal Gentileza
 ---
 
@@ -18,8 +18,8 @@ vista: Engenho de Dentro - Terminal Gentileza
 
 **Código do Serviço:** SV606  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Engenho de Dentro - Terminal Gentileza
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Área de Lazer | 19.439 | Automática. |
-| `[desvio_lazer]` | Área de Lazer | 22.297 | Automática. |
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 20.358 | Automática. |
-| `[desvio_maracana_e_desvio_lazer]` | Eventos esportivos no entorno do estádio Maracanã. | 20.941 | Automática. |
+| `[desvio_lazer]` | nan | 19.439 | nan |
+| `[desvio_lazer]` | nan | 22.297 | nan |
+| `[desvio_maracana]` | nan | 20.358 | nan |
+| `[desvio_maracana_e_desvio_lazer]` | nan | 20.941 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

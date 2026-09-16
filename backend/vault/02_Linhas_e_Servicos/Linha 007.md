@@ -1,8 +1,8 @@
 ---
 codigo_linha: '007'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/007
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-007
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Silvestre - Central do Brasil
 ---
 
@@ -18,8 +18,8 @@ vista: Silvestre - Central do Brasil
 
 **Código do Serviço:** 007  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,12 +95,12 @@ vista: Silvestre - Central do Brasil
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Feira Livre | 8.657 | Automática. |
+| `[desvio_lazer]` | nan | 8.657 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-01-AJU-Intersul]]: Ajuste na quilometragem e partidas das linhas da Zona Sul
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

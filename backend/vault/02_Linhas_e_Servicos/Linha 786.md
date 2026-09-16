@@ -1,8 +1,8 @@
 ---
 codigo_linha: '786'
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/786
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-786
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Campo Grande - Cascadura
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Campo Grande - Cascadura
 
 **Código do Serviço:** 786  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,19 +95,19 @@ vista: Terminal Campo Grande - Cascadura
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_obras]` | Fechamento obra local. | 28.739 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 29.346 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 28.754 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.43 | Automática. |
-| `[eventos_climaticos_1]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.169 | Automática. |
-| `[eventos_climaticos_1]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.282 | Automática. |
-| `[eventos_climaticos_2]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.293 | Automática. |
-| `[eventos_climaticos_2]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.622 | Automática. |
+| `[desvio_obras]` | nan | 28.739 | nan |
+| `[desvio_obras]` | nan | 29.346 | nan |
+| `[eventos_climaticos]` | nan | 28.754 | nan |
+| `[eventos_climaticos]` | nan | 29.43 | nan |
+| `[eventos_climaticos_1]` | nan | 29.169 | nan |
+| `[eventos_climaticos_1]` | nan | 29.282 | nan |
+| `[eventos_climaticos_2]` | nan | 29.293 | nan |
+| `[eventos_climaticos_2]` | nan | 29.622 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

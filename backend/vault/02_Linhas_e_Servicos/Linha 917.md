@@ -1,8 +1,8 @@
 ---
 codigo_linha: '917'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/917
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-917
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Padre Miguel - Bonsucesso
 ---
 
@@ -18,8 +18,8 @@ vista: Padre Miguel - Bonsucesso
 
 **Código do Serviço:** 917  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Padre Miguel - Bonsucesso
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre na Rua Helianto. | 30.322 | Automática. |
-| `[desvio_feira]` | Feira Livre na Rua Helianto. | 27.962 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 29.294 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.034 | Manual, mediante provocação do operador. |
-| `[eventos_climaticos_1]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.163 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 29.427 | Manual, mediante provocação do operador. |
+| `[desvio_feira]` | nan | 30.322 | nan |
+| `[desvio_feira]` | nan | 27.962 | nan |
+| `[desvio_obras]` | nan | 29.294 | nan |
+| `[eventos_climaticos]` | nan | 29.034 | nan |
+| `[eventos_climaticos_1]` | nan | 29.163 | nan |
+| `[excepcionalidade]` | nan | 29.427 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

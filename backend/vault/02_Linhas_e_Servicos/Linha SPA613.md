@@ -1,8 +1,8 @@
 ---
 codigo_linha: SPA613
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/spa613
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-spa613
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Riocentro - Del Castilho
 ---
 
@@ -18,8 +18,8 @@ vista: Riocentro - Del Castilho
 
 **Código do Serviço:** SPA613  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -91,8 +91,17 @@ vista: Riocentro - Del Castilho
 
 ---
 
+## Itinerários Alternativos e Desvios
+
+| Evento | Descrição | Extensão (km) | Ativação |
+|---|---|---|---|
+| `[rock_in_rio]` | nan | 26.392 | nan |
+| `[rock_in_rio]` | nan | 28.288 | nan |
+
+---
+
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-2026-09-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos ao evento "Rock in Rio": 352, 613, 881, 961 e SPA613.

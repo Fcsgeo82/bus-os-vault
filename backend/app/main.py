@@ -10,9 +10,11 @@ import subprocess
 import sys
 import tempfile
 import time
+import traceback
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.api.rag import router as rag_router
 from app.api.os import router as os_router
@@ -214,6 +216,20 @@ app = FastAPI(
     description="API para gestão e busca semântica em Ordens de Serviço do transporte municipal via Obsidian Vault e RAG híbrido.",
     lifespan=lifespan,
 )
+
+
+@app.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """Converte exceções não tratadas em JSON com detalhes, evitando respostas opacas 'Internal Server Error'."""
+    stack = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    print(f"[ERRO] Exceção não tratada em {request.method} {request.url.path}:\n{stack}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": f"Erro interno no servidor: {type(exc).__name__}: {exc}",
+        },
+    )
+
 
 # Registra os roteadores da API
 app.include_router(rag_router)

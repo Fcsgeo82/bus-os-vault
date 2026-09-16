@@ -1,8 +1,8 @@
 ---
 codigo_linha: SV474
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sv474
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sv474
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Jacaré - Copacabana
 ---
 
@@ -18,8 +18,8 @@ vista: Jacaré - Copacabana
 
 **Código do Serviço:** SV474  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Jacaré - Copacabana
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 24.807 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 26.601 | Automática. |
-| `[desvio_tunel_e_via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar | 24.199 | Automática. |
-| `[desvio_tunel_e_via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo e Fechamento do túnel Marcello Alencar | 27.217 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 24.514 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 27.268 | Automática. |
+| `[desvio_tunel]` | nan | 24.807 | nan |
+| `[desvio_tunel]` | nan | 26.601 | nan |
+| `[desvio_tunel_e_via_praia_do_flamengo]` | nan | 24.199 | nan |
+| `[desvio_tunel_e_via_praia_do_flamengo]` | nan | 27.217 | nan |
+| `[via_praia_do_flamengo]` | nan | 24.514 | nan |
+| `[via_praia_do_flamengo]` | nan | 27.268 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

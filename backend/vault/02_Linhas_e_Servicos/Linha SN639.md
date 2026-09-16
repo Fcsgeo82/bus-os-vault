@@ -1,8 +1,8 @@
 ---
 codigo_linha: SN639
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sn639
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sn639
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Jardim América - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Jardim América - Saens Peña
 
 **Código do Serviço:** SN639  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Jardim América - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 35.53 | Automática. |
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 32.938 | Automática. |
-| `[desvio_feira]` | Feira Livre | 34.353 | Automática. |
+| `[desvio_engenhao]` | nan | 35.53 | nan |
+| `[desvio_engenhao]` | nan | 32.938 | nan |
+| `[desvio_feira]` | nan | 34.353 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

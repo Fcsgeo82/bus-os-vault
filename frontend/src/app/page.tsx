@@ -11,11 +11,13 @@ import {
   MessageSquare,
   FilePlus,
   Trash2,
+  Pencil,
 } from "lucide-react";
 import { ChatContainer } from "@/components/chat/ChatContainer";
 import { FilterBar, LineOption } from "@/components/filters/FilterBar";
 import { NoteViewerModal } from "@/components/vault/NoteViewerModal";
 import { DataEntryForm } from "@/components/entry/DataEntryForm";
+import { OSCorrectionModal } from "@/components/entry/OSCorrectionModal";
 import { Toast, ToastData } from "@/components/ui/Toast";
 import { RAGFilters, OSMestra } from "@/lib/types";
 
@@ -29,6 +31,7 @@ export default function Home() {
     consorcios: [],
   });
   const [selectedNote, setSelectedNote] = useState<string | null>(null);
+  const [correctingOs, setCorrectingOs] = useState<OSMestra | null>(null);
   const [osList, setOsList] = useState<OSMestra[]>([]);
   const [availableLines, setAvailableLines] = useState<LineOption[]>([]);
   const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
@@ -112,6 +115,12 @@ export default function Home() {
     fetchOsList();
     setActiveTab("consulta");
     setSelectedNote(newOsTitle);
+  };
+
+  const handleCorrectionSuccess = (message: string) => {
+    setCorrectingOs(null);
+    fetchOsList();
+    pushToast("success", message);
   };
 
   return (
@@ -274,6 +283,33 @@ export default function Home() {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
+                              setCorrectingOs(os);
+                            }}
+                            title={`Corrigir ${os.title}`}
+                            aria-label={`Corrigir ${os.title}`}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "var(--text-muted)",
+                              cursor: "pointer",
+                              padding: "2px",
+                              display: "flex",
+                              alignItems: "center",
+                              borderRadius: "6px",
+                              transition: "all 0.2s",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "#fbbf24";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "var(--text-muted)";
+                            }}
+                          >
+                            <Pencil size={14} />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
                               handleDeleteOs(os);
                             }}
                             title={`Excluir ${os.title}`}
@@ -416,6 +452,11 @@ export default function Home() {
 
       {/* Drawer Lateral de Visualização de Notas */}
       <NoteViewerModal noteIdentifier={selectedNote} onClose={() => setSelectedNote(null)} />
+
+      {/* Modal de Correção de OS */}
+      {correctingOs && (
+        <OSCorrectionModal os={correctingOs} onClose={() => setCorrectingOs(null)} onSuccess={handleCorrectionSuccess} />
+      )}
 
       {/* Toasts */}
       {toasts.map((t) => (

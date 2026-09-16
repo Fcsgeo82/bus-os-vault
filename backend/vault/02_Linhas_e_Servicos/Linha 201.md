@@ -1,8 +1,8 @@
 ---
 codigo_linha: '201'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/201
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-201
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Santa Alexandrina - Castelo
 ---
 
@@ -18,8 +18,8 @@ vista: Santa Alexandrina - Castelo
 
 **Código do Serviço:** 201  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Santa Alexandrina - Castelo
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Área de Lazer na Praça da Cruz Vermelha | 7.136 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 6.153 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 7.34 | Manual, mediante provocação do operador. |
+| `[desvio_lazer]` | nan | 7.136 | nan |
+| `[excepcionalidade]` | nan | 6.153 | nan |
+| `[excepcionalidade]` | nan | 7.34 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

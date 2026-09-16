@@ -1,8 +1,8 @@
 ---
 codigo_linha: '104'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/104
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-104
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: São Conrado - Terminal Gentileza
 ---
 
@@ -18,8 +18,8 @@ vista: São Conrado - Terminal Gentileza
 
 **Código do Serviço:** 104  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,14 @@ vista: São Conrado - Terminal Gentileza
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre na Rua Carlos Sampaio | 27.085 | Automática. |
-| `[desvio_feira]` | Feira Livre da Glória | 26.369 | Automática. |
-| `[reversivel]` | Faixa reversível na Av. Niemeyer | 25.545 | Automática. |
+| `[desvio_feira]` | nan | 27.085 | nan |
+| `[desvio_feira]` | nan | 26.369 | nan |
+| `[reversivel]` | nan | 25.545 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-01-AJU-Intersul]]: Ajuste na quilometragem e partidas das linhas da Zona Sul
-- [[NOTA-2026.08-02-INC-Desvios]]: Inclusão de desvios operacionais por fechamento do Túnel Santa Bárbara e Feiras
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

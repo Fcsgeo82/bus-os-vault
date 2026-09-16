@@ -6,6 +6,30 @@ from typing import Any, Dict, Optional
 import frontmatter
 from app.core.config import settings
 
+_INVALID_FILENAME_CHARS = set('<>:"/\\|?*')
+_RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL", "CLOCK$"} | {
+    f"COM{i}" for i in range(1, 10)
+} | {
+    f"LPT{i}" for i in range(1, 10)
+}
+
+
+def validate_os_title_for_filename(title: str) -> None:
+    """Valida se o título pode ser usado como nome de arquivo no sistema de arquivos (Windows)."""
+    invalid = sorted(set(_INVALID_FILENAME_CHARS) & set(title))
+    if invalid:
+        raise ValueError(
+            "O título da OS contém caracteres inválidos para nome de arquivo no Windows: "
+            f"{invalid}. Remova caracteres como : / \\ * ? < > | \" do campo 'Título Oficial da OS'."
+        )
+    if title != title.strip():
+        raise ValueError("O título da OS não pode começar ou terminar com espaços.")
+    if title.endswith("."):
+        raise ValueError("O título da OS não pode terminar com ponto final.")
+    stem = title.rsplit(".", 1)[0] if "." in title else title
+    if stem.upper() in _RESERVED_NAMES:
+        raise ValueError("O título da OS não pode ser um nome reservado do Windows (CON, PRN, AUX, NUL, COM#, LPT#).")
+
 
 class VaultWriter:
     """Gerenciador do sistema de arquivos do cofre Obsidian."""

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '117'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/117
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-117
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Central - Cosme Velho
 ---
 
@@ -18,8 +18,8 @@ vista: Central - Cosme Velho
 
 **Código do Serviço:** 117  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Central - Cosme Velho
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 9.248 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 7.239 | Automática. |
+| `[desvio_tunel]` | nan | 9.248 | nan |
+| `[desvio_tunel]` | nan | 7.239 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-02-INC-Desvios]]: Inclusão de desvios operacionais por fechamento do Túnel Santa Bárbara e Feiras
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

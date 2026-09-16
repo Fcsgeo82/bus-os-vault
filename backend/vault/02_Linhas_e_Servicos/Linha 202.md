@@ -1,8 +1,8 @@
 ---
 codigo_linha: '202'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/202
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-202
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Rio Comprido - Castelo
 ---
 
@@ -18,8 +18,8 @@ vista: Rio Comprido - Castelo
 
 **Código do Serviço:** 202  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Rio Comprido - Castelo
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_sambodromo]` | Eventos de utilização no Sambódromo | 9.088 | Automática. |
-| `[desvio_sambodromo]` | Eventos de utilização no Sambódromo | 9.757 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 8.308 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 9.012 | Manual, mediante provocação do operador. |
+| `[desvio_sambodromo]` | nan | 9.088 | nan |
+| `[desvio_sambodromo]` | nan | 9.757 | nan |
+| `[excepcionalidade]` | nan | 8.308 | nan |
+| `[excepcionalidade]` | nan | 9.012 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

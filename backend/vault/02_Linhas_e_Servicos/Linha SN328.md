@@ -1,8 +1,8 @@
 ---
 codigo_linha: SN328
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sn328
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sn328
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Bananal - Candelária
 ---
 
@@ -18,8 +18,8 @@ vista: Bananal - Candelária
 
 **Código do Serviço:** SN328  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Bananal - Candelária
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 34.241 | Automática. |
-| `[excepicionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 32.814 | Automática. |
-| `[excepicionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 38.516 | Automática. |
+| `[eventos_climaticos]` | nan | 34.241 | nan |
+| `[excepcionalidade]` | nan | 32.814 | nan |
+| `[excepcionalidade]` | nan | 38.516 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

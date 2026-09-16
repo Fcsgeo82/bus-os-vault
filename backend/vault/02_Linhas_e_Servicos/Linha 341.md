@@ -1,8 +1,8 @@
 ---
 codigo_linha: '341'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/341
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-341
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Taquara - Candelária
 ---
 
@@ -18,8 +18,8 @@ vista: Taquara - Candelária
 
 **Código do Serviço:** 341  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Taquara - Candelária
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 28.328 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 32.949 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 32.488 | Automática. |
+| `[desvio_maracana]` | nan | 28.328 | nan |
+| `[excepcionalidade]` | nan | 32.949 | nan |
+| `[excepcionalidade]` | nan | 32.488 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

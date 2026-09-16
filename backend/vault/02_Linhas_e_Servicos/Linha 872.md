@@ -1,8 +1,8 @@
 ---
 codigo_linha: '872'
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/872
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-872
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Praia de Sepetiba - Terminal Mato Alto
 ---
 
@@ -18,8 +18,8 @@ vista: Praia de Sepetiba - Terminal Mato Alto
 
 **Código do Serviço:** 872  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -63,12 +63,12 @@ vista: Praia de Sepetiba - Terminal Mato Alto
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 31.408 | Automática. |
+| `[desvio_feira]` | nan | 31.408 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

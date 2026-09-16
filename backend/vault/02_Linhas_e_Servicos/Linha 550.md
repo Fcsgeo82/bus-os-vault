@@ -1,8 +1,8 @@
 ---
 codigo_linha: '550'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/550
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-550
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Cidade de Deus - Gávea
 ---
 
@@ -18,8 +18,8 @@ vista: Cidade de Deus - Gávea
 
 **Código do Serviço:** 550  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,20 +95,20 @@ vista: Cidade de Deus - Gávea
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira1]` | Feira Livre | 30.909 | Automática. |
-| `[desvio_feira1]` | Feira Livre | 28.201 | Automática. |
-| `[desvio_feira2]` | Feira Livre | 31.983 | Automática. |
-| `[desvio_feira2]` | Feira Livre | 30.523 | Automática. |
-| `[desvio_feira2_e_desvio_tunel]` | Feira Livre | 34.477 | Automática. |
-| `[desvio_feira2_e_desvio_tunel]` | Feira Livre | 33.81 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 32.848 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 31.511 | Automática. |
-| `[desvio_tunel_e_desvio_feira1]` | Fechamento do túnel Zuzu Angel. | 33.413 | Automática. |
+| `[desvio_feira1]` | nan | 30.909 | nan |
+| `[desvio_feira1]` | nan | 28.201 | nan |
+| `[desvio_feira2]` | nan | 31.983 | nan |
+| `[desvio_feira2]` | nan | 30.523 | nan |
+| `[desvio_feira2_e_desvio_tunel]` | nan | 34.477 | nan |
+| `[desvio_feira2_e_desvio_tunel]` | nan | 33.81 | nan |
+| `[desvio_tunel]` | nan | 32.848 | nan |
+| `[desvio_tunel]` | nan | 31.511 | nan |
+| `[desvio_tunel_e_desvio_feira1]` | nan | 33.413 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

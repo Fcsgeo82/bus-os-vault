@@ -1,8 +1,8 @@
 ---
 codigo_linha: '109'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/109
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-109
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: São Conrado - Terminal Gentileza
 ---
 
@@ -18,8 +18,8 @@ vista: São Conrado - Terminal Gentileza
 
 **Código do Serviço:** 109  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: São Conrado - Terminal Gentileza
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 24.599 | Automática. |
-| `[reversivel]` | Faixa reversível na Av. Niemeyer | 19.484 | Automática. |
+| `[excepcionalidade]` | nan | 24.599 | nan |
+| `[reversivel]` | nan | 19.484 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

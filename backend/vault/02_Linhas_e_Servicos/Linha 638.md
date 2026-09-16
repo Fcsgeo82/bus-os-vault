@@ -1,8 +1,8 @@
 ---
 codigo_linha: '638'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/638
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-638
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Marechal Hermes - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Marechal Hermes - Saens Peña
 
 **Código do Serviço:** 638  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Marechal Hermes - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 26.379 | Automática. |
-| `[desvio_engenhao]` | Eventos esportivos no entorno do estádio Nilton Santos. | 26.824 | Automática. |
-| `[desvio_maracana_e_engenhao]` | Eventos esportivos no entorno dos estádios Nilton Santos e Maracanã. | 27.349 | Automática. |
+| `[desvio_engenhao]` | nan | 26.379 | nan |
+| `[desvio_engenhao]` | nan | 26.824 | nan |
+| `[desvio_maracana_e_engenhao]` | nan | 27.349 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

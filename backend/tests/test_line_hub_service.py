@@ -186,6 +186,63 @@ def test_sync_sem_anexos_nao_apaga_hubs(tmp_path, monkeypatch):
     assert "# Linha 104 — dados reais" in (linhas_dir / "Linha 104.md").read_text(encoding="utf-8")
 
 
+def test_generate_hub_content_hourly_sabado_ausente_nao_estoura(tmp_path, monkeypatch):
+    """CSV sem colunas horárias de Sábado não deve estourar IndexError no hub (issue #ingest-500)."""
+    hora_util = [
+        {"hora": slot, "partidas": 5, "km": 50.0}
+        for slot in SLOTS
+    ]
+    servico_sem_sabado = _servico_sintetico("006", "Ida")
+    servico_sem_sabado["hourly"] = {
+        "dia_util": hora_util,
+        "sabado": [],
+        "domingo": [{} for _ in SLOTS],
+        "ponto_facultativo": [{} for _ in SLOTS],
+    }
+    linha = {
+        "vista": "Terminal A - Terminal B",
+        "consorcio": "Intersul",
+        "sentidos": {"Ida": servico_sem_sabado},
+    }
+
+    meta, content = line_hub_service._generate_hub_content(
+        "006",
+        linha,
+        [],
+        [],
+        "OS 180",
+        "2026-10-01",
+    )
+
+    assert "#### Distribuição Horária" in content
+    assert "| 00h à 01h | 5 | 50.0 |" in content
+    assert content.count("| 00h à 01h ") == 1
+
+
+def test_sync_hubs_for_os_nao_estoura_com_anexo_tipo_dia_incompleto(tmp_path, monkeypatch):
+    """Ingestão com ANEXO I de colunas incompletas continua salvando a OS (hub não aborta)."""
+    vault = _muda_vault(tmp_path, monkeypatch)
+
+    service = _servico_sintetico("006", "Ida")
+    service["hourly"] = {
+        "dia_util": [{"hora": slot, "partidas": 5, "km": 50.0} for slot in SLOTS],
+        "sabado": [],
+        "domingo": [],
+        "ponto_facultativo": [],
+    }
+
+    res = line_hub_service.sync_hubs_for_os(
+        "OS 180",
+        "2026-10-01",
+        [service],
+        [],
+        [],
+    )
+    assert res["criados"] == 1
+    hub = (vault / "02_Linhas_e_Servicos" / "Linha 006.md").read_text(encoding="utf-8")
+    assert "Distribuição Horária" in hub
+
+
 def test_sync_hubs_os_174_dados_reais(tmp_path, monkeypatch):
     """Gera hubs para todas as 435 linhas da OS 174 a partir dos CSVs reais de referência."""
     repo_root = Path(__file__).resolve().parent.parent.parent

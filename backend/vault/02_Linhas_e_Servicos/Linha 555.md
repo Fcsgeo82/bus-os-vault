@@ -1,8 +1,8 @@
 ---
 codigo_linha: '555'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/555
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-555
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Rio das Pedras - Gávea
 ---
 
@@ -18,8 +18,8 @@ vista: Rio das Pedras - Gávea
 
 **Código do Serviço:** 555  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Rio das Pedras - Gávea
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 22.818 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 24.752 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 24.809 | Automática. |
+| `[desvio_feira]` | nan | 22.818 | nan |
+| `[desvio_tunel]` | nan | 24.752 | nan |
+| `[desvio_tunel]` | nan | 24.809 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: SV917
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sv917
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sv917
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Padre Miguel - Bonsucesso
 ---
 
@@ -18,8 +18,8 @@ vista: Padre Miguel - Bonsucesso
 
 **Código do Serviço:** SV917  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Padre Miguel - Bonsucesso
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre na Rua Helianto. | 29.21 | Automática. |
-| `[desvio_feira]` | Feira Livre na Rua Helianto. | 28.247 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 29.577 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 29.318 | Manual, mediante provocação do operador. |
+| `[desvio_feira]` | nan | 29.21 | nan |
+| `[desvio_feira]` | nan | 28.247 | nan |
+| `[desvio_obras]` | nan | 29.577 | nan |
+| `[eventos_climaticos]` | nan | 29.318 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '623'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/623
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-623
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Penha - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Penha - Saens Peña
 
 **Código do Serviço:** 623  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,22 +95,22 @@ vista: Penha - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre na Estrada José Rucas. | 22.386 | Automática. |
-| `[desvio_feira]` | Feira Livre na Estrada José Rucas. | 22.549 | Automática. |
-| `[desvio_lazer]` | Área de Lazer | 22.958 | Automática. |
-| `[desvio_lazer_1]` | Área de Lazer | 23.967 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 22.267 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 22.502 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 22.438 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 21.474 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 24.441 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 22.604 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 21.561 | Automática. |
+| `[desvio_feira]` | nan | 22.386 | nan |
+| `[desvio_feira]` | nan | 22.549 | nan |
+| `[desvio_lazer]` | nan | 22.958 | nan |
+| `[desvio_lazer_1]` | nan | 23.967 | nan |
+| `[desvio_obras]` | nan | 22.267 | nan |
+| `[excepcionalidade]` | nan | 22.502 | nan |
+| `[excepcionalidade]` | nan | 22.438 | nan |
+| `[excepcionalidade_1]` | nan | 21.474 | nan |
+| `[excepcionalidade_1]` | nan | 24.441 | nan |
+| `[excepcionalidade_2]` | nan | 22.604 | nan |
+| `[excepcionalidade_2]` | nan | 21.561 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

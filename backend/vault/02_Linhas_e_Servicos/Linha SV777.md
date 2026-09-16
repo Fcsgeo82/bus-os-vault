@@ -1,8 +1,8 @@
 ---
 codigo_linha: SV777
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sv777
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sv777
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Padre Miguel - Madureira
 ---
 
@@ -18,8 +18,8 @@ vista: Padre Miguel - Madureira
 
 **Código do Serviço:** SV777  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Padre Miguel - Madureira
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_obras]` | Fechamento obra local. | 22.624 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 25.679 | Automática. |
+| `[desvio_obras]` | nan | 22.624 | nan |
+| `[desvio_obras]` | nan | 25.679 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

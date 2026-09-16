@@ -9,7 +9,7 @@ import frontmatter
 
 from app.core.config import settings
 from app.models.os_schema import OSIngestPayload, OSIngestResponse
-from app.services.vault.vault_writer import vault_writer
+from app.services.vault.vault_writer import vault_writer, validate_os_title_for_filename
 from app.services.vault.csv_parser import csv_parser
 from app.services.vault.line_hub_service import line_hub_service
 from app.services.rag.indexer import vault_indexer
@@ -24,6 +24,24 @@ async def ingest_ordem_de_servico(
     anexo_ii: Optional[UploadFile] = File(None, description="Arquivo CSV do ANEXO II (Itinerários)"),
 ):
     """Realiza a ingestão atômica de uma nova OS com notas de eventos e processamento de planilhas CSV."""
+    try:
+        return await _ingest_impl(payload, anexo_i, anexo_ii)
+    except HTTPException:
+        raise
+    except Exception as err:
+        print(f"[ERRO] Falha inesperada na ingestão: {err}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Erro inesperado durante a ingestão: {str(err)}",
+        )
+
+
+async def _ingest_impl(
+    payload: str,
+    anexo_i: Optional[UploadFile],
+    anexo_ii: Optional[UploadFile],
+) -> OSIngestResponse:
+    """Pipeline interno de ingestão da OS; erros inesperados são propagados para o roteador."""
     # 1. Validação do payload JSON
     try:
         raw_json = json.loads(payload)
@@ -36,6 +54,11 @@ async def ingest_ordem_de_servico(
 
     os_slug = slugify(data.title)
     os_uid = f"os-{os_slug}"
+
+    try:
+        validate_os_title_for_filename(data.title)
+    except ValueError as err:
+        raise HTTPException(status_code=422, detail=str(err))
 
     attachments_dir = settings.DATA_DIR / "attachments" / os_slug
     attachments_dir.mkdir(parents=True, exist_ok=True)
@@ -151,29 +174,35 @@ async def ingest_ordem_de_servico(
         })
 
     # 5. Sincroniza Hubs de Linha com dados reais dos anexos e eventos
-    hub_sync = line_hub_service.sync_hubs_for_os(
-        os_title=data.title,
-        vigencia_inicio=data.inicio_vigencia.isoformat() if data.inicio_vigencia else None,
-        anexo_i_services=(parsed_i or {}).get("services", []) if parsed_i else [],
-        anexo_ii_desvios=(parsed_ii or {}).get("desvios", []) if parsed_ii else [],
-        eventos=eventos_hub_meta,
-    )
-    print(f"[INFO] Hubs de linha sincronizados: {hub_sync}")
+    try:
+        hub_sync = line_hub_service.sync_hubs_for_os(
+            os_title=data.title,
+            vigencia_inicio=data.inicio_vigencia.isoformat() if data.inicio_vigencia else None,
+            anexo_i_services=(parsed_i or {}).get("services", []) if parsed_i else [],
+            anexo_ii_desvios=(parsed_ii or {}).get("desvios", []) if parsed_ii else [],
+            eventos=eventos_hub_meta,
+        )
+        print(f"[INFO] Hubs de linha sincronizados: {hub_sync}")
+    except Exception as e:
+        print(f"[AVISO] Falha ao sincronizar hubs de linha: {e}")
 
     # 6. Se esta OS retifica outra, atualiza a OS anterior
     if data.retifica_os:
-        clean_retifica = data.retifica_os.replace("[[", "").replace("]]", "").strip()
-        os_dir = settings.VAULT_DIR / "00_Ordens_de_Servico"
-        for existing_file in os_dir.glob("*.md"):
-            with open(existing_file, "r", encoding="utf-8") as f:
-                post = frontmatter.load(f)
-            if post.metadata.get("title") == clean_retifica or existing_file.stem == clean_retifica:
-                post.metadata["status_vigencia"] = "Substituída"
-                post.metadata["retificada_por"] = f"[[{data.title}]]"
-                serialized = frontmatter.dumps(post)
-                with open(existing_file, "w", encoding="utf-8") as f:
-                    f.write(serialized)
-                break
+        try:
+            clean_retifica = data.retifica_os.replace("[[", "").replace("]]", "").strip()
+            os_dir = settings.VAULT_DIR / "00_Ordens_de_Servico"
+            for existing_file in os_dir.glob("*.md"):
+                with open(existing_file, "r", encoding="utf-8") as f:
+                    post = frontmatter.load(f)
+                if post.metadata.get("title") == clean_retifica or existing_file.stem == clean_retifica:
+                    post.metadata["status_vigencia"] = "Substituída"
+                    post.metadata["retificada_por"] = f"[[{data.title}]]"
+                    serialized = frontmatter.dumps(post)
+                    with open(existing_file, "w", encoding="utf-8") as f:
+                        f.write(serialized)
+                    break
+        except Exception as e:
+            print(f"[AVISO] Falha ao atualizar a OS retificada '{data.retifica_os}': {e}")
 
     # 7. Grava a nova OS Mestra
     os_meta = {

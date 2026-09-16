@@ -1,8 +1,8 @@
 ---
 codigo_linha: '456'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/456
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-456
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Norte Shopping - Copacabana
 ---
 
@@ -18,8 +18,8 @@ vista: Norte Shopping - Copacabana
 
 **Código do Serviço:** 456  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Norte Shopping - Copacabana
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 26.844 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 27.848 | Automática. |
+| `[desvio_tunel]` | nan | 26.844 | nan |
+| `[desvio_tunel]` | nan | 27.848 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

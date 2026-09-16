@@ -1,8 +1,8 @@
 ---
 codigo_linha: '801'
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/801
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-801
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Bangu - Taquara
 ---
 
@@ -18,8 +18,8 @@ vista: Bangu - Taquara
 
 **Código do Serviço:** 801  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -59,14 +59,14 @@ vista: Bangu - Taquara
 
 ### Volta
 
-**Extensão:** 25.628 km  
+**Extensão:** 26.23 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 63 | 1614.56 |
-| Sábado | 39 | 999.52 |
-| Domingo | 24 | 615.07 |
-| Ponto Facultativo | 41 | 1050.75 |
+| Dia Útil | 63 | 1652.49 |
+| Sábado | 39 | 1022.97 |
+| Domingo | 24 | 629.52 |
+| Ponto Facultativo | 41 | 1075.43 |
 | Pico Manhã (06h-09h) | 13 | — |
 | Pico Noite (18h-21h) | 9 | — |
 
@@ -74,25 +74,25 @@ vista: Bangu - Taquara
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 1 | 25.63 | 1 | 25.63 | 0 | 0.0 | 1 | 25.63 |
+| 00h à 01h | 1 | 26.23 | 1 | 26.23 | 0 | 0.0 | 1 | 26.23 |
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 02h à 03h | 0 | 0.0 | 1 | 25.63 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 25.63 | 1 | 25.63 | 0 | 0.0 | 1 | 25.63 |
-| 04h à 05h | 1 | 25.63 | 1 | 25.63 | 0 | 0.0 | 1 | 25.63 |
-| 05h à 06h | 2 | 51.26 | 1 | 25.63 | 1 | 25.63 | 1 | 25.63 |
-| 06h à 09h | 13 | 333.16 | 6 | 153.77 | 4 | 102.51 | 8 | 205.02 |
-| 09h à 12h | 9 | 230.65 | 6 | 153.77 | 5 | 128.14 | 6 | 153.77 |
-| 12h à 15h | 9 | 230.65 | 7 | 179.4 | 3 | 76.88 | 6 | 153.77 |
-| 15h à 18h | 13 | 333.16 | 6 | 153.77 | 5 | 128.14 | 8 | 205.02 |
-| 18h à 21h | 9 | 230.65 | 5 | 128.14 | 4 | 102.51 | 6 | 153.77 |
-| 21h à 22h | 2 | 51.26 | 1 | 25.63 | 1 | 25.63 | 1 | 25.63 |
-| 22h à 23h | 2 | 51.26 | 2 | 51.26 | 1 | 25.63 | 1 | 25.63 |
-| 23h à 24h | 1 | 25.63 | 1 | 25.63 | 0 | 0.0 | 1 | 25.63 |
+| 02h à 03h | 0 | 0.0 | 1 | 26.23 | 0 | 0.0 | 0 | 0.0 |
+| 03h à 04h | 1 | 26.23 | 1 | 26.23 | 0 | 0.0 | 1 | 26.23 |
+| 04h à 05h | 1 | 26.23 | 1 | 26.23 | 0 | 0.0 | 1 | 26.23 |
+| 05h à 06h | 2 | 52.46 | 1 | 26.23 | 1 | 26.23 | 1 | 26.23 |
+| 06h à 09h | 13 | 340.99 | 6 | 157.38 | 4 | 104.92 | 8 | 209.84 |
+| 09h à 12h | 9 | 236.07 | 6 | 157.38 | 5 | 131.15 | 6 | 157.38 |
+| 12h à 15h | 9 | 236.07 | 7 | 183.61 | 3 | 78.69 | 6 | 157.38 |
+| 15h à 18h | 13 | 340.99 | 6 | 157.38 | 5 | 131.15 | 8 | 209.84 |
+| 18h à 21h | 9 | 236.07 | 5 | 131.15 | 4 | 104.92 | 6 | 157.38 |
+| 21h à 22h | 2 | 52.46 | 1 | 26.23 | 1 | 26.23 | 1 | 26.23 |
+| 22h à 23h | 2 | 52.46 | 2 | 52.46 | 1 | 26.23 | 1 | 26.23 |
+| 23h à 24h | 1 | 26.23 | 1 | 26.23 | 0 | 0.0 | 1 | 26.23 |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

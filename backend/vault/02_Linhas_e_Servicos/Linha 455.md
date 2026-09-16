@@ -1,8 +1,8 @@
 ---
 codigo_linha: '455'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/455
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-455
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Méier - Copacabana
 ---
 
@@ -18,8 +18,8 @@ vista: Méier - Copacabana
 
 **Código do Serviço:** 455  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,15 +95,15 @@ vista: Méier - Copacabana
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 25.364 | Automática. |
-| `[desvio_maracana_e_praia]` | Eventos esportivos no entorno do estádio Maracanã. | 26.116 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 24.39 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 26.596 | Automática. |
+| `[desvio_maracana]` | nan | 25.364 | nan |
+| `[desvio_maracana_e_praia]` | nan | 26.116 | nan |
+| `[via_praia_do_flamengo]` | nan | 24.39 | nan |
+| `[via_praia_do_flamengo]` | nan | 26.596 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

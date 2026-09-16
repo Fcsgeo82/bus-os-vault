@@ -1,8 +1,8 @@
 ---
 codigo_linha: '371'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/371
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-371
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Praça Seca - Praça Tiradentes
 ---
 
@@ -18,8 +18,8 @@ vista: Praça Seca - Praça Tiradentes
 
 **Código do Serviço:** 371  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -31,12 +31,12 @@ vista: Praça Seca - Praça Tiradentes
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 217 | 5578.42 |
+| Dia Útil | 252 | 6478.16 |
 | Sábado | 123 | 3161.97 |
 | Domingo | 81 | 2082.29 |
-| Ponto Facultativo | 137 | 3521.86 |
-| Pico Manhã (06h-09h) | 45 | — |
-| Pico Noite (18h-21h) | 25 | — |
+| Ponto Facultativo | 157 | 4036.0 |
+| Pico Manhã (06h-09h) | 42 | — |
+| Pico Noite (18h-21h) | 38 | — |
 
 #### Distribuição Horária
 
@@ -44,17 +44,17 @@ vista: Praça Seca - Praça Tiradentes
 |---|---|---|---|---|---|---|---|---|
 | 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 01h à 02h | 0 | 0.0 | 1 | 25.71 | 1 | 25.71 | 0 | 0.0 |
-| 02h à 03h | 1 | 25.71 | 1 | 25.71 | 1 | 25.71 | 1 | 25.71 |
-| 03h à 04h | 2 | 51.41 | 1 | 25.71 | 1 | 25.71 | 1 | 25.71 |
-| 04h à 05h | 8 | 205.66 | 5 | 128.53 | 3 | 77.12 | 5 | 128.53 |
-| 05h à 06h | 25 | 642.67 | 8 | 205.66 | 5 | 128.53 | 16 | 411.31 |
-| 06h à 09h | 45 | 1156.82 | 24 | 616.97 | 15 | 385.61 | 28 | 719.8 |
+| 02h à 03h | 4 | 102.83 | 1 | 25.71 | 1 | 25.71 | 2 | 51.41 |
+| 03h à 04h | 7 | 179.95 | 1 | 25.71 | 1 | 25.71 | 4 | 102.83 |
+| 04h à 05h | 14 | 359.9 | 5 | 128.53 | 3 | 77.12 | 9 | 231.36 |
+| 05h à 06h | 23 | 591.26 | 8 | 205.66 | 5 | 128.53 | 14 | 359.9 |
+| 06h à 09h | 42 | 1079.69 | 24 | 616.97 | 15 | 385.61 | 26 | 668.38 |
 | 09h à 12h | 35 | 899.75 | 23 | 591.26 | 15 | 385.61 | 22 | 565.55 |
-| 12h à 15h | 30 | 771.21 | 21 | 539.85 | 14 | 359.9 | 19 | 488.43 |
-| 15h à 18h | 40 | 1028.28 | 20 | 514.14 | 13 | 334.19 | 25 | 642.67 |
-| 18h à 21h | 25 | 642.67 | 14 | 359.9 | 10 | 257.07 | 16 | 411.31 |
-| 21h à 22h | 3 | 77.12 | 2 | 51.41 | 1 | 25.71 | 2 | 51.41 |
-| 22h à 23h | 2 | 51.41 | 2 | 51.41 | 1 | 25.71 | 1 | 25.71 |
+| 12h à 15h | 37 | 951.16 | 21 | 539.85 | 14 | 359.9 | 23 | 591.26 |
+| 15h à 18h | 38 | 976.87 | 20 | 514.14 | 13 | 334.19 | 24 | 616.97 |
+| 18h à 21h | 38 | 976.87 | 14 | 359.9 | 10 | 257.07 | 24 | 616.97 |
+| 21h à 22h | 9 | 231.36 | 2 | 51.41 | 1 | 25.71 | 6 | 154.24 |
+| 22h à 23h | 4 | 102.83 | 2 | 51.41 | 1 | 25.71 | 2 | 51.41 |
 | 23h à 24h | 1 | 25.71 | 1 | 25.71 | 1 | 25.71 | 1 | 25.71 |
 
 ### Volta
@@ -63,12 +63,12 @@ vista: Praça Seca - Praça Tiradentes
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 215 | 6071.17 |
+| Dia Útil | 252 | 7115.98 |
 | Sábado | 125 | 3529.76 |
 | Domingo | 79 | 2230.81 |
-| Ponto Facultativo | 134 | 3783.89 |
+| Ponto Facultativo | 156 | 4405.13 |
 | Pico Manhã (06h-09h) | 41 | — |
-| Pico Noite (18h-21h) | 32 | — |
+| Pico Noite (18h-21h) | 39 | — |
 
 #### Distribuição Horária
 
@@ -77,17 +77,17 @@ vista: Praça Seca - Praça Tiradentes
 | 00h à 01h | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 |
 | 01h à 02h | 0 | 0.0 | 1 | 28.24 | 1 | 28.24 | 0 | 0.0 |
 | 02h à 03h | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 |
-| 03h à 04h | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 |
-| 04h à 05h | 3 | 84.71 | 1 | 28.24 | 1 | 28.24 | 2 | 56.48 |
-| 05h à 06h | 10 | 282.38 | 4 | 112.95 | 3 | 84.71 | 6 | 169.43 |
+| 03h à 04h | 4 | 112.95 | 1 | 28.24 | 1 | 28.24 | 2 | 56.48 |
+| 04h à 05h | 8 | 225.9 | 1 | 28.24 | 1 | 28.24 | 5 | 141.19 |
+| 05h à 06h | 12 | 338.86 | 4 | 112.95 | 3 | 84.71 | 7 | 197.67 |
 | 06h à 09h | 41 | 1157.76 | 20 | 564.76 | 13 | 367.09 | 25 | 705.95 |
-| 09h à 12h | 31 | 875.38 | 20 | 564.76 | 13 | 367.09 | 19 | 536.52 |
-| 12h à 15h | 34 | 960.09 | 26 | 734.19 | 14 | 395.33 | 21 | 593.0 |
-| 15h à 18h | 47 | 1327.19 | 25 | 705.95 | 15 | 423.57 | 29 | 818.9 |
-| 18h à 21h | 32 | 903.62 | 17 | 480.05 | 12 | 338.86 | 20 | 564.76 |
-| 21h à 22h | 9 | 254.14 | 4 | 112.95 | 2 | 56.48 | 6 | 169.43 |
-| 22h à 23h | 4 | 112.95 | 3 | 84.71 | 1 | 28.24 | 2 | 56.48 |
-| 23h à 24h | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 | 1 | 28.24 |
+| 09h à 12h | 40 | 1129.52 | 20 | 564.76 | 13 | 367.09 | 25 | 705.95 |
+| 12h à 15h | 37 | 1044.81 | 26 | 734.19 | 14 | 395.33 | 23 | 649.47 |
+| 15h à 18h | 42 | 1186.0 | 25 | 705.95 | 15 | 423.57 | 26 | 734.19 |
+| 18h à 21h | 39 | 1101.28 | 17 | 480.05 | 12 | 338.86 | 24 | 677.71 |
+| 21h à 22h | 12 | 338.86 | 4 | 112.95 | 2 | 56.48 | 7 | 197.67 |
+| 22h à 23h | 9 | 254.14 | 3 | 84.71 | 1 | 28.24 | 6 | 169.43 |
+| 23h à 24h | 6 | 169.43 | 1 | 28.24 | 1 | 28.24 | 4 | 112.95 |
 
 ---
 
@@ -95,16 +95,17 @@ vista: Praça Seca - Praça Tiradentes
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Eventos esportivos no entorno do estádio Maracanã. | 29.512 | Automática. |
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 28.312 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 25.299 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 26.03 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 26.558 | Manual, mediante provocação do operador. |
+| `[desvio_lazer]` | nan | 29.512 | nan |
+| `[desvio_maracana]` | nan | 28.312 | nan |
+| `[excepcionalidade]` | nan | 25.299 | nan |
+| `[excepcionalidade]` | nan | 26.03 | nan |
+| `[excepcionalidade_1]` | nan | 25.715 | nan |
+| `[excepcionalidade_1]` | nan | 26.558 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

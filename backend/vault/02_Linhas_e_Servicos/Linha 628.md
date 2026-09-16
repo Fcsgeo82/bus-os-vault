@@ -1,8 +1,8 @@
 ---
 codigo_linha: '628'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/628
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-628
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Penha - Nova América
 ---
 
@@ -18,8 +18,8 @@ vista: Penha - Nova América
 
 **Código do Serviço:** 628  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,19 +95,19 @@ vista: Penha - Nova América
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre na Estrada José Rucas. | 7.201 | Automática. |
-| `[desvio_feira]` | Feira Livre na Estrada José Rucas. | 8.605 | Automática. |
-| `[desvio_lazer]` | Área de Lazer | 9.014 | Automática. |
-| `[desvio_lazer_2]` | Área de Lazer | 10.022 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 7.313 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 8.494 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 8.455 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 7.616 | Automática. |
+| `[desvio_feira]` | nan | 7.201 | nan |
+| `[desvio_feira]` | nan | 8.605 | nan |
+| `[desvio_lazer]` | nan | 9.014 | nan |
+| `[desvio_lazer_2]` | nan | 10.022 | nan |
+| `[excepcionalidade]` | nan | 7.313 | nan |
+| `[excepcionalidade]` | nan | 8.494 | nan |
+| `[excepcionalidade_1]` | nan | 8.455 | nan |
+| `[excepcionalidade_1]` | nan | 7.616 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

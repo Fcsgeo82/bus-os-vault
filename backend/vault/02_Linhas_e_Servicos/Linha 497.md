@@ -1,8 +1,8 @@
 ---
 codigo_linha: '497'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/497
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-497
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Penha - Largo do Machado
 ---
 
@@ -18,8 +18,8 @@ vista: Penha - Largo do Machado
 
 **Código do Serviço:** 497  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Penha - Largo do Machado
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 22.548 | Automática. |
-| `[desvio_feira]` | Feira Livre | 21.172 | Automática. |
+| `[desvio_feira]` | nan | 22.548 | nan |
+| `[desvio_feira]` | nan | 21.172 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

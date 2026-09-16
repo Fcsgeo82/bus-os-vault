@@ -1,8 +1,8 @@
 ---
 codigo_linha: '353'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/353
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-353
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Gardênia Azul - Terminal Gentileza
 ---
 
@@ -18,8 +18,8 @@ vista: Gardênia Azul - Terminal Gentileza
 
 **Código do Serviço:** 353  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Gardênia Azul - Terminal Gentileza
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 32.486 | Automática. |
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 32.118 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 33.272 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 33.099 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 33.296 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 31.652 | Automática. |
+| `[desvio_maracana]` | nan | 32.486 | nan |
+| `[desvio_maracana]` | nan | 32.118 | nan |
+| `[excepcionalidade]` | nan | 33.272 | nan |
+| `[excepcionalidade]` | nan | 33.099 | nan |
+| `[excepcionalidade_1]` | nan | 33.296 | nan |
+| `[excepcionalidade_1]` | nan | 31.652 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

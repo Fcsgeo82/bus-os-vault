@@ -1,8 +1,8 @@
 ---
 codigo_linha: '961'
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/961
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-961
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Rio das Pedras - Recreio dos Bandeirantes
 ---
 
@@ -18,8 +18,8 @@ vista: Rio das Pedras - Recreio dos Bandeirantes
 
 **Código do Serviço:** 961  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,15 @@ vista: Rio das Pedras - Recreio dos Bandeirantes
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 27.431 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 24.336 | Manual, mediante provocação do operador. |
+| `[excepcionalidade]` | nan | 27.431 | nan |
+| `[excepcionalidade]` | nan | 24.336 | nan |
+| `[rock_in_rio]` | nan | 33.662 | nan |
+| `[rock_in_rio]` | nan | 30.221 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-2026-09-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos ao evento "Rock in Rio": 352, 613, 881, 961 e SPA613.

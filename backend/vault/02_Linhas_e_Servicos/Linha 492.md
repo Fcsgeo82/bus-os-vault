@@ -1,8 +1,8 @@
 ---
 codigo_linha: '492'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/492
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-492
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Bancários - Prado Júnior
 ---
 
@@ -18,8 +18,8 @@ vista: Bancários - Prado Júnior
 
 **Código do Serviço:** 492  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,16 +95,16 @@ vista: Bancários - Prado Júnior
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 31.637 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 32.323 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 32.068 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 31.817 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 33.509 | Automática. |
+| `[desvio_tunel]` | nan | 31.637 | nan |
+| `[desvio_tunel]` | nan | 32.323 | nan |
+| `[excepcionalidade]` | nan | 32.068 | nan |
+| `[via_praia_do_flamengo]` | nan | 31.817 | nan |
+| `[via_praia_do_flamengo]` | nan | 33.509 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: SV483
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sv483
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sv483
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: General Osório - Penha
 ---
 
@@ -18,8 +18,8 @@ vista: General Osório - Penha
 
 **Código do Serviço:** SV483  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -63,14 +63,14 @@ vista: General Osório - Penha
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 31.568 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 31.102 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 32.228 | Automática. |
+| `[desvio_tunel]` | nan | 31.568 | nan |
+| `[eventos_climaticos]` | nan | 31.102 | nan |
+| `[via_praia_do_flamengo]` | nan | 32.228 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

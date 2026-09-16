@@ -1,8 +1,8 @@
 ---
 codigo_linha: '483'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/483
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-483
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Penha - General Osório
 ---
 
@@ -18,8 +18,8 @@ vista: Penha - General Osório
 
 **Código do Serviço:** 483  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,22 +95,22 @@ vista: Penha - General Osório
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 30.519 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Marcello Alencar | 31.926 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 30.124 | Automática. |
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 31.458 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 26.5 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 27.156 | Manual, mediante provocação do operador. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 30.115 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 32.594 | Automática. |
-| `[via_praia_do_flamengo_e_presidente_vargas]` | Área de Lazer no Aterro do Flamengo | 30.132 | Automática. |
-| `[via_praia_do_flamengo_e_presidente_vargas]` | Área de Lazer no Aterro do Flamengo | 32.541 | Automática. |
-| `[via_praia_do_flamengo_e_tunel]` | Área de Lazer no Aterro do Flamengo | 30.751 | Automática. |
+| `[desvio_tunel]` | nan | 30.519 | nan |
+| `[desvio_tunel]` | nan | 31.926 | nan |
+| `[eventos_climaticos]` | nan | 30.124 | nan |
+| `[eventos_climaticos]` | nan | 31.458 | nan |
+| `[excepcionalidade]` | nan | 26.5 | nan |
+| `[excepcionalidade]` | nan | 27.156 | nan |
+| `[via_praia_do_flamengo]` | nan | 30.115 | nan |
+| `[via_praia_do_flamengo]` | nan | 32.594 | nan |
+| `[via_praia_do_flamengo_e_presidente_vargas]` | nan | 30.132 | nan |
+| `[via_praia_do_flamengo_e_presidente_vargas]` | nan | 32.541 | nan |
+| `[via_praia_do_flamengo_e_tunel]` | nan | 30.751 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

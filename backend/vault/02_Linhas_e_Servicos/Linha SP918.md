@@ -1,8 +1,8 @@
 ---
 codigo_linha: SP918
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sp918
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sp918
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Jardim Violeta - Terminal Deodoro
 ---
 
@@ -18,8 +18,8 @@ vista: Jardim Violeta - Terminal Deodoro
 
 **Código do Serviço:** SP918  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -31,12 +31,12 @@ vista: Jardim Violeta - Terminal Deodoro
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 72 | 1045.44 |
-| Sábado | 34 | 493.68 |
-| Domingo | 28 | 406.56 |
-| Ponto Facultativo | 46 | 667.92 |
+| Dia Útil | 73 | 1059.96 |
+| Sábado | 40 | 580.8 |
+| Domingo | 37 | 537.24 |
+| Ponto Facultativo | 45 | 653.4 |
 | Pico Manhã (06h-09h) | 16 | — |
-| Pico Noite (18h-21h) | 10 | — |
+| Pico Noite (18h-21h) | 12 | — |
 
 #### Distribuição Horária
 
@@ -45,14 +45,14 @@ vista: Jardim Violeta - Terminal Deodoro
 | 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 14.52 | 1 | 14.52 | 0 | 0.0 | 1 | 14.52 |
-| 04h à 05h | 3 | 43.56 | 1 | 14.52 | 1 | 14.52 | 2 | 29.04 |
-| 05h à 06h | 5 | 72.6 | 2 | 29.04 | 1 | 14.52 | 3 | 43.56 |
-| 06h à 09h | 16 | 232.32 | 6 | 87.12 | 5 | 72.6 | 10 | 145.2 |
-| 09h à 12h | 11 | 159.72 | 6 | 87.12 | 6 | 87.12 | 7 | 101.64 |
-| 12h à 15h | 11 | 159.72 | 6 | 87.12 | 4 | 58.08 | 7 | 101.64 |
-| 15h à 18h | 12 | 174.24 | 6 | 87.12 | 5 | 72.6 | 7 | 101.64 |
-| 18h à 21h | 10 | 145.2 | 3 | 43.56 | 3 | 43.56 | 6 | 87.12 |
+| 03h à 04h | 2 | 29.04 | 1 | 14.52 | 0 | 0.0 | 1 | 14.52 |
+| 04h à 05h | 4 | 58.08 | 2 | 29.04 | 2 | 29.04 | 2 | 29.04 |
+| 05h à 06h | 6 | 87.12 | 2 | 29.04 | 2 | 29.04 | 4 | 58.08 |
+| 06h à 09h | 16 | 232.32 | 7 | 101.64 | 6 | 87.12 | 10 | 145.2 |
+| 09h à 12h | 8 | 116.16 | 6 | 87.12 | 6 | 87.12 | 5 | 72.6 |
+| 12h à 15h | 10 | 145.2 | 7 | 101.64 | 6 | 87.12 | 6 | 87.12 |
+| 15h à 18h | 12 | 174.24 | 6 | 87.12 | 6 | 87.12 | 7 | 101.64 |
+| 18h à 21h | 12 | 174.24 | 6 | 87.12 | 6 | 87.12 | 7 | 101.64 |
 | 21h à 22h | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 |
 | 22h à 23h | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 |
 | 23h à 24h | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 | 1 | 14.52 |
@@ -63,31 +63,31 @@ vista: Jardim Violeta - Terminal Deodoro
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 70 | 1207.64 |
-| Sábado | 34 | 586.55 |
-| Domingo | 24 | 414.05 |
-| Ponto Facultativo | 44 | 759.09 |
+| Dia Útil | 78 | 1345.66 |
+| Sábado | 38 | 655.55 |
+| Domingo | 35 | 603.8 |
+| Ponto Facultativo | 48 | 828.1 |
 | Pico Manhã (06h-09h) | 13 | — |
-| Pico Noite (18h-21h) | 12 | — |
+| Pico Noite (18h-21h) | 14 | — |
 
 #### Distribuição Horária
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 1 | 17.25 | 0 | 0.0 | 1 | 17.25 | 1 | 17.25 |
+| 00h à 01h | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 17.25 | 0 | 0.0 | 0 | 0.0 | 1 | 17.25 |
-| 04h à 05h | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
-| 05h à 06h | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
-| 06h à 09h | 13 | 224.28 | 5 | 86.26 | 3 | 51.76 | 8 | 138.02 |
-| 09h à 12h | 10 | 172.52 | 6 | 103.51 | 3 | 51.76 | 6 | 103.51 |
-| 12h à 15h | 11 | 189.77 | 6 | 103.51 | 4 | 69.01 | 7 | 120.76 |
-| 15h à 18h | 15 | 258.78 | 6 | 103.51 | 4 | 69.01 | 9 | 155.27 |
-| 18h à 21h | 12 | 207.02 | 6 | 103.51 | 4 | 69.01 | 7 | 120.76 |
-| 21h à 22h | 2 | 34.5 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
+| 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 04h à 05h | 3 | 51.76 | 1 | 17.25 | 0 | 0.0 | 2 | 34.5 |
+| 05h à 06h | 5 | 86.26 | 1 | 17.25 | 1 | 17.25 | 3 | 51.76 |
+| 06h à 09h | 13 | 224.28 | 6 | 103.51 | 6 | 103.51 | 8 | 138.02 |
+| 09h à 12h | 10 | 172.52 | 7 | 120.76 | 6 | 103.51 | 6 | 103.51 |
+| 12h à 15h | 11 | 189.77 | 6 | 103.51 | 6 | 103.51 | 7 | 120.76 |
+| 15h à 18h | 15 | 258.78 | 6 | 103.51 | 6 | 103.51 | 9 | 155.27 |
+| 18h à 21h | 14 | 241.53 | 6 | 103.51 | 6 | 103.51 | 9 | 155.27 |
+| 21h à 22h | 2 | 34.5 | 2 | 34.5 | 1 | 17.25 | 1 | 17.25 |
 | 22h à 23h | 2 | 34.5 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
-| 23h à 24h | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
+| 23h à 24h | 2 | 34.5 | 1 | 17.25 | 1 | 17.25 | 1 | 17.25 |
 
 ---
 
@@ -95,13 +95,13 @@ vista: Jardim Violeta - Terminal Deodoro
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_obras]` | Fechamento obra local. | 14.761 | Automática. |
-| `[desvio_obras]` | Fechamento obra local. | 17.613 | Automática. |
+| `[desvio_obras]` | nan | 14.761 | nan |
+| `[desvio_obras]` | nan | 17.613 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

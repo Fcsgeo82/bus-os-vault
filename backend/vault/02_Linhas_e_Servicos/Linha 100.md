@@ -1,8 +1,8 @@
 ---
 codigo_linha: '100'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/100
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-100
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: General Osório - Central
 ---
 
@@ -18,8 +18,8 @@ vista: General Osório - Central
 
 **Código do Serviço:** 100  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: General Osório - Central
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 16.075 | Automática. |
-| `[via_praia_do_flamengo]` | Área de Lazer no Aterro do Flamengo | 14.117 | Automática. |
+| `[via_praia_do_flamengo]` | nan | 16.075 | nan |
+| `[via_praia_do_flamengo]` | nan | 14.117 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-01-AJU-Intersul]]: Ajuste na quilometragem e partidas das linhas da Zona Sul
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

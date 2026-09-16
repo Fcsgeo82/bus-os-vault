@@ -1,8 +1,8 @@
 ---
 codigo_linha: SN368
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sn368
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sn368
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Riocentro - Candelária
 ---
 
@@ -18,8 +18,8 @@ vista: Riocentro - Candelária
 
 **Código do Serviço:** SN368  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,16 @@ vista: Riocentro - Candelária
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | Eventos esportivos no entorno do estádio Maracanã. | 38.097 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 34.101 | Automática. |
+| `[desvio_maracana]` | nan | 38.097 | nan |
+| `[excepcionalidade]` | nan | 34.101 | nan |
+| `[excepcionalidade]` | nan | 46.914 | nan |
+| `[excepcionalidade_1]` | nan | 42.714 | nan |
+| `[excepcionalidade_2]` | nan | 39.209 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

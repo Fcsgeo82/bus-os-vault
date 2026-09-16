@@ -1,8 +1,8 @@
 ---
 codigo_linha: '696'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/696
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-696
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Méier - Praia do Dendê
 ---
 
@@ -18,8 +18,8 @@ vista: Méier - Praia do Dendê
 
 **Código do Serviço:** 696  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -31,12 +31,12 @@ vista: Méier - Praia do Dendê
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 67 | 2065.34 |
-| Sábado | 34 | 1048.11 |
+| Dia Útil | 92 | 2835.99 |
+| Sábado | 50 | 1541.28 |
 | Domingo | 32 | 986.46 |
-| Ponto Facultativo | 41 | 1263.87 |
-| Pico Manhã (06h-09h) | 14 | — |
-| Pico Noite (18h-21h) | 8 | — |
+| Ponto Facultativo | 57 | 1757.08 |
+| Pico Manhã (06h-09h) | 19 | — |
+| Pico Noite (18h-21h) | 11 | — |
 
 #### Distribuição Horária
 
@@ -46,14 +46,14 @@ vista: Méier - Praia do Dendê
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 04h à 05h | 1 | 30.83 | 1 | 30.83 | 0 | 0.0 | 1 | 30.83 |
-| 05h à 06h | 4 | 123.3 | 1 | 30.83 | 1 | 30.83 | 2 | 61.65 |
-| 06h à 09h | 14 | 431.56 | 6 | 184.96 | 6 | 184.96 | 9 | 277.43 |
-| 09h à 12h | 11 | 339.09 | 7 | 215.78 | 6 | 184.96 | 7 | 215.78 |
-| 12h à 15h | 12 | 369.91 | 6 | 184.96 | 6 | 184.96 | 7 | 215.78 |
-| 15h à 18h | 15 | 462.39 | 6 | 184.96 | 6 | 184.96 | 9 | 277.43 |
-| 18h à 21h | 8 | 246.61 | 6 | 184.96 | 6 | 184.96 | 5 | 154.13 |
-| 21h à 22h | 2 | 61.65 | 1 | 30.83 | 1 | 30.83 | 1 | 30.83 |
+| 04h à 05h | 2 | 61.65 | 1 | 30.83 | 0 | 0.0 | 1 | 30.83 |
+| 05h à 06h | 6 | 184.96 | 2 | 61.65 | 1 | 30.83 | 4 | 123.3 |
+| 06h à 09h | 19 | 585.69 | 9 | 277.43 | 6 | 184.96 | 12 | 369.91 |
+| 09h à 12h | 15 | 462.39 | 9 | 277.43 | 6 | 184.96 | 9 | 277.43 |
+| 12h à 15h | 16 | 493.22 | 9 | 277.43 | 6 | 184.96 | 10 | 308.26 |
+| 15h à 18h | 21 | 647.35 | 9 | 277.43 | 6 | 184.96 | 13 | 400.74 |
+| 18h à 21h | 11 | 339.09 | 9 | 277.43 | 6 | 184.96 | 7 | 215.78 |
+| 21h à 22h | 2 | 61.65 | 2 | 61.65 | 1 | 30.83 | 1 | 30.83 |
 | 22h à 23h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 23h à 24h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 
@@ -63,12 +63,12 @@ vista: Méier - Praia do Dendê
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 68 | 2275.48 |
-| Sábado | 39 | 1305.05 |
-| Domingo | 34 | 1137.74 |
-| Ponto Facultativo | 42 | 1405.45 |
-| Pico Manhã (06h-09h) | 15 | — |
-| Pico Noite (18h-21h) | 6 | — |
+| Dia Útil | 94 | 3145.52 |
+| Sábado | 52 | 1740.07 |
+| Domingo | 37 | 1238.13 |
+| Ponto Facultativo | 59 | 1974.32 |
+| Pico Manhã (06h-09h) | 21 | — |
+| Pico Noite (18h-21h) | 9 | — |
 
 #### Distribuição Horária
 
@@ -78,13 +78,13 @@ vista: Méier - Praia do Dendê
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 04h à 05h | 2 | 66.93 | 1 | 33.46 | 1 | 33.46 | 1 | 33.46 |
-| 05h à 06h | 6 | 200.78 | 2 | 66.93 | 1 | 33.46 | 4 | 133.85 |
-| 06h à 09h | 15 | 501.94 | 8 | 267.7 | 6 | 200.78 | 9 | 301.17 |
-| 09h à 12h | 10 | 334.63 | 8 | 267.7 | 6 | 200.78 | 6 | 200.78 |
-| 12h à 15h | 12 | 401.56 | 6 | 200.78 | 6 | 200.78 | 7 | 234.24 |
-| 15h à 18h | 15 | 501.94 | 6 | 200.78 | 6 | 200.78 | 9 | 301.17 |
-| 18h à 21h | 6 | 200.78 | 6 | 200.78 | 6 | 200.78 | 4 | 133.85 |
+| 04h à 05h | 3 | 100.39 | 2 | 66.93 | 1 | 33.46 | 2 | 66.93 |
+| 05h à 06h | 9 | 301.17 | 3 | 100.39 | 2 | 66.93 | 6 | 200.78 |
+| 06h à 09h | 21 | 702.72 | 11 | 368.09 | 7 | 234.24 | 13 | 435.02 |
+| 09h à 12h | 15 | 501.94 | 10 | 334.63 | 7 | 234.24 | 9 | 301.17 |
+| 12h à 15h | 15 | 501.94 | 9 | 301.17 | 6 | 200.78 | 9 | 301.17 |
+| 15h à 18h | 20 | 669.26 | 8 | 267.7 | 6 | 200.78 | 12 | 401.56 |
+| 18h à 21h | 9 | 301.17 | 7 | 234.24 | 6 | 200.78 | 6 | 200.78 |
 | 21h à 22h | 1 | 33.46 | 1 | 33.46 | 1 | 33.46 | 1 | 33.46 |
 | 22h à 23h | 1 | 33.46 | 1 | 33.46 | 1 | 33.46 | 1 | 33.46 |
 | 23h à 24h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
@@ -95,16 +95,16 @@ vista: Méier - Praia do Dendê
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 34.831 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 34.375 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 35.203 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 34.849 | Automática. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 32.916 | Automática. |
+| `[desvio_feira]` | nan | 34.831 | nan |
+| `[excepcionalidade]` | nan | 34.375 | nan |
+| `[excepcionalidade]` | nan | 35.203 | nan |
+| `[excepcionalidade_1]` | nan | 34.849 | nan |
+| `[excepcionalidade_1]` | nan | 32.916 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

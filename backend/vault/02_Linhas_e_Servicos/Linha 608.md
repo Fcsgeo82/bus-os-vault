@@ -1,8 +1,8 @@
 ---
 codigo_linha: '608'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/608
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-608
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Grajaú - Saens Peña
 ---
 
@@ -18,8 +18,8 @@ vista: Grajaú - Saens Peña
 
 **Código do Serviço:** 608  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Grajaú - Saens Peña
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_lazer]` | Área de Lazer na Praça Edmundo Rego. | 4.307 | Automática. |
-| `[desvio_lazer]` | Área de Lazer na Praça Edmundo Rego. | 5.027 | Automática. |
+| `[desvio_lazer]` | nan | 4.307 | nan |
+| `[desvio_lazer]` | nan | 5.027 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

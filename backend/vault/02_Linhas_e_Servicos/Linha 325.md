@@ -1,8 +1,8 @@
 ---
 codigo_linha: '325'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/325
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-325
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Ribeira - Castelo
 ---
 
@@ -18,8 +18,8 @@ vista: Ribeira - Castelo
 
 **Código do Serviço:** 325  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -31,7 +31,7 @@ vista: Ribeira - Castelo
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 44 | 1257.87 |
+| Dia Útil | 45 | 1286.46 |
 | Sábado | 0 | 0.0 |
 | Domingo | 0 | 0.0 |
 | Ponto Facultativo | 28 | 800.46 |
@@ -51,7 +51,7 @@ vista: Ribeira - Castelo
 | 06h à 09h | 12 | 343.06 | 0 | 0.0 | 0 | 0.0 | 7 | 200.12 |
 | 09h à 12h | 7 | 200.12 | 0 | 0.0 | 0 | 0.0 | 4 | 114.35 |
 | 12h à 15h | 6 | 171.53 | 0 | 0.0 | 0 | 0.0 | 4 | 114.35 |
-| 15h à 18h | 9 | 257.29 | 0 | 0.0 | 0 | 0.0 | 6 | 171.53 |
+| 15h à 18h | 10 | 285.88 | 0 | 0.0 | 0 | 0.0 | 6 | 171.53 |
 | 18h à 21h | 5 | 142.94 | 0 | 0.0 | 0 | 0.0 | 3 | 85.76 |
 | 21h à 22h | 1 | 28.59 | 0 | 0.0 | 0 | 0.0 | 1 | 28.59 |
 | 22h à 23h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
@@ -95,13 +95,13 @@ vista: Ribeira - Castelo
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 29.502 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 28.218 | Automática. |
+| `[excepcionalidade]` | nan | 29.502 | nan |
+| `[excepcionalidade]` | nan | 28.218 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

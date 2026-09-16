@@ -1,8 +1,8 @@
 ---
 codigo_linha: SPB550
 consorcio: Transcarioca
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/spb550
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-spb550
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Tijuquinha - Gávea
 ---
 
@@ -18,8 +18,8 @@ vista: Tijuquinha - Gávea
 
 **Código do Serviço:** SPB550  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,17 +95,17 @@ vista: Tijuquinha - Gávea
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_feira]` | Feira Livre | 16.297 | Automática. |
-| `[desvio_feira]` | Feira Livre | 13.497 | Automática. |
-| `[desvio_feira_e_desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 16.788 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 18.235 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Zuzu Angel. | 16.812 | Automática. |
-| `[desvio_tunel_e_desvio_feira]` | Fechamento do túnel Zuzu Angel. | 18.8 | Automática. |
+| `[desvio_feira]` | nan | 16.297 | nan |
+| `[desvio_feira]` | nan | 13.497 | nan |
+| `[desvio_feira_e_desvio_tunel]` | nan | 16.788 | nan |
+| `[desvio_tunel]` | nan | 18.235 | nan |
+| `[desvio_tunel]` | nan | 16.812 | nan |
+| `[desvio_tunel_e_desvio_feira]` | nan | 18.8 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

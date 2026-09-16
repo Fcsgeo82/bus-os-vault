@@ -85,10 +85,17 @@ class LineHubService:
         )
         lines.append("|---|---|---|---|---|---|---|---|---|")
         hourly = s["hourly"]
-        for i, slot in enumerate(hourly.get("dia_util", [])):
-            sab = hourly.get("sabado", [{} for _ in range(len(hourly["dia_util"]))])[i]
-            dom = hourly.get("domingo", [{} for _ in range(len(hourly["dia_util"]))])[i]
-            pf = hourly.get("ponto_facultativo", [{} for _ in range(len(hourly["dia_util"]))])[i]
+
+        def _hourly_entry(day_key: str, idx: int) -> Dict[str, Any]:
+            """Retorna a faixa horária do tipo de dia, ou linha em branco se ausente/conflito de colunas."""
+            day_list = hourly.get(day_key) or []
+            return day_list[idx] if idx < len(day_list) else {}
+
+        dia_util_entries = hourly.get("dia_util") or []
+        for i, slot in enumerate(dia_util_entries):
+            sab = _hourly_entry("sabado", i)
+            dom = _hourly_entry("domingo", i)
+            pf = _hourly_entry("ponto_facultativo", i)
             lines.append(
                 f"| {slot['hora']} | {slot['partidas']} | {slot['km']} | "
                 f"{sab.get('partidas', 0)} | {sab.get('km', 0)} | "

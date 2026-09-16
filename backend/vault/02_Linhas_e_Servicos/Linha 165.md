@@ -1,8 +1,8 @@
 ---
 codigo_linha: '165'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/165
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-165
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Gentileza - Cosme Velho
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Gentileza - Cosme Velho
 
 **Código do Serviço:** 165  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,13 +95,13 @@ vista: Terminal Gentileza - Cosme Velho
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 10.082 | Automática. |
-| `[desvio_tunel]` | Fechamento do túnel Santa Bárbara. | 10.083 | Automática. |
+| `[desvio_tunel]` | nan | 10.082 | nan |
+| `[desvio_tunel]` | nan | 10.083 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
-- [[NOTA-2026.08-02-INC-Desvios]]: Inclusão de desvios operacionais por fechamento do Túnel Santa Bárbara e Feiras
+Nenhuma nota de evento referenciada para esta linha na OS vigente.

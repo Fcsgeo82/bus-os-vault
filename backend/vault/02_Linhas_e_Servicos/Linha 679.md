@@ -1,8 +1,8 @@
 ---
 codigo_linha: '679'
 consorcio: Internorte
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/679
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-679
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Grotão - Méier
 ---
 
@@ -18,8 +18,8 @@ vista: Grotão - Méier
 
 **Código do Serviço:** 679  
 **Consórcio:** Internorte  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,19 +95,19 @@ vista: Grotão - Méier
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_festividade]` | Evento local. | 16.512 | Automática. |
-| `[desvio_festividade]` | Evento local. | 18.417 | Automática. |
-| `[desvio_lazer]` | Área de Lazer | 18.317 | Automática. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 15.488 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 16.859 | Manual, mediante provocação do operador. |
-| `[excepcionalidade_1]` | Eventos excepcionais com impacto na circulação regular do serviço. | 16.588 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 15.248 | Automática. |
-| `[excepcionalidade_2]` | Eventos excepcionais com impacto na circulação regular do serviço. | 16.163 | Automática. |
+| `[desvio_festividade]` | nan | 16.512 | nan |
+| `[desvio_festividade]` | nan | 18.417 | nan |
+| `[desvio_lazer]` | nan | 18.317 | nan |
+| `[excepcionalidade]` | nan | 15.488 | nan |
+| `[excepcionalidade]` | nan | 16.859 | nan |
+| `[excepcionalidade_1]` | nan | 16.588 | nan |
+| `[excepcionalidade_2]` | nan | 15.248 | nan |
+| `[excepcionalidade_2]` | nan | 16.163 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

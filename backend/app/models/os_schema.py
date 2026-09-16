@@ -142,3 +142,16 @@ class OSIngestResponse(BaseModel):
     total_servicos_anexo_i: int
     total_desvios_anexo_ii: int
 
+
+class OSCorrectionPayload(BaseModel):
+    """Campos corrigíveis de uma OS (parciais); 'title' dispara propagação de renaming."""
+    title: Optional[str] = Field(None, min_length=5, max_length=250)
+    tipo_os: Optional[TipoOS] = None
+    status_vigencia: Optional[StatusVigencia] = None
+    processo_rio: Optional[str] = None
+    despacho: Optional[str] = None
+    data_publicacao: Optional[date] = None
+    inicio_vigencia: Optional[date] = None
+    fim_vigencia: Optional[date] = None
+    arquivo_gtfs: Optional[str] = None
+

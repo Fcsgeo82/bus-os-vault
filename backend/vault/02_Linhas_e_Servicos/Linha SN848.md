@@ -1,8 +1,8 @@
 ---
 codigo_linha: SN848
 consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/sn848
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-sn848
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Terminal Campo Grande - Monte Santo
 ---
 
@@ -18,8 +18,8 @@ vista: Terminal Campo Grande - Monte Santo
 
 **Código do Serviço:** SN848  
 **Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -31,10 +31,10 @@ vista: Terminal Campo Grande - Monte Santo
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 7 | 67.33 |
-| Sábado | 7 | 67.34 |
-| Domingo | 7 | 67.34 |
-| Ponto Facultativo | 7 | 67.33 |
+| Dia Útil | 6 | 57.71 |
+| Sábado | 6 | 57.72 |
+| Domingo | 6 | 57.72 |
+| Ponto Facultativo | 6 | 57.71 |
 | Pico Manhã (06h-09h) | 0 | — |
 | Pico Noite (18h-21h) | 0 | — |
 
@@ -46,7 +46,7 @@ vista: Terminal Campo Grande - Monte Santo
 | 01h à 02h | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 |
 | 02h à 03h | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 |
 | 03h à 04h | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 |
-| 04h à 05h | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 | 1 | 9.62 |
+| 04h à 05h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 05h à 06h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 06h à 09h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 09h à 12h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
@@ -63,12 +63,12 @@ vista: Terminal Campo Grande - Monte Santo
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[eventos_climaticos]` | Eventos climáticos com impacto na circulação regular do serviço. | 11.248 | Automática. |
+| `[eventos_climaticos]` | nan | 11.248 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

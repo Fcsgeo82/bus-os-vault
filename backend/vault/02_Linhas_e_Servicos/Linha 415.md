@@ -1,8 +1,8 @@
 ---
 codigo_linha: '415'
 consorcio: Intersul
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+data_atualizacao: '2026-09-16'
+os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
 schema_version: 2
 tags:
 - linha/415
@@ -10,7 +10,7 @@ tags:
 - tipo/municipal
 type: linha_servico
 uid: linha-415
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Usina - Leblon
 ---
 
@@ -18,8 +18,8 @@ vista: Usina - Leblon
 
 **Código do Serviço:** 415  
 **Consórcio:** Intersul  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -95,14 +95,14 @@ vista: Usina - Leblon
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_aterro]` | Área de Lazer no Aterro do Flamengo | 24.658 | Automática. |
-| `[desvio_aterro]` | Área de Lazer no Aterro do Flamengo | 27.725 | Automática. |
-| `[desvio_sambodromo]` | Eventos de utilização no Sambódromo | 25.841 | Automática. |
+| `[desvio_aterro]` | nan | 24.658 | nan |
+| `[desvio_aterro]` | nan | 27.725 | nan |
+| `[desvio_sambodromo]` | nan | 25.841 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[178 - OS 2026.09 - Setembro 1º Estudo]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.
