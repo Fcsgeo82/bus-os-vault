@@ -94,9 +94,19 @@
     - **Exclusão (`detach_hub_references`):** `DELETE /api/os/{uid}` remove as referências da OS nos hubs, promove a próxima OS mais recente para `os_origem` (com a vigência dela, lida da nota da OS) e **remove hubs órfãos** (nenhuma OS restante). Resposta inclui `hubs_atualizados`.
     - **Testes na integração usam linha própria ("9999"):** não poluem hubs reais do cofre ao validar o fluxo de exclusão.
 
+14. **Múltiplos processos e despachos por OS (v0.7.0 — breaking change):**
+    - `processo_rio` e `despacho` passaram de string única para `List[str]` (máx. 2, ordem preservada) em `OSMestraBase`, `OSIngestPayload` e `OSCorrectionPayload`; `GET /api/os` retorna arrays.
+    - Validação em `field_validator(mode="before")` aceita string legada (normalizada para lista de 1) — retrocompatível na entrada. Processo com regex Processo.Rio `^\d{6}\.\d{6}/\d{4}-\d{2}$`; despacho sem padrão rígido.
+    - Migração idempotente `migrate_processos.py` roda no lifespan antes da indexação RAG (string → lista no frontmatter).
+    - Frontend: componente reutilizável `ui/MultiInputField.tsx` (add/remove até 2, validação em blur, erro inline), usado em `DataEntryForm.tsx` e `OSCorrectionModal.tsx`; exibição em lista em `page.tsx` e `NoteViewerModal.tsx`.
+
+15. **Listagem de OS sempre fresca após mutações (v0.7.1):**
+    - `fetchOsList()` em `page.tsx` é o único ponto de refresh da sidebar (usado por cadastro, exclusão, correção e sync). O `fetch("/api/os")` sem anti-cache podia servir a resposta em cache (URL idêntica à da carga inicial), então a nova OS só surgia após F5.
+    - Fix: `fetch(`/api/os?t=${Date.now()}`)` — cache-busting por chamada, sem alterar o backend.
+
 ---
 
-## 3. Estado de Entrega (v0.6.1 Concluído)
+## 3. Estado de Entrega (v0.7.1 Concluído)
 
 - [x] Documentos em `docs/`: `architectural_analysis.md`, `implementation_plan.md` (Fase 1) e `implementation_plan_fase2_ingestao.md` (Fase 2).
 - [x] Seed do cofre com dados reais em `backend/vault/`.
@@ -114,5 +124,7 @@
 - [x] **Correção/Edição de OS** (`POST /api/os/{uid}/correct`) com retitulação em cascata (UID, wikilinks, hubs, anexos e CSVs) e correção escalar; validação de título unificada; guard de slug idêntico.
 - [x] **Vault corrigido para v0.6.0:** OS 179 → 178 aplicada no cofre real (mestra, nota, hubs, anexos e CSVs consistente; RAG reindexado).
 - [x] **Hubs representam a OS mais recente (v0.6.1):** migração event-only preservando grade, `detach_hub_references` na exclusão e remoção de hubs órfãos.
-- [x] 27 de 27 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
+- [x] **Múltiplos processos/despachos por OS (v0.7.0):** listas (máx. 2, ordem preservada), validação Processo.Rio, migração automática de dados legados e componente `MultiInputField` no frontend.
+- [x] **Listagem de OS atualizada sem F5 (v0.7.1):** cache-busting no `fetchOsList` (`/api/os?t=${Date.now()}`).
+- [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

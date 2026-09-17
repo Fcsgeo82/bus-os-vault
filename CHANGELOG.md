@@ -7,6 +7,13 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.7.1] - 2026-09-17
+
+### Corrigido
+- **Nova OS não aparecia na listagem "Ordens de Serviço" logo após o cadastro:** o `fetch` de `GET /api/os` em [page.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/app/page.tsx) (`fetchOsList`) podia ser servido pelo cache do navegador, pois a URL era idêntica à da carga inicial. A listagem só refletia o cadastro após um recarregamento manual (F5). Adicionado *cache-busting* com timestamp (`/api/os?t=${Date.now()}`), forçando uma requisição real ao backend a cada atualização. A correção beneficia também a atualização da lista após exclusão, correção de OS e sincronização do cofre (todas usam `fetchOsList`).
+
+---
+
 ## [0.7.0] - 2026-09-17
 
 ### ⚠️ Breaking change

@@ -74,7 +74,7 @@ export default function Home() {
   };
 
   const fetchOsList = () => {
-    fetch("/api/os")
+    fetch(`/api/os?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => setOsList(data))
       .catch((err) => console.error("Erro ao carregar OS:", err));

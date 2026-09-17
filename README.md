@@ -119,7 +119,7 @@ Exemplo de saída no terminal:
 Iniciando túnel público (Cloudflare/localtunnel)...
 Túnel público ativo (localtunnel).
 ============================================================
-Bus OS Vault v0.6.1 pronto!
+Bus OS Vault v0.7.1 pronto!
   Local:  http://127.0.0.1:8000
   Rede:   http://10.31.4.229:8000
   Docs:   http://10.31.4.229:8000/docs
