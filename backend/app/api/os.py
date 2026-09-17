@@ -163,6 +163,7 @@ async def delete_ordem_de_servico(uid: str):
 
     # 1. Exclui notas de eventos vinculadas
     eventos_removidos = 0
+    eventos_links = set()
     event_dir = settings.VAULT_DIR / "01_Notas_de_Eventos"
     if event_dir.exists():
         for ev_file in event_dir.glob("*.md"):
@@ -170,6 +171,7 @@ async def delete_ordem_de_servico(uid: str):
             if ev_doc:
                 origem = ev_doc["metadata"].get("os_origem", "")
                 if os_title in origem or uid in origem:
+                    eventos_links.add(ev_file.stem)
                     ev_file.unlink()
                     eventos_removidos += 1
 
@@ -209,6 +211,11 @@ async def delete_ordem_de_servico(uid: str):
     # 5. Exclui a nota mestra da OS
     (os_dir / target_name).unlink()
 
+    # 5.1. Remove referências da OS excluída dos hubs de linha (promove a OS mais recente restante)
+    from app.services.vault.line_hub_service import line_hub_service
+
+    hubs_atualizados = line_hub_service.detach_hub_references(os_title, eventos_links)
+
     # 6. Reindexa o RAG (LanceDB + BM25) após a remoção
     try:
         vault_indexer.index_entire_vault()
@@ -222,4 +229,5 @@ async def delete_ordem_de_servico(uid: str):
         "os_title": os_title,
         "notas_eventos_removidas": eventos_removidos,
         "anexos_removidos": anexos_removidos,
+        "hubs_atualizados": hubs_atualizados,
     }

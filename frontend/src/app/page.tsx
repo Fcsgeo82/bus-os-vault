@@ -18,6 +18,7 @@ import { FilterBar, LineOption } from "@/components/filters/FilterBar";
 import { NoteViewerModal } from "@/components/vault/NoteViewerModal";
 import { DataEntryForm } from "@/components/entry/DataEntryForm";
 import { OSCorrectionModal } from "@/components/entry/OSCorrectionModal";
+import { LineFilterDropdown } from "@/components/hubs/LineFilterDropdown";
 import { Toast, ToastData } from "@/components/ui/Toast";
 import { RAGFilters, OSMestra } from "@/lib/types";
 
@@ -36,6 +37,7 @@ export default function Home() {
   const [availableLines, setAvailableLines] = useState<LineOption[]>([]);
   const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
   const [hubLimitVisible, setHubLimitVisible] = useState(false);
+  const [hubFilterLine, setHubFilterLine] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [syncSuccess, setSyncSuccess] = useState(false);
   const [toasts, setToasts] = useState<ToastData[]>([]);
@@ -122,6 +124,11 @@ export default function Home() {
     fetchOsList();
     pushToast("success", message);
   };
+
+  const filteredHubs =
+    hubFilterLine === null
+      ? availableLines
+      : availableLines.filter((l) => l.codigo === hubFilterLine);
 
   return (
     <main style={{ maxWidth: "1400px", margin: "0 auto", padding: "24px 20px" }}>
@@ -395,17 +402,30 @@ export default function Home() {
                 <Layers size={16} style={{ color: "var(--accent-emerald)" }} />
                 <h3 style={{ fontSize: "0.95rem", fontWeight: 700 }}>Hubs de Linhas</h3>
                 <span style={{ color: "var(--text-muted)", fontSize: "0.72rem" }}>
-                  ({availableLines.length})
+                  {hubFilterLine !== null
+                    ? `(${filteredHubs.length} de ${availableLines.length})`
+                    : `(${availableLines.length})`}
                 </span>
+                <div style={{ marginLeft: "auto" }}>
+                  <LineFilterDropdown
+                    options={availableLines}
+                    selected={hubFilterLine}
+                    onChange={setHubFilterLine}
+                  />
+                </div>
               </div>
               {availableLines.length === 0 ? (
                 <div style={{ color: "var(--text-muted)", fontSize: "0.78rem" }}>
                   Nenhuma linha catalogada.
                 </div>
+              ) : filteredHubs.length === 0 ? (
+                <div style={{ color: "var(--text-muted)", fontSize: "0.78rem" }}>
+                  Nenhuma linha corresponde ao filtro selecionado.
+                </div>
               ) : (
                 <>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {(hubLimitVisible ? availableLines : availableLines.slice(0, HUB_PREVIEW_LIMIT)).map((l) => (
+                    {(hubLimitVisible ? filteredHubs : filteredHubs.slice(0, HUB_PREVIEW_LIMIT)).map((l) => (
                       <button
                         key={l.codigo}
                         onClick={() => setSelectedNote(`Linha ${l.codigo}`)}
@@ -416,7 +436,7 @@ export default function Home() {
                       </button>
                     ))}
                   </div>
-                  {availableLines.length > HUB_PREVIEW_LIMIT && (
+                  {filteredHubs.length > HUB_PREVIEW_LIMIT && (
                     <button
                       onClick={() => setHubLimitVisible((v) => !v)}
                       style={{
@@ -429,7 +449,7 @@ export default function Home() {
                         textDecoration: "underline",
                       }}
                     >
-                      {hubLimitVisible ? "Mostrar menos" : `Ver todas (${availableLines.length})`}
+                      {hubLimitVisible ? "Mostrar menos" : `Ver todas (${filteredHubs.length})`}
                     </button>
                   )}
                 </>

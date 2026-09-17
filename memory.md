@@ -88,9 +88,15 @@
     - Aplicação real: OS "179 …" → **178** no cofre (414 arquivos atualizados, 2 pastas + 1 arquivo renomeados, RAG reindexado; zero referências a "179").
     - UI: botão de lápis + `OSCorrectionModal` com aviso de propagação; listagem de OS expõe `fim_vigencia` e `arquivo_gtfs`.
 
+13. **Invariante: hub de linha = OS mais recente que toca a linha (v0.6.1):**
+    - **Caminho de anexo:** linha no ANEXO I da OS nova → hub totalmente sobrescrito (grade nova). Já valia desde 0.5.0.
+    - **Caminho event-only:** linha citada só por nota de evento da OS nova → hub existente **migra proveniência** (`os_origem`, vigência) para a OS nova preservando a grade real e o histórico; cria hub mínimo só se não existir. **Vigência nunca regressa** (comparação ISO; títulos `[ret4]` não quebram o parsing de wikilinks — regex gulosa).
+    - **Exclusão (`detach_hub_references`):** `DELETE /api/os/{uid}` remove as referências da OS nos hubs, promove a próxima OS mais recente para `os_origem` (com a vigência dela, lida da nota da OS) e **remove hubs órfãos** (nenhuma OS restante). Resposta inclui `hubs_atualizados`.
+    - **Testes na integração usam linha própria ("9999"):** não poluem hubs reais do cofre ao validar o fluxo de exclusão.
+
 ---
 
-## 3. Estado de Entrega (v0.6.0 Concluído)
+## 3. Estado de Entrega (v0.6.1 Concluído)
 
 - [x] Documentos em `docs/`: `architectural_analysis.md`, `implementation_plan.md` (Fase 1) e `implementation_plan_fase2_ingestao.md` (Fase 2).
 - [x] Seed do cofre com dados reais em `backend/vault/`.
@@ -107,5 +113,6 @@
 - [x] Script de rebuild (`rebuild_line_hubs.py`) com `remove_orphans=True`, regeneração dos resumos dos anexos e reindexação RAG; seed atualizado para usar o serviço de hubs.
 - [x] **Correção/Edição de OS** (`POST /api/os/{uid}/correct`) com retitulação em cascata (UID, wikilinks, hubs, anexos e CSVs) e correção escalar; validação de título unificada; guard de slug idêntico.
 - [x] **Vault corrigido para v0.6.0:** OS 179 → 178 aplicada no cofre real (mestra, nota, hubs, anexos e CSVs consistente; RAG reindexado).
-- [x] 25 de 25 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
+- [x] **Hubs representam a OS mais recente (v0.6.1):** migração event-only preservando grade, `detach_hub_references` na exclusão e remoção de hubs órfãos.
+- [x] 27 de 27 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit` limpo.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

@@ -7,6 +7,20 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.6.1] - 2026-09-17
+
+### Corrigido
+- **Hubs presos na OS passada quando a linha era tocada só por nota de evento:** em [line_hub_service.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/line_hub_service.py), `sync_hubs_for_os` agora **migra a proveniência** (`os_origem`, vigência e histórico) de hubs existentes para a OS mais recente que referencia a linha apenas via evento (sem grade no ANEXO I), **preservando a grade operacional real** (schema v2) e as notas de eventos anteriores. A vigência nunca regressa para uma data anterior.
+- **Exclusão em cascata deixava hubs referenciando a OS excluída:** `DELETE /api/os/{uid}` em [os.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/os.py) agora invoca o novo `detach_hub_references()`, que remove as referências da OS excluída dos hubs, **promove a próxima OS mais recente** para `os_origem` (com a vigência dela) e **remove hubs órfãos** (que ficam sem nenhuma OS restante). A resposta passou a incluir `hubs_atualizados`.
+- **Parsing de wikilinks com `]]` internos:** a extração das OS relacionadas em hubs usa regex gulosa para preservar títulos como `174 - OS 2026.08 - Agosto 2º Estudo [ret4]` (antes, o `]` final do `[ret4]` era consumido).
+
+### Testes
+- Novo [test_line_hub_service.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_line_hub_service.py): hub tocado só por evento de OS recente migra de proveniência preservando os dados reais (idempotente); `detach_hub_references` remove as referências e promove a OS anterior após exclusão.
+- [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) ampliado: exclusão em cascata agora também remove o hub mínimo criado para a linha tocada só pelo evento da OS excluída (órfão) — e o RAG não retorna referências residuais.
+- Suíte completa: **27/27 testes pytest aprovados**.
+
+---
+
 ## [0.6.0] - 2026-09-16
 
 ### Adicionado

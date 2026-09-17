@@ -197,7 +197,8 @@ schema_version: 2
 
 - **Geração:** `line_hub_service.sync_hubs_for_os()` integrado ao fluxo de ingestão (`POST /api/os/ingest`).
 - **Regeneração:** `rebuild_line_hubs.py` reconstrói hubs e resumos de anexos a partir dos CSVs de `referências/`, com remoção de hubs órfãos (`remove_orphans=True`) — ingestões rotineiras **não** removem hubs.
-- **Linhas citadas só em eventos** criam hub mínimo apenas se ainda não existirem (sem sobrescrever dados reais).
+- **Invariante (v0.6.1):** o hub representa **sempre a OS mais recente que toca a linha** — via ANEXO I ou apenas via nota de evento. Quando a OS nova cobre a linha só por evento, o hub migra `os_origem`/vigência para ela preservando a grade real e o histórico de OS/eventos; a vigência nunca regressa. Na exclusão de uma OS, `detach_hub_references` promove a próxima OS mais recente e remove hubs órfãos (sem NENHUMA OS restante).
+- **Linhas citadas só em eventos** criam hub mínimo apenas se ainda não existirem.
 
 ---
 
@@ -267,3 +268,4 @@ schema_version: 2
 | 2026-09-15 | Parser ANEXO I expõe Ponto Facultativo e dict `hourly`; resumo do anexo com coluna "Viagens Pt. Fac.". Remoção de hubs órfãos somente no rebuild (`remove_orphans=True`), nunca em ingestões rotineiras. Hub órfão `Linha LECD999.md` excluído. Suíte ampliada para 16/16 testes. |
 | 2026-09-15 | Interface: card "Hubs de Linhas" passa a consumir o catálogo real (`GET /api/os/lines/all`) no lugar da lista MOC fixa. `APP_VERSION` promovida para `0.5.0`. |
 | 2026-09-16 | **Correção/Edição de OS (v0.6.0):** `POST /api/os/{uid}/correct` com retitulação em cascata (UID/wikilinks/hubs/anexos/CSVs) + correção escalar; validação de título unificada em `vault_writer` (422); guard `old_slug != new_slug` protege anexos em correções só de acento. Aplicado no cofre real: OS 179 → 178 (414 arquivos, RAG reindexado). Suíte ampliada para 25/25 testes. |
+| 2026-09-17 | **Invariante do hub = OS mais recente (v0.6.1):** hub citado apenas por evento da OS nova migra proveniência preservando grade real e histórico; `DELETE /api/os/{uid}` passa a desvincular hubs da OS excluída (`detach_hub_references`), promovendo a OS anterior e removendo órfãos. Suíte ampliada para 27/27 testes. |

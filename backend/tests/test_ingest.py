@@ -123,7 +123,7 @@ async def test_excluir_os_e_artefatos_vinculados():
                 "title": "Ajuste operacional direcionado para exclusão",
                 "tipo_evento": "Ajuste",
                 "objeto_afetado": ["Linhas/Serviços"],
-                "linhas_afetadas": ["104"],
+                "linhas_afetadas": ["9999"],
                 "consorcios": ["Intersul"],
                 "descricao": "Evento criado para validar a exclusão em cascata.",
                 "justificativa": "Teste automatizado.",
@@ -156,6 +156,8 @@ async def test_excluir_os_e_artefatos_vinculados():
     # 4. Verifica que a OS mestra e os eventos criados pelo teste foram removidos
     assert not os_file.exists()
     assert not any(f.exists() for f in criadas_pelo_teste)
+    # 4.1. Hub criado para a linha tocada só pelo evento da OS excluída é removido (órfão)
+    assert not (settings.VAULT_DIR / "02_Linhas_e_Servicos" / "Linha 9999.md").exists()
 
     # 5. Verifica 404 ao tentar consultar novamente
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:

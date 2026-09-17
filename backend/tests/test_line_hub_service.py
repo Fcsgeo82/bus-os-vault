@@ -186,6 +186,117 @@ def test_sync_sem_anexos_nao_apaga_hubs(tmp_path, monkeypatch):
     assert "# Linha 104 — dados reais" in (linhas_dir / "Linha 104.md").read_text(encoding="utf-8")
 
 
+def test_sync_event_only_atualiza_hub_para_os_mais_recente(tmp_path, monkeypatch):
+    """Hub com dados reais da OS antiga, citado só em evento da OS nova, passa a representar
+    a OS mais recente preservando a grade operacional e o histórico."""
+    vault = _muda_vault(tmp_path, monkeypatch)
+    linhas_dir = vault / "02_Linhas_e_Servicos"
+
+    # OS antiga com grade real da linha 006
+    res = line_hub_service.sync_hubs_for_os(
+        "174 - OS 2026.08 - Agosto 2º Estudo [ret4]",
+        "2026-08-16",
+        [_servico_sintetico("006", "Ida"), _servico_sintetico("006", "Volta")],
+        [],
+        [],
+    )
+    assert res["criados"] == 1
+    hub = (linhas_dir / "Linha 006.md").read_text(encoding="utf-8")
+    assert "[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]" in hub
+
+    # OS mais recente toca a linha apenas via nota de evento (sem grade no ANEXO I)
+    evento_novo = {
+        "title": "Inclusão de itinerários alternativos",
+        "filename": "NOTA-2026.09-01-INC-006.md",
+        "linhas_afetadas": ["006"],
+    }
+    res2 = line_hub_service.sync_hubs_for_os(
+        "178 - OS 2026.09 - Setembro 1º Estudo",
+        "2026-09-03",
+        [],
+        [],
+        [evento_novo],
+    )
+    assert res2["criados"] == 0
+    assert res2["atualizados"] == 1
+
+    hub2 = (linhas_dir / "Linha 006.md").read_text(encoding="utf-8")
+
+    # Proveniência migra para a OS mais recente, mas a grade real é preservada
+    assert "os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'" in hub2
+    assert "| Dia Útil | 30 | 300.0 |" in hub2
+    assert "Distribuição Horária" in hub2
+
+    # Histórico mantido: as duas OS relacionadas e a nova nota de evento
+    secao_os = hub2.split("## Ordens de Serviço Relacionadas")[1]
+    secao_os = secao_os.split("## Notas de Eventos Vinculadas")[0]
+    assert "[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]" in secao_os
+    assert "[[178 - OS 2026.09 - Setembro 1º Estudo]]" in secao_os
+    assert "[[NOTA-2026.09-01-INC-006]]" in hub2
+    assert "NOTA-2026.09-01-INC-006.md]]" not in hub2
+
+    # Idempotência: segunda execução com a mesma OS não altera nada
+    res3 = line_hub_service.sync_hubs_for_os(
+        "178 - OS 2026.09 - Setembro 1º Estudo",
+        "2026-09-03",
+        [],
+        [],
+        [evento_novo],
+    )
+    assert res3["atualizados"] == 0
+    assert (linhas_dir / "Linha 006.md").read_text(encoding="utf-8") == hub2
+
+
+def test_detach_hub_references_apos_exclusao(tmp_path, monkeypatch):
+    """Excluir uma OS remove suas referências dos hubs e promove a OS mais recente restante."""
+    vault = _muda_vault(tmp_path, monkeypatch)
+    linhas_dir = vault / "02_Linhas_e_Servicos"
+
+    # OS antiga com grade real
+    line_hub_service.sync_hubs_for_os(
+        "174 - OS 2026.08 - Agosto 2º Estudo [ret4]",
+        "2026-08-16",
+        [_servico_sintetico("006", "Ida"), _servico_sintetico("006", "Volta")],
+        [],
+        [],
+    )
+
+    # OS recente (só via evento) migra a proveniência
+    evento_novo = {
+        "title": "Inclusão de itinerários alternativos",
+        "filename": "NOTA-2026.09-01-INC-006.md",
+        "linhas_afetadas": ["006"],
+    }
+    line_hub_service.sync_hubs_for_os(
+        "178 - OS 2026.09 - Setembro 1º Estudo",
+        "2026-09-03",
+        [],
+        [],
+        [evento_novo],
+    )
+    hub = (linhas_dir / "Linha 006.md").read_text(encoding="utf-8")
+    assert "os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'" in hub
+
+    # Exclusão da OS recente: origem volta para a 174 e a nota é removida
+    alterados = line_hub_service.detach_hub_references(
+        "178 - OS 2026.09 - Setembro 1º Estudo",
+        {"NOTA-2026.09-01-INC-006"},
+    )
+    assert alterados == 1
+
+    hub2 = (linhas_dir / "Linha 006.md").read_text(encoding="utf-8")
+    assert "os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'" in hub2
+    assert "| Dia Útil | 30 | 300.0 |" in hub2  # grade preservada
+    assert "[[NOTA-2026.09-01-INC-006]]" not in hub2
+    assert "[[178 - OS 2026.09 - Setembro 1º Estudo]]" not in hub2
+
+    # Idempotência: segunda execução não altera nada
+    assert line_hub_service.detach_hub_references(
+        "178 - OS 2026.09 - Setembro 1º Estudo",
+        {"NOTA-2026.09-01-INC-006"},
+    ) == 0
+
+
 def test_generate_hub_content_hourly_sabado_ausente_nao_estoura(tmp_path, monkeypatch):
     """CSV sem colunas horárias de Sábado não deve estourar IndexError no hub (issue #ingest-500)."""
     hora_util = [
