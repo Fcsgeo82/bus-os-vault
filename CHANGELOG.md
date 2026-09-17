@@ -7,6 +7,24 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.7.0] - 2026-09-17
+
+### ⚠️ Breaking change
+- **`processo_rio` e `despacho` agora são listas** (`List[str]`) em vez de stringes únicas nos payloads e nas respostas da API (`POST /api/os/ingest`, `GET /api/os`, `POST /api/os/{uid}/correct`). `GET /api/os` passou a retornar `meta["processo_rio"]` / `meta["despacho"]` como arrays (antes, string ou ausentes).
+
+### Adicionado
+- **Múltiplos processos e despachos por OS (máx. 2, ordem preservada):** [os_schema.py](file:///c:/github_repositories/bus-os-vault/backend/app/models/os_schema.py) passou a aceitar até 2 itens com ordem preservada em `OSMestraBase`, `OSIngestPayload` e `OSCorrectionPayload`. Validação em `field_validator(mode="before")` continua aceitando string legada (convertida automaticamente em lista de 1).
+- **Validação de formato do Processo.Rio:** regex `^\d{6}\.\d{6}\/\d{4}-\d{2}$` aplicada ao(s) processo(s) administrativo(s) (ex.: `000399.000000/2026-01`); valor inválido ou mais de 2 itens retorna `422 Unprocessable Entity`. Despachos seguem sem padrão rígido (apenas máx. 2).
+- **Migração automática de dados legados:** novo script [migrate_processos.py](file:///c:/github_repositories/bus-os-vault/backend/app/scripts/migrate_processos.py) converte threads OS cujo frontmatter ainda trazia `processo_rio`/`despacho` como string em listas de 1 elemento (escrita atômica, idempotente). Executado automaticamente no startup ([main.py](file:///c:/github_repositories/bus-os-vault/backend/app/main.py)) antes da indexação RAG.
+- **Interface com múltiplos campos:** novo componente reutilizável [MultiInputField.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/ui/MultiInputField.tsx) (inputs empilhados, botão "Adicionar" até o limite de 2, remoção por item, validação em blur e mensagem de erro inline), aplicado em [DataEntryForm.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/entry/DataEntryForm.tsx) (cadastro) e [OSCorrectionModal.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/entry/OSCorrectionModal.tsx) (correção). Valores vazios são filtrados antes do envio.
+- **Exibição em listas:** `GET /api/os` e o modal de leitura de notas agora renderizam múltiplos processos separados por vírgula em [page.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/app/page.tsx) e [NoteViewerModal.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/vault/NoteViewerModal.tsx).
+
+### Testes
+- [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py) ampliado: ordem preservada com 2 processos/despachos, rejeição de 3 processos e de formato inválido (422), e conversão de string legada em lista.
+- Suíte completa: **31/31 testes pytest aprovados** (13 min) e `tsc --noEmit`/`npm run build` limpos no frontend.
+
+---
+
 ## [0.6.1] - 2026-09-17
 
 ### Corrigido

@@ -162,7 +162,7 @@ async def test_corrigir_campo_escalar_atualiza_frontmatter():
     os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{title}.md"
     with open(os_file, "r", encoding="utf-8") as fh:
         post = frontmatter.load(fh)
-    assert post.metadata["despacho"] == "Despacho 111222"
+    assert post.metadata["despacho"] == ["Despacho 111222"]
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         del_res = await ac.delete(f"/api/os/{os_uid}")

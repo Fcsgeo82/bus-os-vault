@@ -2,6 +2,7 @@
 
 import json
 import pytest
+import frontmatter
 from httpx import ASGITransport, AsyncClient
 from app.main import app
 from app.core.config import settings
@@ -176,3 +177,99 @@ async def test_excluir_os_e_artefatos_vinculados():
         "999 - OS" in r["trecho"] or "999 - OS" in r["nota_titulo"]
         for r in search_data["results"]
     )
+
+
+@pytest.mark.asyncio
+async def test_ingest_multiplos_processos_e_despachos_ordem_preservada():
+    """Cadastra OS com 2 processos e 2 despachos; ordem deve ser preservada no frontmatter."""
+    payload_data = {
+        "title": "181 - OS 2026.10 - Outubro Multi Proc",
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/10",
+        "processo_rio": ["000399.111111/2026-01", "000399.222222/2026-02"],
+        "despacho": ["Despacho 998877", "Despacho 112233"],
+        "inicio_vigencia": "2026-10-01",
+    }
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+    assert response.status_code == 201
+    os_uid = response.json()["os_uid"]
+
+    os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{payload_data['title']}.md"
+    with open(os_file, "r", encoding="utf-8") as fh:
+        post = frontmatter.load(fh)
+    assert post.metadata["processo_rio"] == ["000399.111111/2026-01", "000399.222222/2026-02"]
+    assert post.metadata["despacho"] == ["Despacho 998877", "Despacho 112233"]
+    assert "000399.111111/2026-01" in post.content
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        del_res = await ac.delete(f"/api/os/{os_uid}")
+    assert del_res.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_ingest_processo_acima_do_maximo_retorna_422():
+    """Três processos administrativos devem ser rejeitados (máx. 2)."""
+    payload_data = {
+        "title": "182 - OS 2026.10 - Outubro Proc Excesso",
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/10",
+        "processo_rio": [
+            "000399.111111/2026-01",
+            "000399.222222/2026-02",
+            "000399.333333/2026-03",
+        ],
+    }
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+    assert response.status_code == 422
+    assert "Máximo de 2 processos" in response.json()["detail"]
+
+
+@pytest.mark.asyncio
+async def test_ingest_processo_formato_invalido_retorna_422():
+    """Processo fora do padrão Processo.Rio deve ser rejeitado com mensagem clara."""
+    payload_data = {
+        "title": "183 - OS 2026.10 - Outubro Proc Invalido",
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/10",
+        "processo_rio": ["12345"],
+    }
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+    assert response.status_code == 422
+    assert "Formato inválido" in response.json()["detail"]
+
+
+@pytest.mark.asyncio
+async def test_ingest_string_legada_convertida_em_lista():
+    """Payload legado (string única) deve ser normalizado automaticamente para lista."""
+    payload_data = {
+        "title": "184 - OS 2026.10 - Outubro Legado",
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/10",
+        "processo_rio": "000399.444444/2026-04",
+        "despacho": "Despacho 555666",
+    }
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload_data)})
+    assert response.status_code == 201
+    os_uid = response.json()["os_uid"]
+
+    os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{payload_data['title']}.md"
+    with open(os_file, "r", encoding="utf-8") as fh:
+        post = frontmatter.load(fh)
+    assert post.metadata["processo_rio"] == ["000399.444444/2026-04"]
+    assert post.metadata["despacho"] == ["Despacho 555666"]
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        del_res = await ac.delete(f"/api/os/{os_uid}")
+    assert del_res.status_code == 200

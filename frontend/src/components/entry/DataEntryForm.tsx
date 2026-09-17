@@ -3,13 +3,24 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Trash2, Upload, CheckCircle, AlertCircle, FileSpreadsheet, Send, FileText, ChevronRight } from "lucide-react";
 import { OSMestra } from "@/lib/types";
+import { MultiInputField } from "@/components/ui/MultiInputField";
+
+const ALL_CONSORCIOS = ["Intersul", "Internorte", "Transcarioca", "Santa Cruz"];
+const PROCESSO_RIO_REGEX = /^\d{6}\.\d{6}\/\d{4}-\d{2}$/;
+
+const validateProcessoRio = (value: string): string | null => {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  return PROCESSO_RIO_REGEX.test(trimmed)
+    ? null
+    : "Formato inválido. Use o padrão do Processo.Rio, ex: 000399.000000/2026-01.";
+};
 
 interface EventoForm {
   title: string;
   tipo_evento: "Inclusão" | "Remoção" | "Ajuste" | "Correção/Retificação";
   objeto_afetado: string[];
   linhas_afetadas: string;
-  consorcios: string[];
   vigencia_inicio: string;
   vigencia_fim: string;
   descricao: string;
@@ -26,8 +37,8 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
   const [tipoOs, setTipoOs] = useState<"Normal" | "Retificada" | "Temporária">("Normal");
   const [statusVigencia, setStatusVigencia] = useState<"Vigente" | "Sem Vigência">("Vigente");
   const [anoMes, setAnoMes] = useState("2026/10");
-  const [processoRio, setProcessoRio] = useState("");
-  const [despacho, setDespacho] = useState("");
+  const [processoRio, setProcessoRio] = useState<string[]>([""]);
+  const [despacho, setDespacho] = useState<string[]>([""]);
   const [dataPublicacao, setDataPublicacao] = useState("");
   const [inicioVigencia, setInicioVigencia] = useState("");
   const [fimVigencia, setFimVigencia] = useState("");
@@ -46,7 +57,6 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
       tipo_evento: "Inclusão",
       objeto_afetado: ["Linhas/Serviços"],
       linhas_afetadas: "",
-      consorcios: ["Intersul"],
       vigencia_inicio: "",
       vigencia_fim: "",
       descricao: "",
@@ -74,7 +84,6 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
         tipo_evento: "Ajuste",
         objeto_afetado: ["Planejamento de Viagens"],
         linhas_afetadas: "",
-        consorcios: ["Intersul"],
         vigencia_inicio: inicioVigencia,
         vigencia_fim: "",
         descricao: "",
@@ -91,17 +100,6 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
     setEventos((prev) => {
       const copy = [...prev];
       copy[index] = { ...copy[index], [field]: value };
-      return copy;
-    });
-  };
-
-  const toggleConsorcioInEvento = (index: number, consorcio: string) => {
-    setEventos((prev) => {
-      const copy = [...prev];
-      const curr = copy[index].consorcios;
-      copy[index].consorcios = curr.includes(consorcio)
-        ? curr.filter((c) => c !== consorcio)
-        : [...curr, consorcio];
       return copy;
     });
   };
@@ -127,7 +125,7 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
             .split(/[,;\s]+/)
             .map((s) => s.trim())
             .filter(Boolean),
-          consorcios: ev.consorcios,
+          consorcios: ALL_CONSORCIOS,
           vigencia_inicio: ev.vigencia_inicio || inicioVigencia || null,
           vigencia_fim: ev.vigencia_fim || null,
           descricao: ev.descricao || `Alteração referente a ${ev.title}`,
@@ -139,8 +137,8 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
         tipo_os: tipoOs,
         status_vigencia: statusVigencia,
         ano_mes_referencia: anoMes.trim(),
-        processo_rio: processoRio.trim() || null,
-        despacho: despacho.trim() || null,
+        processo_rio: processoRio.map((v) => v.trim()).filter(Boolean),
+        despacho: despacho.map((v) => v.trim()).filter(Boolean),
         data_publicacao: dataPublicacao || null,
         inicio_vigencia: inicioVigencia || null,
         fim_vigencia: semFimVigencia ? null : fimVigencia || null,
@@ -274,45 +272,34 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px", marginBottom: "16px" }}>
-          <div>
-            <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px", fontWeight: 600 }}>
-              Processo Administrativo (Processo.Rio)
-            </label>
-            <input
-              type="text"
-              className="input-glass"
-              placeholder="000399.001631/2026-86"
-              value={processoRio}
-              onChange={(e) => setProcessoRio(e.target.value)}
-            />
-          </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+          <MultiInputField
+            label="Processo Administrativo (Processo.Rio)"
+            values={processoRio}
+            placeholder="000399.000000/2026-01"
+            validate={validateProcessoRio}
+            onChange={setProcessoRio}
+            hint="Máx. 2. Ordem importa: primeiro = principal."
+          />
+          <MultiInputField
+            label="Despacho Autorizativo"
+            values={despacho}
+            placeholder="Despacho 0446149"
+            onChange={setDespacho}
+          />
+        </div>
 
-          <div>
-            <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px", fontWeight: 600 }}>
-              Despacho Autorizativo
-            </label>
-            <input
-              type="text"
-              className="input-glass"
-              placeholder="Despacho 0446149"
-              value={despacho}
-              onChange={(e) => setDespacho(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px", fontWeight: 600 }}>
-              Arquivo GTFS Associado
-            </label>
-            <input
-              type="text"
-              className="input-glass"
-              placeholder="175_gtfs_set-26_1E.zip"
-              value={arquivoGtfs}
-              onChange={(e) => setArquivoGtfs(e.target.value)}
-            />
-          </div>
+        <div style={{ marginBottom: "16px" }}>
+          <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px", fontWeight: 600 }}>
+            Arquivo GTFS Associado
+          </label>
+          <input
+            type="text"
+            className="input-glass"
+            placeholder="175_gtfs_set-26_1E.zip"
+            value={arquivoGtfs}
+            onChange={(e) => setArquivoGtfs(e.target.value)}
+          />
         </div>
 
         {/* Datas de Vigência */}
@@ -550,35 +537,6 @@ export const DataEntryForm: React.FC<DataEntryFormProps> = ({ onSuccess }) => {
                     value={ev.linhas_afetadas}
                     onChange={(e) => handleEventoChange(idx, "linhas_afetadas", e.target.value)}
                   />
-                </div>
-
-                <div>
-                  <label style={{ display: "block", fontSize: "0.78rem", color: "var(--text-secondary)", marginBottom: "6px" }}>
-                    Consórcios
-                  </label>
-                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                    {["Intersul", "Internorte", "Transcarioca", "Santa Cruz"].map((consorcio) => {
-                      const sel = ev.consorcios.includes(consorcio);
-                      return (
-                        <button
-                          type="button"
-                          key={consorcio}
-                          onClick={() => toggleConsorcioInEvento(idx, consorcio)}
-                          style={{
-                            background: sel ? "rgba(56, 189, 248, 0.2)" : "rgba(255, 255, 255, 0.04)",
-                            border: `1px solid ${sel ? "var(--accent-cyan)" : "var(--border-subtle)"}`,
-                            color: sel ? "var(--accent-cyan)" : "var(--text-secondary)",
-                            padding: "4px 8px",
-                            borderRadius: "6px",
-                            fontSize: "0.75rem",
-                            cursor: "pointer",
-                          }}
-                        >
-                          {consorcio}
-                        </button>
-                      );
-                    })}
-                  </div>
                 </div>
               </div>
 

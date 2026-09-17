@@ -33,8 +33,8 @@ export interface OSMestra {
   tipo_os: string;
   status_vigencia: string;
   ano_mes_referencia: string;
-  processo_rio?: string;
-  despacho?: string;
+  processo_rio?: string[];
+  despacho?: string[];
   data_publicacao?: string;
   inicio_vigencia?: string;
   fim_vigencia?: string;

@@ -20,6 +20,7 @@ from app.api.rag import router as rag_router
 from app.api.os import router as os_router
 from app.api.ingest import router as ingest_router
 from app.services.rag.indexer import vault_indexer
+from app.scripts.migrate_processos import migrate_processos_despachos
 
 # Garante exibição de emojis e acentos no console do Windows (cp1252)
 for _stream in (sys.stdout, sys.stderr):
@@ -168,6 +169,14 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     settings.VAULT_DIR.mkdir(parents=True, exist_ok=True)
     settings.DATA_DIR.mkdir(parents=True, exist_ok=True)
     settings.LANCEDB_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Migração automática de campos legados (processo_rio/despacho: str → list)
+    try:
+        migrated_files = migrate_processos_despachos()
+        if migrated_files:
+            print(f"[MIGRAÇÃO] {len(migrated_files)} OS(s) migrada(s) para formato de lista: {migrated_files}")
+    except Exception as e:
+        print(f"[AVISO] Falha ao rodar migração de processo_rio/despacho: {e}")
 
     # Carrega / atualiza índice em memória na inicialização
     try:

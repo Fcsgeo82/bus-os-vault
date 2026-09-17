@@ -1,9 +1,43 @@
 """Modelos Pydantic para validação e serialização de dados do Bus OS Vault."""
 
+import re
 from datetime import date
 from enum import Enum
-from typing import List, Optional
-from pydantic import BaseModel, Field
+from typing import Any, List, Optional
+from pydantic import BaseModel, Field, field_validator
+
+_PROCESSO_RIO_PATTERN = re.compile(r"^\d{6}\.\d{6}/\d{4}-\d{2}$")
+
+
+def _normalize_str_list(value: Any) -> List[str]:
+    """Normaliza um valor (string ou lista) em lista de strings não vazias."""
+    if isinstance(value, str):
+        value = [value] if value.strip() else []
+    if not isinstance(value, list):
+        return []
+    return [str(item).strip() for item in value if item is not None and str(item).strip()]
+
+
+def _validate_processo_rio(v: Any) -> List[str]:
+    """Valida processo(s) administrativo(s) com padrão do Processo.Rio (máx. 2, ordem preservada)."""
+    items = _normalize_str_list(v)
+    if len(items) > 2:
+        raise ValueError("Máximo de 2 processos administrativos permitidos por OS.")
+    for item in items:
+        if not _PROCESSO_RIO_PATTERN.match(item):
+            raise ValueError(
+                f"Formato inválido para processo administrativo '{item}'. "
+                "Use o padrão do Processo.Rio, ex: 000399.000000/2026-01."
+            )
+    return items
+
+
+def _validate_despacho(v: Any) -> List[str]:
+    """Valida despacho(s) autorizativo(s) (máx. 2, ordem preservada)."""
+    items = _normalize_str_list(v)
+    if len(items) > 2:
+        raise ValueError("Máximo de 2 despachos autorizativos permitidos por OS.")
+    return items
 
 
 class TipoOS(str, Enum):
@@ -71,8 +105,16 @@ class OSMestraBase(BaseModel):
     tipo_os: TipoOS = Field(default=TipoOS.NORMAL)
     status_vigencia: StatusVigencia = Field(default=StatusVigencia.VIGENTE)
     ano_mes_referencia: str = Field(..., pattern=r"^\d{4}/\d{1,2}$", description="Ano e mês, ex: 2026/1")
-    processo_rio: Optional[str] = Field(None, description="Número do processo administrativo no SEI/Processo.Rio")
-    despacho: Optional[str] = Field(None, description="Número do despacho autorizativo")
+    processo_rio: List[str] = Field(
+        default_factory=list,
+        max_length=2,
+        description="Números do processo administrativo no SEI/Processo.Rio (máx. 2, ordem preservada)",
+    )
+    despacho: List[str] = Field(
+        default_factory=list,
+        max_length=2,
+        description="Números do despacho autorizativo (máx. 2, ordem preservada)",
+    )
     data_publicacao: Optional[date] = Field(None, description="Data de publicação no D.O.")
     inicio_vigencia: Optional[date] = Field(None, description="Data de início de vigência")
     fim_vigencia: Optional[date] = Field(None, description="Data de encerramento da vigência")
@@ -84,6 +126,9 @@ class OSMestraBase(BaseModel):
     retificada_por: Optional[str] = Field(None, description="Wikilink para a versão futura que retificou esta")
 
     tags: List[str] = Field(default_factory=list)
+
+    _validate_processo_rio = field_validator("processo_rio", mode="before")(_validate_processo_rio)
+    _validate_despacho = field_validator("despacho", mode="before")(_validate_despacho)
 
 
 class OSMestraCreate(OSMestraBase):
@@ -121,8 +166,8 @@ class OSIngestPayload(BaseModel):
     tipo_os: TipoOS = Field(default=TipoOS.NORMAL)
     status_vigencia: StatusVigencia = Field(default=StatusVigencia.VIGENTE)
     ano_mes_referencia: str = Field(..., pattern=r"^\d{4}/\d{1,2}$")
-    processo_rio: Optional[str] = None
-    despacho: Optional[str] = None
+    processo_rio: List[str] = Field(default_factory=list, max_length=2)
+    despacho: List[str] = Field(default_factory=list, max_length=2)
     data_publicacao: Optional[date] = None
     inicio_vigencia: Optional[date] = None
     fim_vigencia: Optional[date] = None
@@ -130,6 +175,9 @@ class OSIngestPayload(BaseModel):
     retifica_os: Optional[str] = None
     substitui_os: Optional[str] = None
     notas_eventos: List[NotaEventoInput] = Field(default_factory=list)
+
+    _validate_processo_rio = field_validator("processo_rio", mode="before")(_validate_processo_rio)
+    _validate_despacho = field_validator("despacho", mode="before")(_validate_despacho)
 
 
 class OSIngestResponse(BaseModel):
@@ -148,10 +196,13 @@ class OSCorrectionPayload(BaseModel):
     title: Optional[str] = Field(None, min_length=5, max_length=250)
     tipo_os: Optional[TipoOS] = None
     status_vigencia: Optional[StatusVigencia] = None
-    processo_rio: Optional[str] = None
-    despacho: Optional[str] = None
+    processo_rio: Optional[List[str]] = Field(None, max_length=2)
+    despacho: Optional[List[str]] = Field(None, max_length=2)
     data_publicacao: Optional[date] = None
     inicio_vigencia: Optional[date] = None
     fim_vigencia: Optional[date] = None
     arquivo_gtfs: Optional[str] = None
+
+    _validate_processo_rio = field_validator("processo_rio", mode="before")(_validate_processo_rio)
+    _validate_despacho = field_validator("despacho", mode="before")(_validate_despacho)
 

@@ -129,7 +129,14 @@ export const NoteViewerModal: React.FC<NoteViewerModalProps> = ({ noteIdentifier
                     <div><span style={{ color: "var(--text-muted)" }}>Vigência:</span> <strong>{note.metadata.inicio_vigencia}</strong></div>
                   )}
                   {note.metadata.processo_rio && (
-                    <div><span style={{ color: "var(--text-muted)" }}>Processo:</span> <strong>{note.metadata.processo_rio}</strong></div>
+                    <div style={{ gridColumn: "span 2" }}>
+                      <span style={{ color: "var(--text-muted)" }}>Processo:</span>{" "}
+                      <strong>
+                        {Array.isArray(note.metadata.processo_rio)
+                          ? note.metadata.processo_rio.join(", ")
+                          : note.metadata.processo_rio}
+                      </strong>
+                    </div>
                   )}
                   {note.metadata.retifica_os && (
                     <div style={{ gridColumn: "span 2" }}>

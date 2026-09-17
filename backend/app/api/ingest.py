@@ -242,8 +242,8 @@ async def _ingest_impl(
 **Status:** {data.status_vigencia.value}  
 **Ano/Mês de Referência:** {data.ano_mes_referencia}  
 **Início da Vigência:** {data.inicio_vigencia or 'Sem data definida'}  
-**Processo Administrativo:** {data.processo_rio or 'N/A'}  
-**Despacho:** {data.despacho or 'N/A'}  
+**Processo Administrativo:** {', '.join(data.processo_rio) if data.processo_rio else 'N/A'}  
+**Despacho:** {', '.join(data.despacho) if data.despacho else 'N/A'}  
 {f"**Retifica:** {data.retifica_os}" if data.retifica_os else ""}
 
 ---

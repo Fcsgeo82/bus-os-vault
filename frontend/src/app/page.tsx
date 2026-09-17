@@ -347,7 +347,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "flex", flexDirection: "column", gap: "2px" }}>
-                        <span>Processo: {os.processo_rio || "N/A"}</span>
+                        <span>Processo: {os.processo_rio?.length ? os.processo_rio.join(", ") : "N/A"}</span>
                         <span>Vigência: a partir de {os.inicio_vigencia || "N/A"}</span>
                         {os.retifica_os && (
                           <span style={{ color: "#fbbf24" }}>Retifica: {os.retifica_os}</span>

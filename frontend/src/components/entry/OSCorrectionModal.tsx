@@ -3,6 +3,17 @@
 import React, { useEffect, useState } from "react";
 import { X, Save, CheckCircle, AlertCircle } from "lucide-react";
 import { OSMestra } from "@/lib/types";
+import { MultiInputField } from "@/components/ui/MultiInputField";
+
+const PROCESSO_RIO_REGEX = /^\d{6}\.\d{6}\/\d{4}-\d{2}$/;
+
+const validateProcessoRio = (value: string): string | null => {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  return PROCESSO_RIO_REGEX.test(trimmed)
+    ? null
+    : "Formato inválido. Use o padrão do Processo.Rio, ex: 000399.000000/2026-01.";
+};
 
 interface OSCorrectionModalProps {
   os: OSMestra;
@@ -17,8 +28,8 @@ export const OSCorrectionModal: React.FC<OSCorrectionModalProps> = ({ os, onClos
   const [title, setTitle] = useState(os.title);
   const [tipoOs, setTipoOs] = useState(os.tipo_os || "Normal");
   const [statusVigencia, setStatusVigencia] = useState(os.status_vigencia || "Vigente");
-  const [processoRio, setProcessoRio] = useState(os.processo_rio || "");
-  const [despacho, setDespacho] = useState(os.despacho || "");
+  const [processoRio, setProcessoRio] = useState<string[]>(os.processo_rio?.length ? [...os.processo_rio] : [""]);
+  const [despacho, setDespacho] = useState<string[]>(os.despacho?.length ? [...os.despacho] : [""]);
   const [dataPublicacao, setDataPublicacao] = useState(os.data_publicacao || "");
   const [inicioVigencia, setInicioVigencia] = useState(os.inicio_vigencia || "");
   const [fimVigencia, setFimVigencia] = useState(os.fim_vigencia || "");
@@ -35,12 +46,14 @@ export const OSCorrectionModal: React.FC<OSCorrectionModalProps> = ({ os, onClos
   }, [onClose]);
 
   const buildPayload = () => {
-    const payload: Record<string, string | null> = {
+    const processos = processoRio.map((v) => v.trim()).filter(Boolean);
+    const despachos = despacho.map((v) => v.trim()).filter(Boolean);
+    const payload: Record<string, string | string[] | null> = {
       title: title.trim() || null,
       tipo_os: tipoOs,
       status_vigencia: statusVigencia,
-      processo_rio: processoRio.trim() || null,
-      despacho: despacho.trim() || null,
+      processo_rio: processos.length ? processos : null,
+      despacho: despachos.length ? despachos : null,
       data_publicacao: dataPublicacao || null,
       inicio_vigencia: inicioVigencia || null,
       fim_vigencia: fimVigencia || null,
@@ -213,26 +226,19 @@ export const OSCorrectionModal: React.FC<OSCorrectionModalProps> = ({ os, onClos
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-            <div>
-              <label style={fieldLabel}>Processo Administrativo (Processo.Rio)</label>
-              <input
-                type="text"
-                className="input-glass"
-                placeholder="000399.001631/2026-86"
-                value={processoRio}
-                onChange={(e) => setProcessoRio(e.target.value)}
-              />
-            </div>
-            <div>
-              <label style={fieldLabel}>Despacho Autorizativo</label>
-              <input
-                type="text"
-                className="input-glass"
-                placeholder="Despacho 0446149"
-                value={despacho}
-                onChange={(e) => setDespacho(e.target.value)}
-              />
-            </div>
+            <MultiInputField
+              label="Processo Administrativo (Processo.Rio)"
+              values={processoRio}
+              placeholder="000399.000000/2026-01"
+              validate={validateProcessoRio}
+              onChange={setProcessoRio}
+            />
+            <MultiInputField
+              label="Despacho Autorizativo"
+              values={despacho}
+              placeholder="Despacho 0446149"
+              onChange={setDespacho}
+            />
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
