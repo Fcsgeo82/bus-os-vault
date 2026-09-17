@@ -1,8 +1,8 @@
 ---
 codigo_linha: '249'
 consorcio: Internorte
-data_atualizacao: '2026-09-16'
-os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/249
@@ -18,7 +18,7 @@ vista: Água Santa - Carioca
 
 **Código do Serviço:** 249  
 **Consórcio:** Internorte  
-**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
 **Vigência:** 2026-09-03  
 
 ---
@@ -100,11 +100,12 @@ vista: Água Santa - Carioca
 | `[desvio_lazer_e_desvio_maracana]` | nan | 18.648 | nan |
 | `[desvio_maracana]` | nan | 18.418 | nan |
 | `[excepcionalidade]` | nan | 18.75 | nan |
+| `[excepcionalidade_1]` | nan | 19.756 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[178 - OS 2026.09 - Setembro 1º Estudo]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos à Rua da Carioca

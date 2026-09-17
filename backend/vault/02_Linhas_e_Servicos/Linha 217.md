@@ -1,8 +1,8 @@
 ---
 codigo_linha: '217'
 consorcio: Intersul
-data_atualizacao: '2026-09-16'
-os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/217
@@ -18,7 +18,7 @@ vista: Andaraí - Carioca
 
 **Código do Serviço:** 217  
 **Consórcio:** Intersul  
-**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
 **Vigência:** 2026-09-03  
 
 ---
@@ -27,14 +27,14 @@ vista: Andaraí - Carioca
 
 ### Ida
 
-**Extensão:** 11.277 km  
+**Extensão:** 11.273 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 49 | 552.57 |
-| Sábado | 29 | 327.03 |
-| Domingo | 29 | 327.03 |
-| Ponto Facultativo | 31 | 349.59 |
+| Dia Útil | 49 | 552.38 |
+| Sábado | 29 | 326.92 |
+| Domingo | 29 | 326.92 |
+| Ponto Facultativo | 31 | 349.46 |
 | Pico Manhã (06h-09h) | 14 | — |
 | Pico Noite (18h-21h) | 6 | — |
 
@@ -46,14 +46,14 @@ vista: Andaraí - Carioca
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 04h à 05h | 1 | 11.28 | 0 | 0.0 | 0 | 0.0 | 1 | 11.28 |
-| 05h à 06h | 2 | 22.55 | 1 | 11.28 | 1 | 11.28 | 1 | 11.28 |
-| 06h à 09h | 14 | 157.88 | 6 | 67.66 | 6 | 67.66 | 9 | 101.49 |
-| 09h à 12h | 6 | 67.66 | 6 | 67.66 | 6 | 67.66 | 4 | 45.11 |
-| 12h à 15h | 7 | 78.94 | 6 | 67.66 | 6 | 67.66 | 4 | 45.11 |
-| 15h à 18h | 12 | 135.32 | 6 | 67.66 | 6 | 67.66 | 7 | 78.94 |
-| 18h à 21h | 6 | 67.66 | 4 | 45.11 | 4 | 45.11 | 4 | 45.11 |
-| 21h à 22h | 1 | 11.28 | 0 | 0.0 | 0 | 0.0 | 1 | 11.28 |
+| 04h à 05h | 1 | 11.27 | 0 | 0.0 | 0 | 0.0 | 1 | 11.27 |
+| 05h à 06h | 2 | 22.55 | 1 | 11.27 | 1 | 11.27 | 1 | 11.27 |
+| 06h à 09h | 14 | 157.82 | 6 | 67.64 | 6 | 67.64 | 9 | 101.46 |
+| 09h à 12h | 6 | 67.64 | 6 | 67.64 | 6 | 67.64 | 4 | 45.09 |
+| 12h à 15h | 7 | 78.91 | 6 | 67.64 | 6 | 67.64 | 4 | 45.09 |
+| 15h à 18h | 12 | 135.28 | 6 | 67.64 | 6 | 67.64 | 7 | 78.91 |
+| 18h à 21h | 6 | 67.64 | 4 | 45.09 | 4 | 45.09 | 4 | 45.09 |
+| 21h à 22h | 1 | 11.27 | 0 | 0.0 | 0 | 0.0 | 1 | 11.27 |
 | 22h à 23h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 23h à 24h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 
@@ -91,8 +91,16 @@ vista: Andaraí - Carioca
 
 ---
 
+## Itinerários Alternativos e Desvios
+
+| Evento | Descrição | Extensão (km) | Ativação |
+|---|---|---|---|
+| `[excepcionalidade]` | nan | 12.807 | nan |
+
+---
+
 ## Ordens de Serviço Relacionadas
-- [[178 - OS 2026.09 - Setembro 1º Estudo]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos à Rua da Carioca

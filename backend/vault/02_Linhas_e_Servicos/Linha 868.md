@@ -1,25 +1,25 @@
 ---
 codigo_linha: '868'
-consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+consorcio: GTU
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/868
-- consorcio/santa-cruz
+- consorcio/gtu
 - tipo/municipal
 type: linha_servico
 uid: linha-868
-vigencia_inicio: '2026-08-16'
-vista: Urucânia - Campo Grande
+vigencia_inicio: '2026-09-03'
+vista: Trevo de Santa Cruz - Campo Grande
 ---
 
-# Linha 868 — Urucânia - Campo Grande
+# Linha 868 — Trevo de Santa Cruz - Campo Grande
 
 **Código do Serviço:** 868  
-**Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**Consórcio:** GTU  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -27,72 +27,72 @@ vista: Urucânia - Campo Grande
 
 ### Ida
 
-**Extensão:** 13.078 km  
+**Extensão:** 16.335 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 38 | 496.96 |
-| Sábado | 24 | 313.87 |
-| Domingo | 21 | 274.63 |
-| Ponto Facultativo | 25 | 326.95 |
-| Pico Manhã (06h-09h) | 10 | — |
-| Pico Noite (18h-21h) | 6 | — |
+| Dia Útil | 77 | 1257.8 |
+| Sábado | 70 | 1143.46 |
+| Domingo | 67 | 1094.46 |
+| Ponto Facultativo | 46 | 751.41 |
+| Pico Manhã (06h-09h) | 12 | — |
+| Pico Noite (18h-21h) | 11 | — |
 
 #### Distribuição Horária
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 00h à 01h | 1 | 16.34 | 1 | 16.34 | 1 | 16.34 | 1 | 16.34 |
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 13.08 | 0 | 0.0 | 1 | 13.08 | 1 | 13.08 |
-| 04h à 05h | 1 | 13.08 | 1 | 13.08 | 1 | 13.08 | 1 | 13.08 |
-| 05h à 06h | 2 | 26.16 | 1 | 13.08 | 1 | 13.08 | 1 | 13.08 |
-| 06h à 09h | 10 | 130.78 | 5 | 65.39 | 3 | 39.23 | 6 | 78.47 |
-| 09h à 12h | 6 | 78.47 | 4 | 52.31 | 4 | 52.31 | 4 | 52.31 |
-| 12h à 15h | 5 | 65.39 | 4 | 52.31 | 4 | 52.31 | 3 | 39.23 |
-| 15h à 18h | 4 | 52.31 | 3 | 39.23 | 3 | 39.23 | 2 | 26.16 |
-| 18h à 21h | 6 | 78.47 | 3 | 39.23 | 3 | 39.23 | 4 | 52.31 |
-| 21h à 22h | 1 | 13.08 | 1 | 13.08 | 1 | 13.08 | 1 | 13.08 |
-| 22h à 23h | 1 | 13.08 | 1 | 13.08 | 0 | 0.0 | 1 | 13.08 |
-| 23h à 24h | 1 | 13.08 | 1 | 13.08 | 0 | 0.0 | 1 | 13.08 |
+| 03h à 04h | 3 | 49.01 | 2 | 32.67 | 2 | 32.67 | 2 | 32.67 |
+| 04h à 05h | 4 | 65.34 | 3 | 49.01 | 3 | 49.01 | 2 | 32.67 |
+| 05h à 06h | 4 | 65.34 | 3 | 49.01 | 3 | 49.01 | 2 | 32.67 |
+| 06h à 09h | 12 | 196.02 | 12 | 196.02 | 11 | 179.69 | 7 | 114.34 |
+| 09h à 12h | 12 | 196.02 | 9 | 147.01 | 10 | 163.35 | 7 | 114.34 |
+| 12h à 15h | 12 | 196.02 | 9 | 147.01 | 9 | 147.01 | 7 | 114.34 |
+| 15h à 18h | 12 | 196.02 | 12 | 196.02 | 12 | 196.02 | 7 | 114.34 |
+| 18h à 21h | 11 | 179.69 | 12 | 196.02 | 9 | 147.01 | 7 | 114.34 |
+| 21h à 22h | 3 | 49.01 | 3 | 49.01 | 3 | 49.01 | 2 | 32.67 |
+| 22h à 23h | 2 | 32.67 | 2 | 32.67 | 2 | 32.67 | 1 | 16.34 |
+| 23h à 24h | 1 | 16.34 | 2 | 32.67 | 2 | 32.67 | 1 | 16.34 |
 
 ### Volta
 
-**Extensão:** 13.975 km  
+**Extensão:** 19.421 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 36 | 503.1 |
-| Sábado | 18 | 251.51 |
-| Domingo | 20 | 279.46 |
-| Ponto Facultativo | 23 | 321.43 |
-| Pico Manhã (06h-09h) | 8 | — |
-| Pico Noite (18h-21h) | 7 | — |
+| Dia Útil | 77 | 1495.42 |
+| Sábado | 70 | 1359.46 |
+| Domingo | 67 | 1301.19 |
+| Ponto Facultativo | 46 | 893.37 |
+| Pico Manhã (06h-09h) | 12 | — |
+| Pico Noite (18h-21h) | 12 | — |
 
 #### Distribuição Horária
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 00h à 01h | 2 | 38.84 | 1 | 19.42 | 1 | 19.42 | 1 | 19.42 |
+| 01h à 02h | 1 | 19.42 | 1 | 19.42 | 1 | 19.42 | 1 | 19.42 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 13.97 | 0 | 0.0 | 0 | 0.0 | 1 | 13.97 |
-| 04h à 05h | 1 | 13.97 | 0 | 0.0 | 1 | 13.97 | 1 | 13.97 |
-| 05h à 06h | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 |
-| 06h à 09h | 8 | 111.8 | 3 | 41.92 | 3 | 41.92 | 5 | 69.88 |
-| 09h à 12h | 4 | 55.9 | 3 | 41.92 | 4 | 55.9 | 2 | 27.95 |
-| 12h à 15h | 4 | 55.9 | 3 | 41.92 | 3 | 41.92 | 2 | 27.95 |
-| 15h à 18h | 7 | 97.83 | 3 | 41.92 | 3 | 41.92 | 4 | 55.9 |
-| 18h à 21h | 7 | 97.83 | 3 | 41.92 | 3 | 41.92 | 4 | 55.9 |
-| 21h à 22h | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 |
-| 22h à 23h | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 | 1 | 13.97 |
-| 23h à 24h | 1 | 13.97 | 0 | 0.0 | 0 | 0.0 | 1 | 13.97 |
+| 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 04h à 05h | 3 | 58.26 | 3 | 58.26 | 3 | 58.26 | 2 | 38.84 |
+| 05h à 06h | 3 | 58.26 | 3 | 58.26 | 2 | 38.84 | 2 | 38.84 |
+| 06h à 09h | 12 | 233.05 | 10 | 194.21 | 10 | 194.21 | 7 | 135.95 |
+| 09h à 12h | 12 | 233.05 | 10 | 194.21 | 11 | 213.63 | 7 | 135.95 |
+| 12h à 15h | 12 | 233.05 | 10 | 194.21 | 10 | 194.21 | 7 | 135.95 |
+| 15h à 18h | 12 | 233.05 | 10 | 194.21 | 11 | 213.63 | 7 | 135.95 |
+| 18h à 21h | 12 | 233.05 | 12 | 233.05 | 9 | 174.79 | 7 | 135.95 |
+| 21h à 22h | 3 | 58.26 | 5 | 97.11 | 3 | 58.26 | 2 | 38.84 |
+| 22h à 23h | 3 | 58.26 | 3 | 58.26 | 3 | 58.26 | 2 | 38.84 |
+| 23h à 24h | 2 | 38.84 | 2 | 38.84 | 3 | 58.26 | 1 | 19.42 |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-05-correcao-de-vista-da-linha-868]]: Correção de vista da linha 868.

@@ -106,7 +106,7 @@
 
 ---
 
-## 3. Estado de Entrega (v0.7.1 Concluído)
+## 3. Estado de Entrega (v0.7.3 Concluído)
 
 - [x] Documentos em `docs/`: `architectural_analysis.md`, `implementation_plan.md` (Fase 1) e `implementation_plan_fase2_ingestao.md` (Fase 2).
 - [x] Seed do cofre com dados reais em `backend/vault/`.
@@ -126,5 +126,7 @@
 - [x] **Hubs representam a OS mais recente (v0.6.1):** migração event-only preservando grade, `detach_hub_references` na exclusão e remoção de hubs órfãos.
 - [x] **Múltiplos processos/despachos por OS (v0.7.0):** listas (máx. 2, ordem preservada), validação Processo.Rio, migração automática de dados legados e componente `MultiInputField` no frontend.
 - [x] **Listagem de OS atualizada sem F5 (v0.7.1):** cache-busting no `fetchOsList` (`/api/os?t=${Date.now()}`).
+- [x] **Notas de evento com nomes únicos por OS (v0.7.2):** padrão `NOTA-{slug-da-os}-{índice}-{título}` evita colisão entre OS do mesmo mês; renomeação em cascata na correção de OS.
+- [x] **Ingestão da OS 179 (v0.7.3):** retificação da OS 178 com 5 notas de evento, ANEXO I (810 serviços) e ANEXO II (529 desvios); 435 hubs sincronizados; nomes das notas corrigidos para o padrão com slug da OS.
 - [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '946'
 consorcio: Internorte
-data_atualizacao: '2026-09-16'
-os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/946
@@ -18,7 +18,7 @@ vista: Pavuna - Engenho da Rainha
 
 **Código do Serviço:** 946  
 **Consórcio:** Internorte  
-**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
 **Vigência:** 2026-09-03  
 
 ---
@@ -92,7 +92,7 @@ vista: Pavuna - Engenho da Rainha
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[178 - OS 2026.09 - Setembro 1º Estudo]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
 Nenhuma nota de evento referenciada para esta linha na OS vigente.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: '232'
 consorcio: Internorte
-data_atualizacao: '2026-09-16'
-os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/232
@@ -18,7 +18,7 @@ vista: Lins de Vasconcelos - Castelo
 
 **Código do Serviço:** 232  
 **Consórcio:** Internorte  
-**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
 **Vigência:** 2026-09-03  
 
 ---
@@ -95,12 +95,13 @@ vista: Lins de Vasconcelos - Castelo
 
 | Evento | Descrição | Extensão (km) | Ativação |
 |---|---|---|---|
-| `[desvio_maracana]` | nan | 17.708 | nan |
+| `[desvio_maracana]` | nan | 17.707 | nan |
+| `[excepcionalidade]` | nan | 18.697 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[178 - OS 2026.09 - Setembro 1º Estudo]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos à Rua da Carioca

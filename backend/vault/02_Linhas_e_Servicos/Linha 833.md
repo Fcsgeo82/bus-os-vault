@@ -1,25 +1,25 @@
 ---
 codigo_linha: '833'
-consorcio: Santa Cruz
-data_atualizacao: '2026-09-15'
-os_origem: '[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]'
+consorcio: TUSE
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/833
-- consorcio/santa-cruz
+- consorcio/tuse
 - tipo/municipal
 type: linha_servico
 uid: linha-833
-vigencia_inicio: '2026-08-16'
+vigencia_inicio: '2026-09-03'
 vista: Conjunto Manguariba - Campo Grande
 ---
 
 # Linha 833 — Conjunto Manguariba - Campo Grande
 
 **Código do Serviço:** 833  
-**Consórcio:** Santa Cruz  
-**OS de Origem:** [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]  
-**Vigência:** 2026-08-16  
+**Consórcio:** TUSE  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
+**Vigência:** 2026-09-03  
 
 ---
 
@@ -27,81 +27,72 @@ vista: Conjunto Manguariba - Campo Grande
 
 ### Ida
 
-**Extensão:** 12.128 km  
+**Extensão:** 13.267 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 22 | 266.82 |
-| Sábado | 19 | 230.42 |
-| Domingo | 16 | 194.04 |
-| Ponto Facultativo | 16 | 194.05 |
-| Pico Manhã (06h-09h) | 3 | — |
-| Pico Noite (18h-21h) | 3 | — |
+| Dia Útil | 55 | 729.68 |
+| Sábado | 53 | 703.15 |
+| Domingo | 53 | 703.15 |
+| Ponto Facultativo | 34 | 451.08 |
+| Pico Manhã (06h-09h) | 9 | — |
+| Pico Noite (18h-21h) | 8 | — |
 
 #### Distribuição Horária
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 00h à 01h | 1 | 13.27 | 1 | 13.27 | 1 | 13.27 | 1 | 13.27 |
 | 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 03h à 04h | 1 | 12.13 | 0 | 0.0 | 0 | 0.0 | 1 | 12.13 |
-| 04h à 05h | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 |
-| 05h à 06h | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 |
-| 06h à 09h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.26 |
-| 09h à 12h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.26 |
-| 12h à 15h | 4 | 48.51 | 3 | 36.38 | 3 | 36.38 | 2 | 24.26 |
-| 15h à 18h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.26 |
-| 18h à 21h | 3 | 36.38 | 3 | 36.38 | 2 | 24.26 | 2 | 24.26 |
-| 21h à 22h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-| 22h à 23h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-| 23h à 24h | 1 | 12.13 | 0 | 0.0 | 0 | 0.0 | 1 | 12.13 |
+| 03h à 04h | 2 | 26.53 | 2 | 26.53 | 2 | 26.53 | 1 | 13.27 |
+| 04h à 05h | 3 | 39.8 | 3 | 39.8 | 3 | 39.8 | 2 | 26.53 |
+| 05h à 06h | 3 | 39.8 | 3 | 39.8 | 3 | 39.8 | 2 | 26.53 |
+| 06h à 09h | 9 | 119.4 | 9 | 119.4 | 9 | 119.4 | 6 | 79.6 |
+| 09h à 12h | 7 | 92.87 | 7 | 92.87 | 7 | 92.87 | 4 | 53.07 |
+| 12h à 15h | 8 | 106.14 | 8 | 106.14 | 8 | 106.14 | 5 | 66.33 |
+| 15h à 18h | 8 | 106.14 | 8 | 106.14 | 8 | 106.14 | 5 | 66.33 |
+| 18h à 21h | 8 | 106.14 | 7 | 92.87 | 7 | 92.87 | 5 | 66.33 |
+| 21h à 22h | 2 | 26.53 | 2 | 26.53 | 2 | 26.53 | 1 | 13.27 |
+| 22h à 23h | 2 | 26.53 | 2 | 26.53 | 2 | 26.53 | 1 | 13.27 |
+| 23h à 24h | 2 | 26.53 | 1 | 13.27 | 1 | 13.27 | 1 | 13.27 |
 
 ### Volta
 
-**Extensão:** 12.127 km  
+**Extensão:** 13.035 km  
 
 | Tipo de Dia | Viagens | Km |
 |---|---|---|
-| Dia Útil | 20 | 242.54 |
-| Sábado | 20 | 242.55 |
-| Domingo | 16 | 194.03 |
-| Ponto Facultativo | 15 | 181.91 |
-| Pico Manhã (06h-09h) | 3 | — |
-| Pico Noite (18h-21h) | 3 | — |
+| Dia Útil | 55 | 716.92 |
+| Sábado | 53 | 690.85 |
+| Domingo | 53 | 690.85 |
+| Ponto Facultativo | 35 | 456.22 |
+| Pico Manhã (06h-09h) | 9 | — |
+| Pico Noite (18h-21h) | 9 | — |
 
 #### Distribuição Horária
 
 | Faixa Horária | Partidas Dia Útil | Km Dia Útil | Partidas Sábado | Km Sábado | Partidas Domingo | Km Domingo | Partidas Pto. Fac. | Km Pto. Fac. |
 |---|---|---|---|---|---|---|---|---|
-| 00h à 01h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 01h à 02h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
+| 00h à 01h | 1 | 13.04 | 1 | 13.04 | 2 | 26.07 | 1 | 13.04 |
+| 01h à 02h | 1 | 13.04 | 0 | 0.0 | 0 | 0.0 | 1 | 13.04 |
 | 02h à 03h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
 | 03h à 04h | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 | 0 | 0.0 |
-| 04h à 05h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-| 05h à 06h | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 | 1 | 12.13 |
-| 06h à 09h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.25 |
-| 09h à 12h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.25 |
-| 12h à 15h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.25 |
-| 15h à 18h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.25 |
-| 18h à 21h | 3 | 36.38 | 3 | 36.38 | 3 | 36.38 | 2 | 24.25 |
-| 21h à 22h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-| 22h à 23h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-| 23h à 24h | 1 | 12.13 | 1 | 12.13 | 0 | 0.0 | 1 | 12.13 |
-
----
-
-## Itinerários Alternativos e Desvios
-
-| Evento | Descrição | Extensão (km) | Ativação |
-|---|---|---|---|
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 10.423 | Manual, mediante provocação do operador. |
-| `[excepcionalidade]` | Eventos excepcionais com impacto na circulação regular do serviço. | 10.446 | Manual, mediante provocação do operador. |
+| 04h à 05h | 3 | 39.1 | 3 | 39.1 | 3 | 39.1 | 2 | 26.07 |
+| 05h à 06h | 3 | 39.1 | 2 | 26.07 | 3 | 39.1 | 2 | 26.07 |
+| 06h à 09h | 9 | 117.31 | 9 | 117.31 | 8 | 104.28 | 6 | 78.21 |
+| 09h à 12h | 7 | 91.25 | 8 | 104.28 | 8 | 104.28 | 4 | 52.14 |
+| 12h à 15h | 8 | 104.28 | 8 | 104.28 | 8 | 104.28 | 5 | 65.17 |
+| 15h à 18h | 7 | 91.25 | 8 | 104.28 | 8 | 104.28 | 4 | 52.14 |
+| 18h à 21h | 9 | 117.31 | 7 | 91.25 | 7 | 91.25 | 6 | 78.21 |
+| 21h à 22h | 3 | 39.1 | 3 | 39.1 | 2 | 26.07 | 2 | 26.07 |
+| 22h à 23h | 2 | 26.07 | 1 | 13.04 | 2 | 26.07 | 1 | 13.04 |
+| 23h à 24h | 2 | 26.07 | 3 | 39.1 | 2 | 26.07 | 1 | 13.04 |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-04-correcao-de-partidas-da-linha]]: Correção de partidas da linha 833.

@@ -1,8 +1,8 @@
 ---
 codigo_linha: SN319
 consorcio: Transcarioca
-data_atualizacao: '2026-09-16'
-os_origem: '[[178 - OS 2026.09 - Setembro 1º Estudo]]'
+data_atualizacao: '2026-09-17'
+os_origem: '[[179 - OS 2026.09 - Setembro 1º Estudo ret]]'
 schema_version: 2
 tags:
 - linha/sn319
@@ -18,7 +18,7 @@ vista: Terminal Alvorada - Terminal Gentileza
 
 **Código do Serviço:** SN319  
 **Consórcio:** Transcarioca  
-**OS de Origem:** [[178 - OS 2026.09 - Setembro 1º Estudo]]  
+**OS de Origem:** [[179 - OS 2026.09 - Setembro 1º Estudo ret]]  
 **Vigência:** 2026-09-03  
 
 ---
@@ -97,11 +97,12 @@ vista: Terminal Alvorada - Terminal Gentileza
 |---|---|---|---|
 | `[desvio_tunel]` | nan | 37.261 | nan |
 | `[desvio_tunel]` | nan | 37.132 | nan |
+| `[excepcionalidade_tunel]` | nan | 37.252 | nan |
 
 ---
 
 ## Ordens de Serviço Relacionadas
-- [[178 - OS 2026.09 - Setembro 1º Estudo]]
+- [[179 - OS 2026.09 - Setembro 1º Estudo ret]]
 
 ## Notas de Eventos Vinculadas
-Nenhuma nota de evento referenciada para esta linha na OS vigente.
+- [[NOTA-179-os-2026-09-setembro-1o-estudo-ret-01-inclusao-de-itinerarios-altern]]: Inclusão de itinerários alternativos relativos à Rua da Carioca

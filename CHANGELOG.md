@@ -7,6 +7,17 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.7.3] - 2026-09-17
+
+### Adicionado
+- **Ingestão da OS 179 (retificação da OS 178):** "179 - OS 2026.09 - Setembro 1º Estudo ret" cadastrada no cofre com 5 notas de evento, ANEXO I (810 serviços) e ANEXO II (529 desvios). OS 178 marcada como `Substituída` com `retificada_por` apontando para OS 179.
+- **Sincronização de hubs:** 435 hubs de linha atualizados com dados da OS 179.
+
+### Corrigido
+- **Notas de evento criadas com nome legado (sem slug da OS):** as 5 notas de evento da OS 179 foram ingeridas antes da correção v0.7.2 ser recarregada, resultando em nomes `NOTA-{ano_mes}-{índice}-{título}` em vez de `NOTA-{slug-da-os}-{índice}-{título}`. Arquivos renomeados manualmente para o padrão correto e 30 wikilinks atualizados na OS 178, OS 179 e 24 hubs.
+
+---
+
 ## [0.7.2] - 2026-09-17
 
 ### Corrigido

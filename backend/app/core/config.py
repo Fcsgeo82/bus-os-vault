@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # Aplicação
     APP_NAME: str = "Bus OS Vault API"
-    APP_VERSION: str = "0.7.2"
+    APP_VERSION: str = "0.7.3"
     APP_HOST: str = "127.0.0.1"
     APP_PORT: int = 8000
     DEBUG: bool = False
