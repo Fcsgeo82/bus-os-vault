@@ -7,6 +7,19 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.7.2] - 2026-09-17
+
+### Corrigido
+- **Colisão de nomes de notas de evento entre OS do mesmo mês (perda de dados):** o nome do arquivo de evento era `NOTA-{ano_mes}-{índice}-{título}`, sem qualquer identificação da OS. Assim, duas OS do mesmo mês com notas de evento de título semelhante geravam o **mesmo caminho** e a segunda sobrescrevia a primeira (caso real: evento da OS 178 sobrescrito pelo evento #01 da OS 179). O nome passou a ser `NOTA-{slug-da-os}-{índice}-{título}` em [ingest.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/ingest.py), tornando cada nota única por OS. O esquema cobre OS distintas do mesmo mês, estudos diferentes (`Setembro 1º Estudo`, `Setembro 2º Estudo`) e retificações (`ret`, `ret1`, `ret2`), já que o slug inclui o número e os sufixos da OS.
+- **Renomeação das notas de evento ao corrigir o título da OS:** como o nome da nota agora embute o slug da OS, [os_correction_service.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/os_correction_service.py) passou a renomear também os arquivos de evento (novo `_rename_notes_with_slug`), mantendo os wikilinks de OS e hubs consistentes. Os contadores `arquivos_renomeados` da resposta agora incluem essas notas.
+
+### Testes
+- Novo teste de regressão em [test_ingest.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_ingest.py): duas OS do mesmo mês com notas de evento homônimas geram arquivos distintos.
+- [test_os_correction.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_os_correction.py) ajustado para localizar a nota de evento pelo novo nome (antes e depois da retitulação) e validar que o arquivo antigo deixa de existir.
+- Suíte afetada: **14/14 testes aprovados**.
+
+---
+
 ## [0.7.1] - 2026-09-17
 
 ### Corrigido

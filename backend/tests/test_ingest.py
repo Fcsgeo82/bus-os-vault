@@ -111,7 +111,7 @@ async def test_excluir_os_e_artefatos_vinculados():
     """Testa a exclusão em cascata de uma OS: notas de eventos, anexos e CSVs."""
     # 1. Cria uma OS temporária com notas de eventos
     notas_dir = settings.VAULT_DIR / "01_Notas_de_Eventos"
-    notas_anteriores = set(notas_dir.glob("NOTA-2026-09-*.md"))
+    notas_anteriores = set(notas_dir.glob("NOTA-999-*.md"))
     payload_data = {
         "title": "999 - OS 2026.09 - Estudo de Exclusão",
         "tipo_os": "Normal",
@@ -141,7 +141,7 @@ async def test_excluir_os_e_artefatos_vinculados():
     # 2. Confirma que os artefatos existem no Vault
     os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{payload_data['title']}.md"
     assert os_file.exists()
-    event_files = set((settings.VAULT_DIR / "01_Notas_de_Eventos").glob("NOTA-2026-09-*.md"))
+    event_files = set((settings.VAULT_DIR / "01_Notas_de_Eventos").glob("NOTA-999-*.md"))
     criadas_pelo_teste = event_files - notas_anteriores
     assert len(criadas_pelo_teste) > 0
 
@@ -273,3 +273,49 @@ async def test_ingest_string_legada_convertida_em_lista():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         del_res = await ac.delete(f"/api/os/{os_uid}")
     assert del_res.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_ingest_notas_de_eventos_nao_colidem_entre_os_do_mesmo_mes():
+    """Duas OS do mesmo mês com notas de evento homônimas devem gerar arquivos distintos."""
+    event_title = "Revisão de itinerário operacional"
+    base_payload = {
+        "tipo_os": "Normal",
+        "status_vigencia": "Vigente",
+        "ano_mes_referencia": "2026/09",
+        "inicio_vigencia": "2026-09-01",
+        "notas_eventos": [
+            {
+                "title": event_title,
+                "tipo_evento": "Ajuste",
+                "objeto_afetado": ["Linhas/Serviços"],
+                "linhas_afetadas": ["9991"],
+                "consorcios": ["Intersul"],
+                "descricao": "Evento homônimo em OSs distintas do mesmo mês.",
+                "justificativa": "Teste de regressão de colisão de nomes.",
+            }
+        ],
+    }
+    titles = [
+        "996 - OS 2026.09 - Setembro 1º Estudo",
+        "995 - OS 2026.09 - Setembro 2º Estudo",
+    ]
+
+    uids = []
+    for title in titles:
+        payload = {**base_payload, "title": title}
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+            res = await ac.post("/api/os/ingest", data={"payload": json.dumps(payload)})
+        assert res.status_code == 201
+        uids.append(res.json()["os_uid"])
+
+    event_dir = settings.VAULT_DIR / "01_Notas_de_Eventos"
+    notas_criadas = sorted(event_dir.glob("NOTA-99*-*.md"))
+    assert len(notas_criadas) == 2
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        for uid in uids:
+            del_res = await ac.delete(f"/api/os/{uid}")
+            assert del_res.status_code == 200
+    for nota in notas_criadas:
+        assert not nota.exists()

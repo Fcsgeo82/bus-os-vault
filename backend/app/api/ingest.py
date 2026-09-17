@@ -130,7 +130,7 @@ async def _ingest_impl(
     for idx, ev in enumerate(data.notas_eventos, 1):
         ev_slug = slugify(f"{idx:02d}-{ev.title[:30]}")
         ev_uid = f"evt-{os_slug}-{ev_slug}"
-        ev_filename = f"NOTA-{data.ano_mes_referencia.replace('/', '-')}-{ev_slug}"
+        ev_filename = f"NOTA-{os_slug}-{ev_slug}"
 
         ev_meta = {
             "uid": ev_uid,

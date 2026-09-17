@@ -68,7 +68,7 @@ async def test_corrigir_titulo_renomeia_artefatos_vinculados():
 
     os_file = settings.VAULT_DIR / "00_Ordens_de_Servico" / f"{old_title}.md"
     assert os_file.exists()
-    nota_file = next(iter((settings.VAULT_DIR / "01_Notas_de_Eventos").glob("NOTA-2026-10-*.md")))
+    nota_file = next(iter((settings.VAULT_DIR / "01_Notas_de_Eventos").glob(f"NOTA-{old_slug}-*.md")))
     hub_file = settings.VAULT_DIR / "02_Linhas_e_Servicos" / "Linha LECD777.md"
     assert hub_file.exists()
 
@@ -97,7 +97,9 @@ async def test_corrigir_titulo_renomeia_artefatos_vinculados():
     assert post.metadata["title"] == new_title
     assert f"# {new_title}" in post.content
 
-    # Verifica a nota de evento propagada
+    # Verifica a nota de evento propagada (e renomeada com o novo slug)
+    assert not nota_file.exists()
+    nota_file = next(iter((settings.VAULT_DIR / "01_Notas_de_Eventos").glob(f"NOTA-{new_slug}-*.md")))
     with open(nota_file, "r", encoding="utf-8") as fh:
         ev_post = frontmatter.load(fh)
     assert ev_post.metadata["uid"].startswith(f"evt-{new_slug}-")

@@ -101,6 +101,21 @@ class OSCorrectionService:
                 updated += 1
         return updated
 
+    def _rename_notes_with_slug(self, directory: Path, old_slug: str, new_slug: str) -> int:
+        """Renomeia notas cujo nome de arquivo embute o slug da OS (ex.: notas de evento)."""
+        renamed = 0
+        if not directory.exists() or not old_slug or old_slug == new_slug:
+            return renamed
+        for md in sorted(directory.rglob("*.md")):
+            if old_slug not in md.stem:
+                continue
+            new_path = md.with_name(f"{md.stem.replace(old_slug, new_slug)}.md")
+            if new_path == md or new_path.exists():
+                continue
+            os.replace(str(md), str(new_path))
+            renamed += 1
+        return renamed
+
     def correct_os(self, uid: str, fields: Dict[str, Any]) -> Dict[str, Any]:
         """Aplica correções de campos à OS; se 'title' mudar, propaga o renaming pelos artefatos."""
         new_title = fields.get("title")
@@ -191,6 +206,9 @@ class OSCorrectionService:
         summary["arquivos_atualizados"] += self._scan_dir_for_rename(
             settings.VAULT_DIR / "01_Notas_de_Eventos",
             old_title, new_title, old_slug, new_slug, old_uid, new_uid,
+        )
+        summary["arquivos_renomeados"] += self._rename_notes_with_slug(
+            settings.VAULT_DIR / "01_Notas_de_Eventos", old_slug, new_slug,
         )
 
         # 4. Hubs de linha
