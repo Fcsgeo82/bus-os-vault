@@ -130,5 +130,6 @@
 - [x] **Ingestão da OS 179 (v0.7.3):** retificação da OS 178 com 5 notas de evento, ANEXO I (810 serviços) e ANEXO II (529 desvios); 435 hubs sincronizados; nomes das notas corrigidos para o padrão com slug da OS.
 - [x] **Grafo do Cofre (v0.7.4):** aba "Grafo do Cofre" com visualização force-directed 3D (reagraph/WebGL) de todas as 455 notas do vault e seus wikilinks. Backend: `vault_reader.py` com `list_all_notes()` e endpoint `GET /api/vault/graph`. Frontend: componente `VaultGraph.tsx` com filtros por categoria (OS/Evento/Linha/Anexo), estatísticas e legenda. Dependência: `reagraph` (WebGL, React 19 compatível).
 - [x] **Exclusão em cascata robusta (v0.7.5):** `unlink()`/`shutil.rmtree()` no `DELETE /api/os/{uid}` envoltos em `try/except OSError`, evitando crash no Windows por nomes Unicode. Artefatos órfãos da OS 999 (teste) removidos.
+- [x] **Reformulação do pipeline RAG (v0.8.0):** table-aware chunking (10 linhas/tabela, 1500 chars máx), resumos em linguagem natural no ANEXO I, boost 1.5x para hubs, truncamento de trecho (800 chars) e contexto do LLM (6 docs × 600 chars), filtro ano_mes ativado, campo `is_hub` no LanceDB. Vault reindexado: 452 arquivos → 2852 chunks.
 - [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

@@ -15,29 +15,17 @@ class LanceDBStore:
 
     def __init__(self):
         self.db = lancedb.connect(str(settings.LANCEDB_DIR))
-        self.table = self._get_or_create_table()
+        self.table = None  # Será criada/obtida no primeiro index_chunks ou search
 
-    def _get_or_create_table(self):
-        """Inicializa ou obtém a tabela vetorial com schema Arrow."""
+    def _ensure_table(self):
+        """Obtém a tabela existente ou retorna None (será criada no index_chunks)."""
+        if self.table is not None:
+            return self.table
         tables = self.db.table_names() if hasattr(self.db, "table_names") else []
         if self.TABLE_NAME in tables:
-            return self.db.open_table(self.TABLE_NAME)
-
-        schema = pa.schema([
-            pa.field("vector", pa.list_(pa.float32(), settings.EMBEDDING_DIMENSION)),
-            pa.field("chunk_id", pa.string()),
-            pa.field("nota_titulo", pa.string()),
-            pa.field("secao_titulo", pa.string()),
-            pa.field("arquivo_path", pa.string()),
-            pa.field("categoria", pa.string()),
-            pa.field("status_vigencia", pa.string()),
-            pa.field("ano_mes", pa.string()),
-            pa.field("linhas_afetadas", pa.string()),  # JSON list
-            pa.field("consorcios", pa.string()),       # JSON list
-            pa.field("texto", pa.string()),
-        ])
-
-        return self.db.create_table(self.TABLE_NAME, schema=schema, mode="create")
+            self.table = self.db.open_table(self.TABLE_NAME)
+            return self.table
+        return None
 
     def index_chunks(self, chunks: List[Dict[str, Any]]) -> int:
         """Calcula embeddings e indexa chunks na tabela."""
@@ -57,6 +45,7 @@ class LanceDBStore:
                 "secao_titulo": c["secao_titulo"],
                 "arquivo_path": c["arquivo_path"],
                 "categoria": c["categoria"],
+                "is_hub": c.get("is_hub", False),
                 "status_vigencia": c.get("status_vigencia", "Vigente"),
                 "ano_mes": str(c.get("ano_mes", "")),
                 "linhas_afetadas": json.dumps(c.get("linhas_afetadas", [])),
@@ -64,7 +53,7 @@ class LanceDBStore:
                 "texto": c["texto"],
             })
 
-        # Sobrescreve tabela com novos dados (ou adiciona)
+        # Sempre sobrescreve com schema atualizado
         self.table = self.db.create_table(
             self.TABLE_NAME,
             data=records,
@@ -79,11 +68,12 @@ class LanceDBStore:
         status_vigencia: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
         """Realiza busca vetorial por similaridade de cosseno."""
-        if self.table.count_rows() == 0:
+        table = self._ensure_table()
+        if table is None or table.count_rows() == 0:
             return []
 
         query_vec = embedding_provider.embed_text(query)
-        search = self.table.search(query_vec).limit(top_k)
+        search = table.search(query_vec).limit(top_k)
 
         if status_vigencia:
             search = search.where(f"status_vigencia = '{status_vigencia}'")
@@ -97,6 +87,7 @@ class LanceDBStore:
                 "secao_titulo": r["secao_titulo"],
                 "arquivo_path": r["arquivo_path"],
                 "categoria": r["categoria"],
+                "is_hub": bool(r.get("is_hub", False)),
                 "status_vigencia": r["status_vigencia"],
                 "ano_mes": r["ano_mes"],
                 "linhas_afetadas": json.loads(r["linhas_afetadas"]),

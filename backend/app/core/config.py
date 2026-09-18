@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # Aplicação
     APP_NAME: str = "Bus OS Vault API"
-    APP_VERSION: str = "0.7.5"
+    APP_VERSION: str = "0.8.0"
     APP_HOST: str = "127.0.0.1"
     APP_PORT: int = 8000
     DEBUG: bool = False
@@ -41,6 +41,18 @@ class Settings(BaseSettings):
     # RAG Search Settings
     TOP_K_RETRIEVAL: int = 8
     RRF_K: int = 60
+
+    # RAG Chunking Settings
+    CHUNK_MAX_CHARS: int = 1500       # Limite de caracteres por chunk (≈400 tokens)
+    CHUNK_TABLE_ROWS: int = 10        # Linhas de tabela por sub-chunk (~100 chars/row)
+    CHUNK_TABLE_OVERLAP: int = 2      # Sobreposição de linhas entre sub-chunks de tabela
+    CHUNK_PARAGRAPH_OVERLAP: int = 1  # Frases de sobreposição entre chunks de parágrafo
+
+    # RAG Retrieval Settings
+    TRECHO_MAX_CHARS: int = 800       # Limite do trecho retornado ao caller
+    CONTEXT_MAX_CHARS: int = 600      # Limite do trecho no contexto do LLM
+    CONTEXT_MAX_DOCS: int = 6         # Máximo de documentos no contexto do LLM
+    HUB_BOOST: float = 1.5            # Multiplicador de score para chunks de hub de linha
 
     model_config = SettingsConfigDict(
         env_file=".env",

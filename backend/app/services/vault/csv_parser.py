@@ -151,6 +151,29 @@ class CSVAttachmentParser:
                     )
                 md_lines.append("")
 
+                # Resumo em linguagem natural por linha (melhora embedding semântico)
+                md_lines.append(f"### Resumo por Linha — Consórcio {consorcio}")
+                md_lines.append("")
+                for _, item in group.iterrows():
+                    sentido_info = f", Sentido: {item['sentido']}" if item['sentido'] and item['sentido'] != "N/A" else ""
+                    km_info = f", com {item['km_dia_util']:.2f} km percorridos" if item['km_dia_util'] > 0 else ""
+                    viagens_info = f" e {item['partidas_dia_util']} viagens" if item['partidas_dia_util'] > 0 else ""
+                    pico_info = ""
+                    if item['pico_manha_partidas'] > 0 or item['pico_noite_partidas'] > 0:
+                        pico_parts = []
+                        if item['pico_manha_partidas'] > 0:
+                            pico_parts.append(f"{item['pico_manha_partidas']} partidas no pico da manhã")
+                        if item['pico_noite_partidas'] > 0:
+                            pico_parts.append(f"{item['pico_noite_partidas']} partidas no pico da noite")
+                        pico_info = f". Pico: {', '.join(pico_parts)}"
+
+                    md_lines.append(
+                        f"A linha **{item['servico']}** (Vista: {item['vista']}{sentido_info}, "
+                        f"Consórcio: {consorcio}) possui extensão de {item['extensao_km']:.3f} km"
+                        f"{viagens_info}{km_info} em dia útil{pico_info}."
+                    )
+                    md_lines.append("")
+
         return {
             "markdown_content": "\n".join(md_lines),
             "services": services_summary,

@@ -72,10 +72,13 @@ class RAGGenerator:
                 execution_time_seconds=round(time.time() - start_time, 2),
             )
 
-        # Monta o bloco de contexto enriquecido
+        # Monta o bloco de contexto enriquecido (limitado)
         context_blocks = []
-        for i, s in enumerate(sources, 1):
-            context_blocks.append(f"--- [DOCUMENTO {i}: [[{s.nota_titulo}]] ({s.categoria})] ---\n{s.trecho}\n")
+        for i, s in enumerate(sources[:settings.CONTEXT_MAX_DOCS], 1):
+            trecho = s.trecho
+            if len(trecho) > settings.CONTEXT_MAX_CHARS:
+                trecho = trecho[:settings.CONTEXT_MAX_CHARS] + "..."
+            context_blocks.append(f"--- [DOCUMENTO {i}: [[{s.nota_titulo}]] ({s.categoria})] ---\n{trecho}\n")
 
         context_text = "\n".join(context_blocks)
 

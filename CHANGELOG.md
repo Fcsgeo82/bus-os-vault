@@ -7,6 +7,24 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.8.0] - 2026-09-18
+
+### Melhorado
+- **Pipeline de busca RAG reformulado:** busca por dados tabulares (ANEXO I) agora funciona corretamente.
+  - **Table-aware chunking** ([chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py)): tabelas Markdown são divididas em sub-chunks de 10 linhas com sobreposição de 2, respeitando limite de 1500 caracteres por chunk. Antes, uma tabela de 769 linhas virava 4 chunks de 10.000+ chars que estouravam o embedding model (512 tokens).
+  - **Resumos em linguagem natural** ([csv_parser.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/vault/csv_parser.py)): ANEXO I agora gera seção "Resumo por Linha" com frases como "A linha 010 possui extensão de 8.460 km, com 37 viagens e 315.02 km percorridos em dia útil" — ideais para embedding semântico.
+  - **Boost para hubs** ([hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py)): chunks de hub de linha recebem multiplicador 1.5x no score RRF quando a query contém código numérico de linha.
+  - **Truncamento de trecho** ([hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py)): trecho retornado limitado a 800 chars (antes: texto integral de 10.000+ chars).
+  - **Contexto do LLM limitado** ([generator.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/generator.py)): máximo de 6 documentos com 600 chars cada no contexto enviado ao LLM (antes: todos os trechos sem limite).
+  - **Filtro ano_mes** ([hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py)): parâmetro `ano_mes` agora é aplicado na filtragem (antes era aceito mas ignorado).
+  - **Campo is_hub** ([vector_store.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/vector_store.py)): schema LanceDB inclui flag booleana `is_hub` para identificar chunks de hub de linha.
+  - **Novos parâmetros de config** ([config.py](file:///c:/github_repositories/bus-os-vault/backend/app/core/config.py)): `CHUNK_MAX_CHARS`, `CHUNK_TABLE_ROWS`, `CHUNK_TABLE_OVERLAP`, `TRECHO_MAX_CHARS`, `CONTEXT_MAX_CHARS`, `CONTEXT_MAX_DOCS`, `HUB_BOOST`.
+
+### Escopo
+- Vault reindexado: 452 arquivos → 2852 chunks (antes: ~1200 chunks com many exceeding model limits).
+
+---
+
 ## [0.7.5] - 2026-09-18
 
 ### Corrigido
