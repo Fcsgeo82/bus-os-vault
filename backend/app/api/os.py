@@ -172,16 +172,22 @@ async def delete_ordem_de_servico(uid: str):
                 origem = ev_doc["metadata"].get("os_origem", "")
                 if os_title in origem or uid in origem:
                     eventos_links.add(ev_file.stem)
-                    ev_file.unlink()
-                    eventos_removidos += 1
+                    try:
+                        ev_file.unlink()
+                        eventos_removidos += 1
+                    except OSError as e:
+                        print(f"[AVISO] Falha ao excluir nota de evento '{ev_file.name}': {e}")
 
     anexos_removidos = 0
 
     # 2. Exclui pasta de anexos Markdown com slug padrão (03_Anexos/<slug>)
     anexos_dir = settings.VAULT_DIR / "03_Anexos" / os_slug
     if anexos_dir.exists():
-        shutil.rmtree(anexos_dir)
-        anexos_removidos += 1
+        try:
+            shutil.rmtree(anexos_dir)
+            anexos_removidos += 1
+        except OSError as e:
+            print(f"[AVISO] Falha ao excluir pasta de anexos '{anexos_dir.name}': {e}")
 
     # 3. Varre 03_Anexos em busca de pastas cujas notas referenciam esta OS
     #    (cobre slugs fora do padrão, como backups manuais/legados)
@@ -194,8 +200,11 @@ async def delete_ordem_de_servico(uid: str):
                     if doc:
                         origem = doc["metadata"].get("os_origem", "")
                         if os_title in origem or uid in origem:
-                            shutil.rmtree(sub)
-                            anexos_removidos += 1
+                            try:
+                                shutil.rmtree(sub)
+                                anexos_removidos += 1
+                            except OSError as e:
+                                print(f"[AVISO] Falha ao excluir pasta de anexos '{sub.name}': {e}")
                             break
 
     # 4. Exclui arquivos CSV de anexos (data/attachments/<slug> e variantes)
@@ -206,10 +215,16 @@ async def delete_ordem_de_servico(uid: str):
                 if att_dir.name == os_slug or any(
                     f.name.startswith(f"{os_slug}-") for f in att_dir.glob("*")
                 ):
-                    shutil.rmtree(att_dir)
+                    try:
+                        shutil.rmtree(att_dir)
+                    except OSError as e:
+                        print(f"[AVISO] Falha ao excluir anexos CSV '{att_dir.name}': {e}")
 
     # 5. Exclui a nota mestra da OS
-    (os_dir / target_name).unlink()
+    try:
+        (os_dir / target_name).unlink()
+    except OSError as e:
+        print(f"[AVISO] Falha ao excluir nota mestra '{target_name}': {e}")
 
     # 5.1. Remove referências da OS excluída dos hubs de linha (promove a OS mais recente restante)
     from app.services.vault.line_hub_service import line_hub_service

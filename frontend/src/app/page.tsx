@@ -12,6 +12,7 @@ import {
   FilePlus,
   Trash2,
   Pencil,
+  Network,
 } from "lucide-react";
 import { ChatContainer } from "@/components/chat/ChatContainer";
 import { FilterBar, LineOption } from "@/components/filters/FilterBar";
@@ -19,13 +20,14 @@ import { NoteViewerModal } from "@/components/vault/NoteViewerModal";
 import { DataEntryForm } from "@/components/entry/DataEntryForm";
 import { OSCorrectionModal } from "@/components/entry/OSCorrectionModal";
 import { LineFilterDropdown } from "@/components/hubs/LineFilterDropdown";
+import VaultGraph from "@/components/vault/VaultGraph";
 import { Toast, ToastData } from "@/components/ui/Toast";
 import { RAGFilters, OSMestra } from "@/lib/types";
 
 const HUB_PREVIEW_LIMIT = 24;
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"consulta" | "entrada">("consulta");
+  const [activeTab, setActiveTab] = useState<"consulta" | "entrada" | "grafo">("consulta");
   const [filters, setFilters] = useState<RAGFilters>({
     apenas_vigentes: true,
     linhas: [],
@@ -164,7 +166,7 @@ export default function Home() {
               <h1 style={{ fontSize: "1.45rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
                 Bus OS Vault
               </h1>
-              <span className="badge badge-vigente">v0.2.0</span>
+              <span className="badge badge-vigente">v0.7.5</span>
             </div>
             <p style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Sistema de Gestão de Ordens de Serviço & Motor de Busca Híbrido RAG para Obsidian
@@ -225,6 +227,27 @@ export default function Home() {
               <FilePlus size={15} />
               Nova Ordem de Serviço
             </button>
+
+            <button
+              onClick={() => setActiveTab("grafo")}
+              style={{
+                background: activeTab === "grafo" ? "rgba(16, 185, 129, 0.18)" : "transparent",
+                border: activeTab === "grafo" ? "1px solid rgba(16, 185, 129, 0.4)" : "1px solid transparent",
+                color: activeTab === "grafo" ? "#34d399" : "var(--text-secondary)",
+                padding: "8px 14px",
+                borderRadius: "8px",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "all 0.2s",
+              }}
+            >
+              <Network size={15} />
+              Grafo do Cofre
+            </button>
           </div>
 
           <button
@@ -241,7 +264,11 @@ export default function Home() {
       </header>
 
       {/* Conteúdo Dinâmico por Aba */}
-      {activeTab === "entrada" ? (
+      {activeTab === "grafo" ? (
+        <section>
+          <VaultGraph />
+        </section>
+      ) : activeTab === "entrada" ? (
         <section className="animate-fade-in">
           <DataEntryForm onSuccess={handleEntrySuccess} />
         </section>

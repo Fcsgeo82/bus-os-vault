@@ -7,6 +7,24 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.7.5] - 2026-09-18
+
+### Corrigido
+- **Exclusão em cascata robusta no Windows:** todos os `unlink()` e `shutil.rmtree()` no endpoint `DELETE /api/os/{uid}` ([os.py](file:///c:/github_repositories/bus-os-vault/backend/app/api/os.py)) agora são envoltos em `try/except OSError`, evitando crash (500) por falhas de encoding de nomes de arquivo Unicode no Windows (ex.: `ç`, `ã`). Warnings são logados no console sem interromper a operação.
+- **Artefatos órfãos removidos:** OS 999 ("Estudo de Exclusão") e nota de evento vinculada, criadas por teste automatizado e não limpas devido ao bug acima, foram removidas do vault.
+
+---
+
+## [0.7.4] - 2026-09-18
+
+### Adicionado
+- **Grafo do Cofre (v0.1):** nova aba "Grafo do Cofre" na interface principal com visualização interativa do relacionamento entre todas as notas do vault usando force-directed layout 3D (reagraph/WebGL).
+  - **Backend:** novo módulo `vault_reader.py` com `list_all_notes()` que varre todas as pastas do vault, extrai metadados do frontmatter e resolve wikilinks `[[...]]` do conteúdo. Novo endpoint `GET /api/vault/graph` retorna a estrutura completa do grafo (uid, title, category, wikilinks).
+  - **Frontend:** novo componente `VaultGraph.tsx` com `GraphCanvas` (reagraph), filtros por categoria (OS/Evento/Linha/Anexo), estatísticas (nós/arestas) e legenda. Novo utilitário `build-vault-graph.ts` transforma dados crus da API em formato `GraphCanvas`. Novo arquivo de tipos `vault-graph.ts`.
+  - **Categorias e cores:** OS (azul `#38bdf8`), Evento (amarelo `#f59e0b`), Linha (verde `#10b981`), Anexo (violeta `#8b5cf6`).
+
+---
+
 ## [0.7.3] - 2026-09-17
 
 ### Adicionado

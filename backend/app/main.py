@@ -19,6 +19,7 @@ from app.core.config import settings
 from app.api.rag import router as rag_router
 from app.api.os import router as os_router
 from app.api.ingest import router as ingest_router
+from app.api.graph import router as graph_router
 from app.services.rag.indexer import vault_indexer
 from app.scripts.migrate_processos import migrate_processos_despachos
 
@@ -244,6 +245,7 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
 app.include_router(rag_router)
 app.include_router(os_router)
 app.include_router(ingest_router)
+app.include_router(graph_router)
 
 # Configuração de CORS para permitir acesso seguro do frontend
 app.add_middleware(
