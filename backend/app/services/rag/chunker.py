@@ -40,7 +40,7 @@ def _split_table_rows(body: str) -> List[str]:
 
 
 def _chunk_table(body: str, max_rows: int, overlap: int, max_chars: int = 1500) -> List[str]:
-    """Divide uma tabela Markdown em sub-chunks adaptativos com sobreposição."""
+    """Divide uma tabela Markdown em sub-chunks adaptativos com sobreposição (iterativo)."""
     lines = body.split("\n")
 
     # Encontra onde a tabela começa e termina
@@ -76,47 +76,34 @@ def _chunk_table(body: str, max_rows: int, overlap: int, max_chars: int = 1500) 
         return [body]
 
     # Estratégia adaptativa: calcule número ideal de linhas baseado no tamanho médio
-    if len(data_rows) > 0:
-        # Calcule tamanho médio de uma linha de dados (excluindo header)
-        sample_size = min(5, len(data_rows))  # Use até 5 linhas para amostra
-        sample_lines = data_rows[:sample_size]
-        avg_chars_per_row = sum(len(line) for line in sample_lines) / sample_size
+    # usando TODAS as linhas de dados (amostra estável e representativa)
+    avg_chars_per_row = sum(len(line) for line in data_rows) / len(data_rows)
 
-        # Calcule quantas linhas caberiam em max_chars (descontando header e pre/post)
-        header_size = len("\n".join(table_header))
-        estimated_overhead = len("\n".join(pre_table)) + header_size
-        if post_table:
-            estimated_overhead += len("\n".join(post_table))
+    # Overhead fixo repetido em cada sub-chunk (pré-texto, cabeçalho e pós-tabela)
+    overhead_chars = len("\n".join(pre_table)) + len("\n".join(table_header))
+    if post_table:
+        overhead_chars += len("\n".join(post_table))
 
-        available_chars = max_chars - estimated_overhead
-        if available_chars > 0 and avg_chars_per_row > 0:
-            adaptive_max_rows = max(1, int(available_chars / avg_chars_per_row))
-            # Limite entre max_rows//2 e max_rows*2 para evitar extremos
-            max_rows = max(max_rows // 2, min(adaptive_max_rows, max_rows * 2))
-        # Se não puder calcular, usa o max_rows original
+    available_chars = max_chars - overhead_chars
+    adaptive_max_rows = max_rows
+    if available_chars > 0 and avg_chars_per_row > 0:
+        ideal_rows = int(available_chars / avg_chars_per_row)
+        # Limite entre max_rows//2 e max_rows*2 para evitar extremos
+        adaptive_max_rows = max(max_rows // 2, min(ideal_rows, max_rows * 2))
     else:
-        max_rows = 1
+        adaptive_max_rows = 1
 
-    # Divide em sub-chunks com sobreposição
+    # Divide em sub-chunks com sobreposição (iterativo, sem recursão)
     chunks: List[str] = []
-    step = max_rows - overlap
-    for start in range(0, len(data_rows), step):
-        chunk_rows = data_rows[start:start + max_rows]
+    step = max(adaptive_max_rows - overlap, 1)
+    start = 0
+    while start < len(data_rows):
+        chunk_rows = data_rows[start:start + adaptive_max_rows]
         chunk_lines = pre_table + table_header + chunk_rows
         if post_table:
             chunk_lines.extend(post_table)
-        chunk_body = "\n".join(chunk_lines)
-
-        # Se o chunk ainda estiver muito grande, force divisão adicional
-        if len(chunk_body) > max_chars and max_rows > 1:
-            # Recursivamente dividir com metade das linhas
-            sub_chunks = _chunk_table(chunk_body, max(max_rows // 2, 1), overlap // 2, max_chars)
-            chunks.extend(sub_chunks)
-        else:
-            chunks.append(chunk_body)
-
-        if start + max_rows >= len(data_rows):
-            break
+        chunks.append("\n".join(chunk_lines))
+        start += step
 
     return chunks if chunks else [body]
 

@@ -15,7 +15,8 @@ DIRETRIZES DE RESPOSTA:
 3. SEMPRE cite explicitamente as fontes relevantes utilizando a sintaxe de Wikilinks do Obsidian: [[Nome da Nota]] ou [[OS ...]].
 4. Consciência Temporal: Se uma informação for oriunda de uma OS retificada ou substituída, deixe isso explícito na resposta.
 5. Dados Operacionais: Ao falar de linhas, mencione o consórcio e o itinerário quando disponíveis no contexto.
-6. Se o contexto fornecido não contiver dados suficientes para responder com certeza à pergunta, declare educadamente que a informação não foi encontrada no acervo cadastrado.
+6. A seção "Notas de Eventos Vinculadas" de um hub de linha NÃO é a única fonte de desvios/itinerários alternativos. Desvios e itinerários alternativos também constam nos ANEXO II (categoria anexo_operacional), com linhas `| **Código** | Consórcio | Sentido | Evento | ... |`. Priorize os dados das tabelas dos ANEXO II ao responder sobre desvios ou itinerários alternativos.
+7. Se o contexto fornecido não contiver dados suficientes para responder com certeza à pergunta, declare educadamente que a informação não foi encontrada no acervo cadastrado.
 """
 
 

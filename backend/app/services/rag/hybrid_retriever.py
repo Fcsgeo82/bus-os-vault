@@ -8,9 +8,21 @@ from app.services.rag.vector_store import vector_store
 from app.services.rag.lexical_search import lexical_searcher
 
 
-def _query_has_line_code(query: str) -> bool:
-    """Verifica se a query contém um código de linha numérico (ex: '010', '006')."""
-    return bool(re.search(r"\b\d{3,4}\b", query))
+def _query_line_codes(query: str) -> List[str]:
+    """Extrai códigos de linha numéricos da query (ex: '104' em 'linha 104')."""
+    return re.findall(r"\b(\d{3,4})\b", query)
+
+
+def _chunk_toca_linha(chunk: Dict[str, Any], codigos: List[str]) -> bool:
+    """Verifica se um chunk pertence a uma das linhas consultadas."""
+    titulo = str(chunk.get("nota_titulo", ""))
+    texto = str(chunk.get("texto", ""))
+    for codigo in codigos:
+        if codigo in titulo:
+            return True
+        if f"**{codigo}**" in texto:
+            return True
+    return False
 
 
 class HybridRetriever:
@@ -36,8 +48,6 @@ class HybridRetriever:
         fused_scores: Dict[str, float] = {}
         chunk_lookup: Dict[str, Dict[str, Any]] = {}
 
-        query_has_line = _query_has_line_code(query)
-
         for rank, item in enumerate(dense_results):
             cid = item["chunk_id"]
             chunk_lookup[cid] = item
@@ -49,11 +59,12 @@ class HybridRetriever:
                 chunk_lookup[cid] = item
             fused_scores[cid] = fused_scores.get(cid, 0.0) + (1.0 / (self.rrf_k + rank + 1))
 
-        # 4. Aplica boost para hubs de linha quando query contém código de linha
-        if query_has_line:
+        # 4. Aplica boost específico quando query cita linha(s) numérica(s)
+        line_codes = _query_line_codes(query)
+        if line_codes:
             for cid in fused_scores:
                 chunk = chunk_lookup[cid]
-                if chunk.get("is_hub") or chunk.get("categoria") == "linha_servico":
+                if _chunk_toca_linha(chunk, line_codes):
                     fused_scores[cid] *= settings.HUB_BOOST
 
         # 5. Ordena por score RRF

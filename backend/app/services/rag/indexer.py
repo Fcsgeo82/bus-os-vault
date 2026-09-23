@@ -16,6 +16,7 @@ class VaultIndexer:
         """Varre todas as notas Markdown do cofre e sincroniza os índices."""
         target_dir = vault_dir or settings.VAULT_DIR
         all_chunks: List[Dict[str, Any]] = []
+        falhas: List[str] = []
 
         md_files = list(target_dir.rglob("*.md"))
         for f in md_files:
@@ -23,7 +24,13 @@ class VaultIndexer:
                 chunks = vault_chunker.chunk_document(f)
                 all_chunks.extend(chunks)
             except Exception as e:
+                falhas.append(f"{f}: {e}")
                 print(f"[AVISO] Falha ao processar chunks de {f.name}: {e}")
+
+        if not all_chunks:
+            raise RuntimeError(
+                "Nenhum chunk gerado durante a indexação. Verifique o chunker e o cofre."
+            )
 
         # 1. Indexa no LanceDB
         total_vectors = vector_store.index_chunks(all_chunks)
@@ -35,6 +42,7 @@ class VaultIndexer:
             "total_files": len(md_files),
             "total_chunks": len(all_chunks),
             "total_vectors_indexed": total_vectors,
+            "falhas": falhas,
         }
 
 

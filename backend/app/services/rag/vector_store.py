@@ -21,7 +21,7 @@ class LanceDBStore:
         """Obtém a tabela existente ou retorna None (será criada no index_chunks)."""
         if self.table is not None:
             return self.table
-        tables = self.db.table_names() if hasattr(self.db, "table_names") else []
+        tables = self.db.list_tables() if hasattr(self.db, "list_tables") else []
         if self.TABLE_NAME in tables:
             self.table = self.db.open_table(self.TABLE_NAME)
             return self.table

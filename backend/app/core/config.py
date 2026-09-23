@@ -57,7 +57,7 @@ class Settings(BaseSettings):
     TRECHO_MAX_CHARS: int = 1000       # Limite do trecho retornado ao caller
     CONTEXT_MAX_CHARS: int = 1000      # Limite do trecho no contexto do LLM
     CONTEXT_MAX_DOCS: int = 8         # Máximo de documentos no contexto do LLM
-    HUB_BOOST: float = 1.5            # Multiplicador de score para chunks de hub de linha
+    HUB_BOOST: float = 2.5            # Multiplicador de score para chunks da linha consultada
 
     model_config = SettingsConfigDict(
         env_file=".env",

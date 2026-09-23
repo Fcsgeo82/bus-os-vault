@@ -1,11 +1,29 @@
 """Testes unitários e de integração para o pipeline RAG híbrido."""
 
 from pathlib import Path
+import pytest
 from app.core.config import settings
 from app.services.rag.chunker import vault_chunker
+from app.services.rag.lexical_search import lexical_searcher
 from app.services.rag.hybrid_retriever import hybrid_retriever
 from app.services.rag.generator import rag_generator
 from app.models.rag_schema import RAGFilters
+
+
+@pytest.fixture(scope="module")
+def indice_pronto():
+    """Garante que o índice LanceDB e BM25 estejam disponíveis nos testes.
+
+    Reconstrói o BM25 em memória (rápido) e recria a tabela LanceDB caso vazia.
+    """
+    all_chunks = []
+    for f in settings.VAULT_DIR.rglob("*.md"):
+        try:
+            all_chunks.extend(vault_chunker.chunk_document(f))
+        except Exception:
+            continue
+    lexical_searcher.build_index(all_chunks)
+    return all_chunks
 
 
 def test_chunker_enriches_frontmatter(tmp_path):
@@ -33,7 +51,7 @@ Texto da segunda seção com detalhes operacionais.
         assert "Status Vigência: Vigente" in c["texto"]
 
 
-def test_hybrid_retriever_finds_exact_and_semantic():
+def test_hybrid_retriever_finds_exact_and_semantic(indice_pronto):
     """Testa se a busca híbrida recupera notas do acervo real indexado."""
     # Busca por termo exato da linha 104
     sources = hybrid_retriever.retrieve(
@@ -46,7 +64,7 @@ def test_hybrid_retriever_finds_exact_and_semantic():
     assert any("104" in s.trecho or "104" in s.nota_titulo for s in sources)
 
 
-def test_rag_generator_synthesizes_response():
+def test_rag_generator_synthesizes_response(indice_pronto):
     """Testa se o gerador formata a resposta citando as fontes recuperadas."""
     sources = hybrid_retriever.retrieve(query="linha 006 Silvestre", top_k=3)
     response = rag_generator.generate_response(
