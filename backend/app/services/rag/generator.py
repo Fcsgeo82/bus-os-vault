@@ -32,17 +32,58 @@ class RAGGenerator:
                 print(f"Aviso ao inicializar Gemini Client no Generator: {e}")
 
     def _call_openrouter(self, user_content: str) -> str:
-        """Invoca um modelo gratuito via OpenRouter (API compatível com OpenAI)."""
+        """Invoca um modelo gratuito via OpenRouter (API compatível com OpenAI).
+
+        Faz retry quando o upstream responde sobrecarga temporária (provider_overloaded),
+        que é comum em modelos gratuitos compartilhados.
+        """
+        import httpx
+
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {settings.OPENROUTER_API_KEY}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": settings.OPENROUTER_MODEL,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_content},
+            ],
+        }
+
+        for attempt in range(3):
+            resp = httpx.post(url, headers=headers, json=payload, timeout=120.0)
+            if resp.status_code >= 400:
+                raise RuntimeError(f"HTTP {resp.status_code}: {resp.text[:300]}")
+
+            data = resp.json()
+            if data.get("choices"):
+                return data["choices"][0]["message"].get("content") or ""
+
+            error = data.get("error") or {}
+            error_type = (error.get("metadata") or {}).get("error_type", "")
+            if error_type == "provider_overloaded" and attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+                continue
+            raise RuntimeError(
+                error.get("message") or f"Resposta vazia do OpenRouter ({data.get('id', '')})"
+            )
+
+        raise RuntimeError("Resposta vazia do OpenRouter após tentativas de retry")
+
+    def _call_nvidia_nim(self, user_content: str) -> str:
+        """Invoca um modelo gratuito via NVIDIA NIM (API compatível com OpenAI)."""
         import httpx
 
         resp = httpx.post(
-            "https://openrouter.ai/api/v1/chat/completions",
+            f"{settings.NVIDIA_NIM_BASE_URL}/chat/completions",
             headers={
-                "Authorization": f"Bearer {settings.OPENROUTER_API_KEY}",
+                "Authorization": f"Bearer {settings.NVIDIA_NIM_API_KEY}",
                 "Content-Type": "application/json",
             },
             json={
-                "model": settings.OPENROUTER_MODEL,
+                "model": settings.NVIDIA_NIM_MODEL,
                 "messages": [
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_content},
@@ -53,7 +94,7 @@ class RAGGenerator:
         resp.raise_for_status()
         data = resp.json()
         if not data.get("choices"):
-            raise RuntimeError("Resposta vazia do OpenRouter")
+            raise RuntimeError("Resposta vazia da NVIDIA NIM")
         return data["choices"][0]["message"]["content"]
 
     def generate_response(
@@ -99,7 +140,17 @@ PERGUNTA DO USUÁRIO:
                     "Resumo direto das fontes encontradas:\n"
                     + "\n".join([f"- **[[{s.nota_titulo}]]**: {s.trecho[:180]}..." for s in sources[:3]])
                 )
-        # 2) Google Gemini Flash
+        # 2) NVIDIA NIM (free tier) — API compatível com OpenAI
+        elif settings.LLM_PROVIDER == "nvidia_nim" and settings.NVIDIA_NIM_API_KEY:
+            try:
+                answer_text = self._call_nvidia_nim(user_content)
+            except Exception as e:
+                answer_text = (
+                    f"Erro na chamada do modelo via NVIDIA NIM ({settings.NVIDIA_NIM_MODEL}): {e}\n\n"
+                    "Resumo direto das fontes encontradas:\n"
+                    + "\n".join([f"- **[[{s.nota_titulo}]]**: {s.trecho[:180]}..." for s in sources[:3]])
+                )
+        # 3) Google Gemini Flash
         elif self._client:
             try:
                 response = self._client.models.generate_content(

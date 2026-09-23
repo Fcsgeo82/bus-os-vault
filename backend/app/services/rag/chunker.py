@@ -39,8 +39,8 @@ def _split_table_rows(body: str) -> List[str]:
     return header_lines, data_lines
 
 
-def _chunk_table(body: str, max_rows: int, overlap: int) -> List[str]:
-    """Divide uma tabela Markdown em sub-chunks de max_rows linhas com sobreposição."""
+def _chunk_table(body: str, max_rows: int, overlap: int, max_chars: int = 1500) -> List[str]:
+    """Divide uma tabela Markdown em sub-chunks adaptativos com sobreposição."""
     lines = body.split("\n")
 
     # Encontra onde a tabela começa e termina
@@ -71,9 +71,31 @@ def _chunk_table(body: str, max_rows: int, overlap: int) -> List[str]:
     table_header = table_lines[:2]
     data_rows = table_lines[2:]
 
+    # Se a tabela é pequena, retorna como está
     if len(data_rows) <= max_rows:
-        # Tabela cabe em um chunk
         return [body]
+
+    # Estratégia adaptativa: calcule número ideal de linhas baseado no tamanho médio
+    if len(data_rows) > 0:
+        # Calcule tamanho médio de uma linha de dados (excluindo header)
+        sample_size = min(5, len(data_rows))  # Use até 5 linhas para amostra
+        sample_lines = data_rows[:sample_size]
+        avg_chars_per_row = sum(len(line) for line in sample_lines) / sample_size
+
+        # Calcule quantas linhas caberiam em max_chars (descontando header e pre/post)
+        header_size = len("\n".join(table_header))
+        estimated_overhead = len("\n".join(pre_table)) + header_size
+        if post_table:
+            estimated_overhead += len("\n".join(post_table))
+
+        available_chars = max_chars - estimated_overhead
+        if available_chars > 0 and avg_chars_per_row > 0:
+            adaptive_max_rows = max(1, int(available_chars / avg_chars_per_row))
+            # Limite entre max_rows//2 e max_rows*2 para evitar extremos
+            max_rows = max(max_rows // 2, min(adaptive_max_rows, max_rows * 2))
+        # Se não puder calcular, usa o max_rows original
+    else:
+        max_rows = 1
 
     # Divide em sub-chunks com sobreposição
     chunks: List[str] = []
@@ -83,7 +105,16 @@ def _chunk_table(body: str, max_rows: int, overlap: int) -> List[str]:
         chunk_lines = pre_table + table_header + chunk_rows
         if post_table:
             chunk_lines.extend(post_table)
-        chunks.append("\n".join(chunk_lines))
+        chunk_body = "\n".join(chunk_lines)
+
+        # Se o chunk ainda estiver muito grande, force divisão adicional
+        if len(chunk_body) > max_chars and max_rows > 1:
+            # Recursivamente dividir com metade das linhas
+            sub_chunks = _chunk_table(chunk_body, max(max_rows // 2, 1), overlap // 2, max_chars)
+            chunks.extend(sub_chunks)
+        else:
+            chunks.append(chunk_body)
+
         if start + max_rows >= len(data_rows):
             break
 
@@ -147,18 +178,26 @@ class MarkdownVaultChunker:
         meta = post.metadata or {}
         content = post.content
 
-        # Identifica categoria pela pasta
-        relative_str = str(file_path).replace("\\", "/")
-        if "00_Ordens_de_Servico" in relative_str:
-            categoria = "os_mestra"
-        elif "01_Notas_de_Eventos" in relative_str:
-            categoria = "nota_evento"
-        elif "02_Linhas_e_Servicos" in relative_str:
-            categoria = "linha_servico"
-        elif "03_Anexos" in relative_str:
-            categoria = "anexo_operacional"
+        # Identifica categoria - primeiro tenta frontmatter, depois fallback para pasta
+        expected_categories = {"os_mestra", "nota_evento", "linha_servico", "anexo_operacional", "outros"}
+
+        # Tenta obter categoria do frontmatter
+        categoria_from_meta = meta.get("category")
+        if categoria_from_meta and str(categoria_from_meta).strip() in expected_categories:
+            categoria = str(categoria_from_meta).strip()
         else:
-            categoria = "outros"
+            # Fallback para detecção por pasta
+            relative_str = str(file_path).replace("\\", "/")
+            if "00_Ordens_de_Servico" in relative_str:
+                categoria = "os_mestra"
+            elif "01_Notas_de_Eventos" in relative_str:
+                categoria = "nota_evento"
+            elif "02_Linhas_e_Servicos" in relative_str:
+                categoria = "linha_servico"
+            elif "03_Anexos" in relative_str:
+                categoria = "anexo_operacional"
+            else:
+                categoria = "outros"
 
         is_hub = categoria == "linha_servico"
 

@@ -29,10 +29,15 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL: str = "gemini-2.5-flash"
 
-    # Provedor LLM para síntese de respostas ("gemini" | "openrouter")
+    # Provedor LLM para síntese de respostas ("gemini" | "openrouter" | "nvidia_nim")
     LLM_PROVIDER: str = "openrouter"
     OPENROUTER_API_KEY: str = ""
     OPENROUTER_MODEL: str = "nvidia/nemotron-3-super-120b-a12b:free"
+
+    # NVIDIA NIM (build.nvidia.com) — API compatível com OpenAI, free tier
+    NVIDIA_NIM_API_KEY: str = ""
+    NVIDIA_NIM_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
+    NVIDIA_NIM_MODEL: str = "nvidia/nemotron-3-super-120b-a12b"
 
     # Embeddings (Sentence Transformers local ou Gemini)
     EMBEDDING_MODEL_LOCAL: str = "all-MiniLM-L6-v2"
@@ -49,9 +54,9 @@ class Settings(BaseSettings):
     CHUNK_PARAGRAPH_OVERLAP: int = 1  # Frases de sobreposição entre chunks de parágrafo
 
     # RAG Retrieval Settings
-    TRECHO_MAX_CHARS: int = 800       # Limite do trecho retornado ao caller
-    CONTEXT_MAX_CHARS: int = 600      # Limite do trecho no contexto do LLM
-    CONTEXT_MAX_DOCS: int = 6         # Máximo de documentos no contexto do LLM
+    TRECHO_MAX_CHARS: int = 1000       # Limite do trecho retornado ao caller
+    CONTEXT_MAX_CHARS: int = 1000      # Limite do trecho no contexto do LLM
+    CONTEXT_MAX_DOCS: int = 8         # Máximo de documentos no contexto do LLM
     HUB_BOOST: float = 1.5            # Multiplicador de score para chunks de hub de linha
 
     model_config = SettingsConfigDict(
