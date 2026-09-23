@@ -7,6 +7,27 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.9.1] - 2026-09-23
+
+### Corrigido
+- **Indexação de anexos do cofre:** `_chunk_table` em [chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py) reescrito de forma **iterativa** (sem recursão). O algoritmo anterior entrava em `RecursionError` com tabelas grandes (ANEXO I/II, 39–80 KB), fazendo o indexador pular silenciosamente os 6 arquivos de `03_Anexos` (452 arquivos no cofre, apenas 446 indexados, 0 chunks de anexo). Como desvios/itinerários alternativos vivem nos ANEXO II, consultas como "Quais desvios de itinerário existem para a linha 104?" retornavam vazio. Agora o cofre indexa 452/452 arquivos com 0 falhas (2736 chunks).
+- **Visibilidade de falhas de indexação:** [indexer.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/indexer.py) agora coleta os arquivos com erro no campo `falhas: [...]` do resultado e levanta exceção se nenhum chunk for gerado (antes falhava em silêncio, apenas com `print`).
+
+### Melhorado
+- **Boost específico por linha:** [hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py) aplica `HUB_BOOST` (agora `2.5` em [config.py](file:///c:/github_repositories/bus-os-vault/backend/app/core/config.py)) apenas aos chunks que **tocam a linha consultada** (`**Código**` no texto ou código no título) via `_chunk_toca_linha` — não mais a todos os hubs de linha. Evita que hubs de outras linhas dominem o ranking quando a query cita uma linha específica.
+- **Orientações de síntese:** [generator.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/generator.py) — o prompt de sistema agora instrui a priorizar as tabelas dos ANEXO II ao responder sobre desvios/itinerários alternativos (a seção "Notas de Eventos Vinculadas" de um hub não é a única fonte).
+- **Deprecation removida:** [vector_store.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/vector_store.py) — `table_names()` → `list_tables()`.
+
+### Adicionado
+- **Testes de regressão:** [test_chunker.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_chunker.py) (5 testes: tabela grande sem RecursionError, ANEXO II real, limites e presença do token `104`); fixture `indice_pronto` em [test_rag.py](file:///c:/github_repositories/bus-os-vault/backend/tests/test_rag.py) reconstrói o BM25 nos testes de integração.
+- **Plano:** [docs/implementation_plan_fix_recuperacao_rag.md](file:///c:/github_repositories/bus-os-vault/docs/implementation_plan_fix_recuperacao_rag.md) documentando causa raiz, etapas e resultados.
+
+### Escopo
+- Consulta "Quais desvios de itinerário existem para a linha 104?" agora recupera a Linha 104 e os ANEXO II (174/178/179) e o LLM sintetiza a resposta citando os anexos.
+- 8 testes passando (RAG + chunker).
+
+---
+
 ## [0.9.0] - 2026-09-23
 
 ### Adicionado

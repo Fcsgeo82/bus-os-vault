@@ -114,6 +114,13 @@
     - **Categoria por frontmatter:** `chunker.chunk_document` lê `category` do metadata (valores: `os_mestra`, `nota_evento`, `linha_servico`, `anexo_operacional`, `outros`) antes do fallback por pasta — sobrescrita via frontmatter com compatibilidade retroativa.
     - **Chunking de tabelas adaptativo:** `_chunk_table` amostra até 5 linhas para estimar `avg_chars_per_row`, ajusta `max_rows` dentro de [max_rows//2, max_rows*2] para caber em `CHUNK_MAX_CHARS`, e divide recursivamente (metade das linhas) chunks que ainda estouram 1500 chars.
 
+18. **Fix recuperação RAG / anexos não indexados (v0.9.1):**
+    - **Causa raiz:** o chunking adaptativo recursivo de `_chunk_table` (v0.9.0) estourava `RecursionError` em tabelas grandes (ANEXO I/II). O `indexer` engolia a exceção com `except Exception` + print, então os 6 arquivos de `03_Anexos` eram silenciosamente pulados (452 arquivos, 446 indexados, 0 chunks de anexo no LanceDB). Desvios/itinerários da linha 104 vivem nos ANEXO II — por isso a query "desvios linha 104" voltava vazio.
+    - **Fix:** `_chunk_table` reescrito **iterativo** (avg por TODAS as linhas, `max_rows = clamp(⌊(max_chars−overhead)/avg⌋, max_rows//2, max_rows*2)`, sub-chunks com overlap, sem recursão). Indexador agora coleta `falhas: [...]` e lança exceção se nenhum chunk gerado. Vault: 452/452 arquivos, 2736 chunks, 0 falhas.
+    - **Boost específico por linha:** `hybrid_retriever` extrai códigos da query (`_query_line_codes`, regex `\b\d{3,4}\b`) e aplica `HUB_BOOST=2.5` apenas a chunks que "tocam" a linha (`_chunk_toca_linha`: código no título OU `**Código**` no texto) — antes o boost ia para TODOS os hubs, inflando linhas erradas (807/217/232/350/107) acima da linha consultada.
+    - **Prompt do generator:** SYSTEM_PROMPT orienta priorizar tabelas dos ANEXO II ao responder sobre desvios/itinerários alternativos; "Notas de Eventos Vinculadas: Nenhuma nota..." de um hub não implica ausência de desvios.
+    - Testes: `tests/test_chunker.py` (5) + fixture `indice_pronto` em `test_rag.py` (reconstrói BM25); 8 testes passando. LanceDB: `table_names()` → `list_tables()`. Plano: `docs/implementation_plan_fix_recuperacao_rag.md`.
+
 ---
 
 ## 3. Estado de Entrega (v0.9.0 Concluído)
@@ -142,5 +149,6 @@
 - [x] **Exclusão em cascata robusta (v0.7.5):** `unlink()`/`shutil.rmtree()` no `DELETE /api/os/{uid}` envoltos em `try/except OSError`, evitando crash no Windows por nomes Unicode. Artefatos órfãos da OS 999 (teste) removidos.
 - [x] **Reformulação do pipeline RAG (v0.8.0):** table-aware chunking (10 linhas/tabela, 1500 chars máx), resumos em linguagem natural no ANEXO I, boost 1.5x para hubs, truncamento de trecho (800 chars) e contexto do LLM (6 docs × 600 chars), filtro ano_mes ativado, campo `is_hub` no LanceDB. Vault reindexado: 452 arquivos → 2852 chunks.
 - [x] **Otimizações do plano de melhorias (v0.9.0, etapas 4-6):** contexto LLM ampliado (trecho 1000/contexto 1000/8 docs), categoria por frontmatter com fallback por pasta, chunking de tabelas adaptativo com divisão recursiva; provider NVIDIA NIM (free tier) e retry no OpenRouter para `provider_overloaded`.
+- [x] **Fix recuperação RAG (v0.9.1):** `_chunk_table` iterativo elimina RecursionError e indexa os 6 anexos de `03_Anexos` (452/452, 0 falhas); boost `HUB_BOOST` (2.5x) específico da linha consultada via `_chunk_toca_linha`; prompt do generator prioriza ANEXO II. Consulta "desvios linha 104" valida. Plano: `docs/implementation_plan_fix_recuperacao_rag.md`.
 - [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.
