@@ -16,7 +16,7 @@ com busca semântica via RAG (Retrieval-Augmented Generation).
 - **Padrão:** Web Fullstack desacoplado (API REST)
 - **Frontend:** Next.js 15 (App Router, React 19) — diretório `frontend/`
 - **Backend:** FastAPI (Python 3.12+) — diretório `backend/`
-- **LLM:** Plugável via `LLM_PROVIDER` — OpenRouter (free tier, padrão) ou Gemini Flash, com síntese fallback local
+- **LLM:** Plugável via `LLM_PROVIDER` — OpenRouter (free tier, padrão), NVIDIA NIM (free tier) ou Gemini Flash, com síntese fallback local
 - **Embeddings:** Sentence-Transformers `all-MiniLM-L6-v2` (local), Gemini como fallback
 - **Vector Store:** LanceDB (embedded)
 - **Acesso externo:** Banner no startup com URLs Local/Rede; túnel Cloudflare/localtunnel via `TUNNEL_ENABLED` (sem admin/firewall)

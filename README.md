@@ -20,7 +20,7 @@ O **Bus OS Vault** é uma aplicação web fullstack que oferece:
 | **Frontend**    | Next.js 15 (React 19)               |
 | **Backend**     | FastAPI (Python 3.12+)              |
 | **Validação**   | Pydantic v2 (backend) + Zod (frontend) |
-| **LLM**         | Plugável via `LLM_PROVIDER`: OpenRouter (free tier) ou Google Gemini Flash |
+| **LLM**         | Plugável via `LLM_PROVIDER`: OpenRouter (free tier), NVIDIA NIM (free tier) ou Google Gemini Flash |
 | **Embeddings**  | Sentence-Transformers `all-MiniLM-L6-v2` (local), Gemini ou hash (fallback) |
 | **Vector Store**| LanceDB (embedded)                  |
 | **Busca Léxica**| rank_bm25                           |
@@ -88,9 +88,12 @@ npm run dev
 |---|---|
 | `GEMINI_API_KEY` | Chave do Google AI Studio (https://aistudio.google.com/app/apikey) |
 | `GEMINI_MODEL` | Modelo de chat Gemini (padrão `gemini-2.5-flash`) |
-| `LLM_PROVIDER` | `openrouter` (padrão) ou `gemini` |
+| `LLM_PROVIDER` | `openrouter` (padrão), `nvidia_nim` ou `gemini` |
 | `OPENROUTER_API_KEY` | Chave do OpenRouter (https://openrouter.ai/keys) |
 | `OPENROUTER_MODEL` | Modelo OpenRouter; gratuitos terminam em `:free` (padrão `nvidia/nemotron-3-super-120b-a12b:free`) |
+| `NVIDIA_NIM_API_KEY` | Chave da NVIDIA NIM (https://build.nvidia.com/settings) — free tier |
+| `NVIDIA_NIM_BASE_URL` | Endpoint NVIDIA NIM (default `https://integrate.api.nvidia.com/v1`) |
+| `NVIDIA_NIM_MODEL` | Modelo NVIDIA NIM (default `nvidia/nemotron-3-super-120b-a12b`) |
 | `DEBUG` | `true`/`false` |
 | `TUNNEL_ENABLED` | `true`/`false` — habilita URL pública (túnel) ao iniciar |
 | `TUNNEL_PROVIDER` | `auto` (padrão, tenta cloudflare → localtunnel), `cloudflare` ou `localtunnel` |

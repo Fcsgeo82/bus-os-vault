@@ -27,7 +27,7 @@ O sistema gerencia as **Ordens de Serviço (OS)** da rede municipal de transport
 | Decisão | Escolha | Justificativa |
 |---|---|---|
 | **Arquitetura** | Web Fullstack (Next.js 15 + FastAPI) | Desacoplamento entre UI moderna e ecossistema maduro de IA/RAG em Python |
-| **LLM** | Plugável: `LLM_PROVIDER=openrouter` (padrão) ou `gemini` | Free tier do OpenRouter mais confiável que a cota diária do Gemini (429); fallback em cadeia até síntese local |
+| **LLM** | Plugável: `LLM_PROVIDER=openrouter` (padrão), `nvidia_nim` ou `gemini` | Free tiers confiáveis; fallback em cadeia até síntese local |
 | **Embeddings** | `sentence-transformers` `all-MiniLM-L6-v2` (local) como primário; Gemini `gemini-embedding-001` e hash como fallbacks | Dense search de alta relevância com custo zero e sem cota de API |
 | **Vector Store** | LanceDB (embedded) | Sem dependência de serviços externos, persistência baseada em arquivos |
 | **Busca Léxica** | rank_bm25 | Complementar para termos exatos (códigos de linha, números de despacho/processo) |
@@ -269,3 +269,5 @@ schema_version: 2
 | 2026-09-15 | Interface: card "Hubs de Linhas" passa a consumir o catálogo real (`GET /api/os/lines/all`) no lugar da lista MOC fixa. `APP_VERSION` promovida para `0.5.0`. |
 | 2026-09-16 | **Correção/Edição de OS (v0.6.0):** `POST /api/os/{uid}/correct` com retitulação em cascata (UID/wikilinks/hubs/anexos/CSVs) + correção escalar; validação de título unificada em `vault_writer` (422); guard `old_slug != new_slug` protege anexos em correções só de acento. Aplicado no cofre real: OS 179 → 178 (414 arquivos, RAG reindexado). Suíte ampliada para 25/25 testes. |
 | 2026-09-17 | **Invariante do hub = OS mais recente (v0.6.1):** hub citado apenas por evento da OS nova migra proveniência preservando grade real e histórico; `DELETE /api/os/{uid}` passa a desvincular hubs da OS excluída (`detach_hub_references`), promovendo a OS anterior e removendo órfãos. Suíte ampliada para 27/27 testes. |
+| 2026-09-18 | **Reformulação do pipeline RAG (v0.8.0):** table-aware chunking, resumos em linguagem natural no ANEXO I, boost de hubs, filtro ano_mes ativado e limites de contexto/trecho. |
+| 2026-09-23 | **Otimizações do plano de melhorias (v0.9.0, etapas 4-6):** limites de contexto do LLM ampliados (trecho 1000, contexto 1000, até 8 docs), categoria por frontmatter com fallback por pasta, chunking de tabelas adaptativo com divisão recursiva. Adicionado provider NVIDIA NIM (free tier) via `LLM_PROVIDER=nvidia_nim` e retry automático no OpenRouter para `provider_overloaded`. |

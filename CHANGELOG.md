@@ -7,6 +7,23 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.9.0] - 2026-09-23
+
+### Adicionado
+- **Provedor LLM NVIDIA NIM (free tier):** novo provider direto em [generator.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/generator.py) (`_call_nvidia_nim`, endpoint OpenAI-compatível `https://integrate.api.nvidia.com/v1`) selecionável via `LLM_PROVIDER=nvidia_nim`. Novas env vars em [config.py](file:///c:/github_repositories/bus-os-vault/backend/app/core/config.py): `NVIDIA_NIM_API_KEY`, `NVIDIA_NIM_BASE_URL`, `NVIDIA_NIM_MODEL` (default `nvidia/nemotron-3-super-120b-a12b`).
+- **Resiliência no OpenRouter:** `_call_openrouter` em [generator.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/generator.py) agora lê o campo `error` do corpo (HTTP 200 não é garantia de sucesso) e faz retry (3 tentativas) quando o upstream responde `provider_overloaded` — comum em modelos gratuitos compartilhados. Antes, sobrecarga da NVIDIA no OpenRouter virava a mensagem genérica "Resposta vazia do OpenRouter".
+- **`PLANO_MELHORIAS.md`:** documento com o plano de melhorias do projeto (7 etapas); etapas 4, 5 e 6 implementadas nesta release.
+
+### Melhorado
+- **Limites de contexto do LLM otimizados (Etapa 4):** em [config.py](file:///c:/github_repositories/bus-os-vault/backend/app/core/config.py), `TRECHO_MAX_CHARS` 800→1000, `CONTEXT_MAX_CHARS` 600→1000 e `CONTEXT_MAX_DOCS` 6→8. Mais contexto por consulta para respostas de melhor qualidade sem extrapolar custos.
+- **Detecção de categoria por frontmatter (Etapa 5):** [chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py) agora lê o campo `category` do frontmatter (valores esperados: `os_mestra`, `nota_evento`, `linha_servico`, `anexo_operacional`, `outros`) antes do fallback por pasta. Sobrescrita via metadata com compatibilidade retroativa total.
+- **Chunking de tabelas adaptativo (Etapa 6):** `_chunk_table` em [chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py) calcula o tamanho médio de linha (amostra de 5) e ajusta dinamicamente o número de linhas por chunk entre `max_rows//2` e `max_rows*2` para caber em `CHUNK_MAX_CHARS`, com divisão recursiva de chunks que ainda estouram o limite. Substitui a contagem fixa de linhas; reduz chunks grandes demais em tabelas densas do ANEXO I.
+
+### Escopo
+- `.env.example` documentado com as novas chaves NVIDIA NIM.
+
+---
+
 ## [0.8.0] - 2026-09-18
 
 ### Melhorado
