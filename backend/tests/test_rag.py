@@ -86,3 +86,18 @@ def test_hybrid_retriever_filtro_por_os(indice_pronto):
     )
     assert len(sources) > 0
     assert all(s.metadata.get("os_titulo") == alvo for s in sources)
+
+
+def test_retriever_inclui_planejamento_do_hub(indice_pronto):
+    """Query com código de linha deve trazer a grade completa do hub no contexto."""
+    sources = hybrid_retriever.retrieve(
+        query="planejamento de viagens da linha 812",
+        top_k=8,
+        filters=RAGFilters(apenas_vigentes=False),
+    )
+    hubs = [s for s in sources if s.nota_titulo == "Linha 812"]
+    assert hubs
+    assert any(
+        "| Dia Útil |" in s.trecho or "Distribuição Horária" in s.trecho
+        for s in hubs
+    )

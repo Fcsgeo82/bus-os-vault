@@ -18,14 +18,51 @@ class LanceDBStore:
         self.table = None  # Será criada/obtida no primeiro index_chunks ou search
 
     def _ensure_table(self):
-        """Obtém a tabela existente ou retorna None (será criada no index_chunks)."""
+        """Obtém a tabela existente via open_table ou None se ainda não indexada.
+
+        Não depende do formato de retorno de ``list_tables()`` (mudou no LanceDB
+        0.38 para um objeto ``ListTablesResponse``), que quebrava a detecção da
+        tabela em processos novos (busca densa retornava vazio).
+        """
         if self.table is not None:
             return self.table
-        tables = self.db.list_tables() if hasattr(self.db, "list_tables") else []
-        if self.TABLE_NAME in tables:
+        try:
             self.table = self.db.open_table(self.TABLE_NAME)
             return self.table
-        return None
+        except Exception:
+            return None
+
+    def fetch_by_nota_titulo(self, nota_titulo: str, limit: int = 20) -> List[Dict[str, Any]]:
+        """Obtém os chunks indexados de uma nota específica (ex.: hub \"Linha 812\").
+
+        Leitura direta da tabela por título — garante acesso a chunks que a busca
+        semântica pode não ranquear, sem depender de re-embedding.
+        """
+        table = self._ensure_table()
+        if table is None or table.count_rows() == 0:
+            return []
+
+        records = table.to_arrow().to_pylist()
+        matches = [r for r in records if r.get("nota_titulo") == nota_titulo][:limit]
+
+        formatted = []
+        for r in matches:
+            formatted.append({
+                "chunk_id": r["chunk_id"],
+                "nota_titulo": r["nota_titulo"],
+                "os_titulo": r.get("os_titulo", ""),
+                "secao_titulo": r["secao_titulo"],
+                "arquivo_path": r["arquivo_path"],
+                "categoria": r["categoria"],
+                "is_hub": bool(r.get("is_hub", False)),
+                "status_vigencia": r["status_vigencia"],
+                "ano_mes": r["ano_mes"],
+                "linhas_afetadas": json.loads(r["linhas_afetadas"]),
+                "consorcios": json.loads(r["consorcios"]),
+                "texto": r["texto"],
+                "score": 1.0,  # placeholder; score real é definido pelo RRF
+            })
+        return formatted
 
     def index_chunks(self, chunks: List[Dict[str, Any]]) -> int:
         """Calcula embeddings e indexa chunks na tabela."""

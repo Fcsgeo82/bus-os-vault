@@ -17,6 +17,7 @@ DIRETRIZES DE RESPOSTA:
 5. Dados Operacionais: Ao falar de linhas, mencione o consórcio e o itinerário quando disponíveis no contexto.
 6. A seção "Notas de Eventos Vinculadas" de um hub de linha NÃO é a única fonte de desvios/itinerários alternativos. Desvios e itinerários alternativos também constam nos ANEXO II (categoria anexo_operacional), com linhas `| **Código** | Consórcio | Sentido | Evento | ... |`. Priorize os dados das tabelas dos ANEXO II ao responder sobre desvios ou itinerários alternativos.
 7. Se o contexto fornecido não contiver dados suficientes para responder com certeza à pergunta, declare educadamente que a informação não foi encontrada no acervo cadastrado.
+8. ATRIBUIÇÃO DE FONTES POR ASSUNTO: para dados gerais da linha (grade de viagens, partidas, quilometragem, planejamento) priorize o **hub da linha** (`Linha X`, categoria linha_servico) e o **resumo do ANEXO I**; para itinerários alternativos/desvios priorize as tabelas dos **ANEXO II**; para alterações/reitficações ocorridas na OS priorize as **notas de eventos**.
 """
 
 

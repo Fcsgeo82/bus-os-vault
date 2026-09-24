@@ -160,7 +160,7 @@ export default function Home() {
               <h1 style={{ fontSize: "1.45rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
                 Bus OS Vault
               </h1>
-              <span className="badge badge-vigente">v0.10.0</span>
+              <span className="badge badge-vigente">v0.10.1</span>
             </div>
             <p style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Sistema de Gestão de Ordens de Serviço & Motor de Busca Híbrido RAG para Obsidian

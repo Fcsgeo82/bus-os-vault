@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # Aplicação
     APP_NAME: str = "Bus OS Vault API"
-    APP_VERSION: str = "0.10.0"
+    APP_VERSION: str = "0.10.1"
     APP_HOST: str = "127.0.0.1"
     APP_PORT: int = 8000
     DEBUG: bool = False
@@ -54,8 +54,8 @@ class Settings(BaseSettings):
     CHUNK_PARAGRAPH_OVERLAP: int = 1  # Frases de sobreposição entre chunks de parágrafo
 
     # RAG Retrieval Settings
-    TRECHO_MAX_CHARS: int = 1000       # Limite do trecho retornado ao caller
-    CONTEXT_MAX_CHARS: int = 1000      # Limite do trecho no contexto do LLM
+    TRECHO_MAX_CHARS: int = 3500       # Limite do trecho retornado ao caller (linhas do ANEXO I completas)
+    CONTEXT_MAX_CHARS: int = 3500      # Limite do trecho no contexto do LLM
     CONTEXT_MAX_DOCS: int = 8         # Máximo de documentos no contexto do LLM
     HUB_BOOST: float = 2.5            # Multiplicador de score para chunks da linha consultada
 

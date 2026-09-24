@@ -7,6 +7,22 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.10.1] - 2026-09-24
+
+### Corrigido
+- **Busca densa morta em processos novos (`_ensure_table`):** no LanceDB 0.38, `list_tables()` retorna um `ListTablesResponse` (objeto Pydantic), não um set — `"vault_chunks" in tables` era sempre `False` e o retriever devolvia `None` em qualquer processo que não tivesse indexado (pytest, scripts, novos workers), zerando a busca vetorial. [vector_store.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/vector_store.py) agora abre a tabela diretamente via `open_table()` (`try/except`).
+- **Planejamento de viagens incompleto (caso "linha 812"):** os chunks de grade do hub (`### Ida`/`### Volta` com 4 tipos de dia, picos e distribuição horária) não eram ranqueados nem no top-50; e o limite de 1000 chars cortava a linha do ANEXO I no meio das colunas (o LLM alegava truncamento e omitia Sábado/Domingo/Pt. Fac.). 
+
+### Melhorado
+- **Grade do hub garantida para queries com código de linha:** quando a query cita código(s) de linha, [hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py) insere os chunks indexados de `Linha {código}` no topo do RRF (`fetch_by_nota_titulo`, dedupe por `chunk_id`), mantendo o boost `HUB_BOOST` e a prioridade de ANEXO II para desvios.
+- **Limites de trecho/contexto ampliados:** `TRECHO_MAX_CHARS` e `CONTEXT_MAX_CHARS` de 1000 → **3500** (linhas do ANEXO I chegam completas ao LLM; até 8 docs ≈ 28k chars, folga nos free tiers).
+- **Atribuição de fontes no prompt:** [generator.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/generator.py) orienta: dados gerais da linha (grade/viagens/quilometragem) → hub e resumo do ANEXO I; itinerários alternativos/desvios → ANEXO II; alterações da OS → notas de eventos.
+
+### Escopo
+- 10 testes passando (chunker + RAG, incl. novo `test_retriever_inclui_planejamento_do_hub`); `tsc --noEmit` limpo. API validada: "planejamento de viagens da linha 812" traz os 5 chunks do hub (com "Distribuição Horária") e o ANEXO I com colunas completas; "desvios da linha 104" segue trazendo Linha 104 + ANEXO II.
+
+---
+
 ## [0.10.0] - 2026-09-24
 
 ### Adicionado

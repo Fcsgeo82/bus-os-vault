@@ -72,6 +72,21 @@ class HybridRetriever:
                 if _chunk_toca_linha(chunk, line_codes):
                     fused_scores[cid] *= settings.HUB_BOOST
 
+            # 4.1 Garante a grade completa do hub da(s) linha(s) citada(s) no contexto.
+            # A busca semântica/léxica costuma ranquear baixo os chunks de
+            # "Planejamento Operacional de Viagens" do hub; a leitura direta por
+            # título os insere no topo do RRF (deduplicado por chunk_id).
+            hub_chunks: List[Dict[str, Any]] = []
+            for codigo in line_codes:
+                hub_chunks.extend(vector_store.fetch_by_nota_titulo(f"Linha {codigo}"))
+            if hub_chunks:
+                base_score = max(fused_scores.values(), default=0.0) + 1.0
+                for i, chunk in enumerate(hub_chunks):
+                    cid = chunk["chunk_id"]
+                    if cid not in chunk_lookup:
+                        chunk_lookup[cid] = chunk
+                    fused_scores[cid] = base_score - (i * 1e-6)
+
         # 5. Ordena por score RRF
         sorted_chunk_ids = sorted(fused_scores.keys(), key=lambda x: fused_scores[x], reverse=True)
 

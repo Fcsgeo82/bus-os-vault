@@ -127,6 +127,13 @@
     - **Bugs corrigidos:** (1) ramo `else` do `chunk_document` referenciava `sub_body` (inexistente fora do laço) → `UnboundLocalError` derrubava o `POST /api/rag/sync` em massa — trocado por `body`; (2) extração de wikilink com colchetes aninhados (`[[174 ... [ret4]]]`) truncava o título (perdia o `]`) e o filtro da OS 174 voltava vazio — agora via `find('[[')`/`rfind(']]')`.
     - **Retriever:** com `os_titulos` ativo, o pool de candidatos denso+léxico é ampliado (×5) para não perder chunks da OS selecionada fora do top-K global; comparação por `_normalize_os` (NFKD, sem diacríticos, espaços colapsados).
 
+20. **Respostas completas de planejamento (v0.10.1):**
+    - **`_ensure_table` confiável:** desprezado o `list_tables()` (LanceDB 0.38 devolve `ListTablesResponse`, não um set → `_ensure_table` retornava `None` e a busca densa saía vazia em processos que não indexaram: pytest, scripts, novos workers). Agora: `open_table()` direto em try/except. No servidor era mascarado porque `self.table` era populada no `index_chunks` do startup.
+    - **Hub da linha garantido no RRF:** em `hybrid_retriever.retrieve`, quando a query cita código(s) de linha (`_query_line_codes`), os chunks de `Linha {código}` são lidos via `fetch_by_nota_titulo` e injetados no topo do RRF (score = `max(fused)+1`, dedupe por `chunk_id`) — a busca semântica/léxica não ranqueava os chunks `_1/_2` (grade Ida/Volta + Distribuição Horária) nem no top-50, e o LLM respondia "planejamento da 812" só com o Dia Útil.
+    - **Limites:** `TRECHO_MAX_CHARS`/`CONTEXT_MAX_CHARS` 1000 → 3500 — `_chunk_table` nunca corta linha, mas o corte de trecho no meio da linha do ANEXO I fazia o LLM alegar colunas truncadas; 3500 cobra linha completa + vizinhas (8 docs ≈ 28k chars).
+    - **Prompt (item 8):** atribuição de fontes — dados da linha (grade/viagens/quilometragem) → hub e resumo do ANEXO I; itinerários alternativos/desvios → ANEXO II; alterações/retificações da OS → notas de eventos.
+    - Testes: `test_retriever_inclui_planejamento_do_hub` (query "planejamento de viagens da linha 812" top-8 contém chunk de `Linha 812` com `| Dia Útil |`/`Distribuição Horária`); 10 testes passando. API validada: 812 → 5 chunks do hub + ANEXO I (len 1492, colunas completas); 104 desvios → Linha 104 + ANEXO II 174.
+
 ---
 
 ## 3. Estado de Entrega (v0.9.0 Concluído)
@@ -157,5 +164,6 @@
 - [x] **Otimizações do plano de melhorias (v0.9.0, etapas 4-6):** contexto LLM ampliado (trecho 1000/contexto 1000/8 docs), categoria por frontmatter com fallback por pasta, chunking de tabelas adaptativo com divisão recursiva; provider NVIDIA NIM (free tier) e retry no OpenRouter para `provider_overloaded`.
 - [x] **Fix recuperação RAG (v0.9.1):** `_chunk_table` iterativo elimina RecursionError e indexa os 6 anexos de `03_Anexos` (452/452, 0 falhas); boost `HUB_BOOST` (2.5x) específico da linha consultada via `_chunk_toca_linha`; prompt do generator prioriza ANEXO II. Consulta "desvios linha 104" valida. Plano: `docs/implementation_plan_fix_recuperacao_rag.md`.
 - [x] **Filtro por OS nos Filtros RAG (v0.10.0):** `os_titulos` substitui filtros por linha/consórcio; chunk ganha `os_titulo` (wikilink `os_origem`, extração robusta p/ `[ret4]`); fix `sub_body` no chunking de parágrafos; pool ×5 no retriever com filtro ativo. 9 testes (chunker+RAG, incl. filtro por OS); `tsc --noEmit`/`next build` limpos.
+- [x] **Respostas completas de planejamento (v0.10.1):** `_ensure_table` via `open_table()` (LanceDB 0.38 `list_tables()` zerava a busca densa em processos novos); retriever garante chunks do hub `Linha X` no topo do RRF para queries com código de linha (`fetch_by_nota_titulo`); `TRECHO_MAX_CHARS`/`CONTEXT_MAX_CHARS` 1000→3500 (linha do ANEXO I completa); atribuição de fontes no prompt (hub/ANEXO I, ANEXO II p/ desvios, notas p/ alterações). 10 testes (incl. `test_retriever_inclui_planejamento_do_hub`); API validada p/ 812 e 104.
 - [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.
