@@ -7,6 +7,25 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [0.10.0] - 2026-09-24
+
+### Adicionado
+- **Filtro por OS nos Filtros RAG:** [FilterBar.tsx](file:///c:/github_repositories/bus-os-vault/frontend/src/components/filters/FilterBar.tsx) — os filtros por **linha** e **consórcio** foram substituídos por um seletor de **OS** (popup multi-seleção alimentado por `GET /api/os`), que restringe os arquivos consultados ao escopo da(s) OS selecionada(s). Filtros ativos: `apenas_vigentes`, `os_titulos` (lista de títulos) e `ano_mes`.
+- **Campo `os_titulo` no chunking:** [chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py) — cada chunk recebe o título da OS de origem (extraído do wikilink `os_origem` do frontmatter ou o próprio título em notas mestras); persistido no LanceDB e no metadata dos resultados de busca.
+
+### Corrigido
+- **Erro de runtime no chunking de parágrafos:** o ramo `else` de [chunker.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/chunker.py) usava a variável `sub_body` (inexistente fora do laço), derrubando a reindexação em lotes (`cannot access local variable 'sub_body'`). Corrigido para `body`.
+- **Extração de título de OS com colchetes aninhados:** wikilinks como `[[174 - OS 2026.08 - Agosto 2º Estudo [ret4]]]` eram truncados (perdiam o `]` final), fazendo o filtro por OS da 174 não retornar resultados. Extração agora via `find('[[')`/`rfind(']]')`.
+
+### Melhorado
+- **Pool de candidatos com filtro por OS:** [hybrid_retriever.py](file:///c:/github_repositories/bus-os-vault/backend/app/services/rag/hybrid_retriever.py) amplia o pool de recuperação (×5) quando `os_titulos` está ativo, evitando que chunks da OS selecionada fiquem fora do top-K global.
+
+### Escopo
+- Filtros RAG: "Linhas" e "Consórcios" **removidos** da UI; novo seletor "OS" adicionado. Busca da linha 104 continua recuperando Linha 104 + ANEXO II (174/178/179); filtros 174/178/179 e multi-OS validados na API.
+- 9 testes passando (chunker + RAG, incl. `test_hybrid_retriever_filtro_por_os`); `tsc --noEmit` e `next build` limpos.
+
+---
+
 ## [0.9.1] - 2026-09-23
 
 ### Corrigido

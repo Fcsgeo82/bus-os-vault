@@ -30,14 +30,12 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"consulta" | "entrada" | "grafo">("consulta");
   const [filters, setFilters] = useState<RAGFilters>({
     apenas_vigentes: true,
-    linhas: [],
-    consorcios: [],
+    os_titulos: [],
   });
   const [selectedNote, setSelectedNote] = useState<string | null>(null);
   const [correctingOs, setCorrectingOs] = useState<OSMestra | null>(null);
   const [osList, setOsList] = useState<OSMestra[]>([]);
   const [availableLines, setAvailableLines] = useState<LineOption[]>([]);
-  const [availableConsorcios, setAvailableConsorcios] = useState<string[]>([]);
   const [hubLimitVisible, setHubLimitVisible] = useState(false);
   const [hubFilterLine, setHubFilterLine] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
@@ -90,10 +88,6 @@ export default function Home() {
         setAvailableLines(
           data.map((d) => ({ codigo: String(d.codigo), vista: d.vista, consorcio: d.consorcio }))
         );
-        const consorcios = Array.from(
-          new Set(data.map((d) => String(d.consorcio ?? "")).filter(Boolean))
-        ).sort();
-        if (consorcios.length > 0) setAvailableConsorcios(consorcios);
       })
       .catch((err) => console.error("Erro ao carregar linhas:", err));
   }, []);
@@ -166,7 +160,7 @@ export default function Home() {
               <h1 style={{ fontSize: "1.45rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
                 Bus OS Vault
               </h1>
-              <span className="badge badge-vigente">v0.9.1</span>
+              <span className="badge badge-vigente">v0.10.0</span>
             </div>
             <p style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Sistema de Gestão de Ordens de Serviço & Motor de Busca Híbrido RAG para Obsidian
@@ -489,8 +483,11 @@ export default function Home() {
             <FilterBar
               filters={filters}
               onChange={setFilters}
-              availableLines={availableLines}
-              availableConsorcios={availableConsorcios}
+              availableOs={osList.map((o) => ({
+                uid: o.uid,
+                title: o.title,
+                status_vigencia: o.status_vigencia,
+              }))}
             />
             <ChatContainer filters={filters} onOpenNote={(titulo) => setSelectedNote(titulo)} />
           </section>

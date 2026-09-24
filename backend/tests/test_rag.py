@@ -74,3 +74,15 @@ def test_rag_generator_synthesizes_response(indice_pronto):
     assert len(response.answer) > 20
     assert len(response.sources) > 0
     assert response.execution_time_seconds >= 0.0
+
+
+def test_hybrid_retriever_filtro_por_os(indice_pronto):
+    """Filtro por OS restringe os resultados à OS selecionada."""
+    alvo = "179 - OS 2026.09 - Setembro 1º Estudo ret"
+    sources = hybrid_retriever.retrieve(
+        query="Quais desvios de itinerário existem para a linha 104?",
+        top_k=5,
+        filters=RAGFilters(os_titulos=[alvo], apenas_vigentes=False),
+    )
+    assert len(sources) > 0
+    assert all(s.metadata.get("os_titulo") == alvo for s in sources)

@@ -1,6 +1,7 @@
 """Chunker hierárquico para notas Markdown do Obsidian com enriquecimento de Frontmatter."""
 
 import re
+import unicodedata
 from pathlib import Path
 from typing import List, Dict, Any
 import frontmatter
@@ -9,6 +10,34 @@ from app.core.config import settings
 
 _TABLE_ROW_RE = re.compile(r"^\|.+\|$", re.MULTILINE)
 _HEADER_RE = re.compile(r"^(#{1,3}\s+.+)$", re.MULTILINE)
+
+
+def _normalize_os(value: str) -> str:
+    """Normaliza um identificador de OS (sem diacríticos, minúsculas, espaços colapsados)."""
+    s = unicodedata.normalize("NFKD", value)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return " ".join(s.strip().lower().split())
+
+
+def _extract_os_titulo(meta: Dict[str, Any], file_path: Path, categoria: str) -> str:
+    """Resolve o título da OS de origem de uma nota.
+
+    Notas de eventos, hubs e anexos referenciam a OS via frontmatter `os_origem`
+    (ex.: `[[179 - OS 2026.09 - Setembro 1º Estudo ret]]`). Notas mestras são a
+    própria OS e usam o próprio título.
+    """
+    origem = str(meta.get("os_origem") or "").strip()
+    if origem:
+        start = origem.find("[[")
+        end = origem.rfind("]]")
+        if start != -1 and end > start + 2:
+            inner = origem[start + 2 : end].strip()
+            if "|" in inner:
+                inner = inner.split("|")[-1].strip()
+            return inner
+    if categoria == "os_mestra":
+        return str(meta.get("title", file_path.stem)).strip()
+    return origem
 
 
 def _split_table_rows(body: str) -> List[str]:
@@ -216,6 +245,7 @@ class MarkdownVaultChunker:
 
         chunks: List[Dict[str, Any]] = []
         doc_uid = str(meta.get("uid", file_path.stem))
+        os_titulo = _extract_os_titulo(meta, file_path, categoria)
 
         current_header = meta.get("title", file_path.stem)
 
@@ -251,6 +281,7 @@ class MarkdownVaultChunker:
                     chunks.append({
                         "chunk_id": chunk_id,
                         "nota_titulo": meta.get("title", file_path.stem),
+                        "os_titulo": os_titulo,
                         "secao_titulo": current_header,
                         "arquivo_path": str(file_path),
                         "categoria": categoria,
@@ -270,6 +301,7 @@ class MarkdownVaultChunker:
                     chunks.append({
                         "chunk_id": chunk_id,
                         "nota_titulo": meta.get("title", file_path.stem),
+                        "os_titulo": os_titulo,
                         "secao_titulo": current_header,
                         "arquivo_path": str(file_path),
                         "categoria": categoria,
@@ -287,6 +319,7 @@ class MarkdownVaultChunker:
                 chunks.append({
                     "chunk_id": chunk_id,
                     "nota_titulo": meta.get("title", file_path.stem),
+                    "os_titulo": os_titulo,
                     "secao_titulo": current_header,
                     "arquivo_path": str(file_path),
                     "categoria": categoria,

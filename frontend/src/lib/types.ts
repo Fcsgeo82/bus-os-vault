@@ -22,8 +22,7 @@ export interface ChatMessage {
 
 export interface RAGFilters {
   apenas_vigentes: boolean;
-  linhas: string[];
-  consorcios: string[];
+  os_titulos: string[];
   ano_mes?: string;
 }
 

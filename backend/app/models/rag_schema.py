@@ -21,8 +21,7 @@ class ChatMessage(BaseModel):
 class RAGFilters(BaseModel):
     """Filtros operacionais opcionais para restringir a busca semântica."""
     apenas_vigentes: bool = Field(default=True, description="Restringir busca a OS e notas com vigência ativa")
-    linhas: Optional[List[str]] = Field(default=None, description="Filtrar por códigos de linhas específicas")
-    consorcios: Optional[List[str]] = Field(default=None, description="Filtrar por consórcios")
+    os_titulos: Optional[List[str]] = Field(default=None, description="Restringir busca às OS (títulos) selecionadas")
     ano_mes: Optional[str] = Field(default=None, description="Filtrar por período específico, ex: 2026/1")
     tipo_evento: Optional[str] = Field(default=None, description="Inclusão, Remoção, Ajuste, Retificação")
 

@@ -6,6 +6,7 @@ from app.core.config import settings
 from app.models.rag_schema import RAGFilters, RAGSource
 from app.services.rag.vector_store import vector_store
 from app.services.rag.lexical_search import lexical_searcher
+from app.services.rag.chunker import _normalize_os
 
 
 def _query_line_codes(query: str) -> List[str]:
@@ -38,11 +39,15 @@ class HybridRetriever:
         filters: Optional[RAGFilters] = None,
     ) -> List[RAGSource]:
         """Recupera e funde os resultados vetoriais e lexicais."""
+        # Quando há filtro por OS, amplia o pool de candidatos para não perder
+        # chunks relevantes da OS selecionada que ficariam fora do top-K global.
+        pool = top_k * (5 if filters and filters.os_titulos else 2)
+
         # 1. Recuperação Densa (LanceDB)
-        dense_results = vector_store.search_dense(query, top_k=top_k * 2)
+        dense_results = vector_store.search_dense(query, top_k=pool)
 
         # 2. Recuperação Léxica (BM25)
-        lexical_results = lexical_searcher.search(query, top_k=top_k * 2)
+        lexical_results = lexical_searcher.search(query, top_k=pool)
 
         # 3. Reciprocal Rank Fusion (RRF)
         fused_scores: Dict[str, float] = {}
@@ -81,18 +86,10 @@ class HybridRetriever:
                 if status in ["revogada", "substituída", "substituida"]:
                     continue
 
-            # Filtro por linhas
-            if filters and filters.linhas:
-                chunk_linhas = [str(l).lower() for l in chunk.get("linhas_afetadas", [])]
-                if not any(fl.lower() in chunk_linhas for fl in filters.linhas):
-                    texto_lower = chunk.get("texto", "").lower()
-                    if not any(f"linha {fl.lower()}" in texto_lower or f"**{fl.lower()}**" in texto_lower for fl in filters.linhas):
-                        continue
-
-            # Filtro por consórcio
-            if filters and filters.consorcios:
-                chunk_consorcios = [str(c).lower() for c in chunk.get("consorcios", [])]
-                if not any(fc.lower() in chunk_consorcios for fc in filters.consorcios):
+            # Filtro por OS de origem (compara títulos normalizados)
+            if filters and filters.os_titulos:
+                wanted = {_normalize_os(t) for t in filters.os_titulos}
+                if _normalize_os(str(chunk.get("os_titulo", ""))) not in wanted:
                     continue
 
             # Filtro por ano/mês
@@ -116,6 +113,7 @@ class HybridRetriever:
                     trecho=trecho,
                     metadata={
                         "status_vigencia": chunk.get("status_vigencia"),
+                        "os_titulo": chunk.get("os_titulo", ""),
                         "ano_mes": chunk.get("ano_mes"),
                         "linhas_afetadas": chunk.get("linhas_afetadas", []),
                         "is_hub": chunk.get("is_hub", False),

@@ -253,60 +253,49 @@ const MultiSelectPopup: React.FC<MultiSelectPopupProps> = ({
 interface FilterBarProps {
   filters: RAGFilters;
   onChange: (newFilters: RAGFilters) => void;
-  availableLines?: LineOption[];
-  availableConsorcios?: string[];
+  availableOs?: OSOption[];
 }
 
-const DEFAULT_LINES: LineOption[] = [
-  { codigo: "006" },
-  { codigo: "104" },
-  { codigo: "117" },
-  { codigo: "169" },
-  { codigo: "LECD999" },
-];
+export interface OSOption {
+  uid: string;
+  title: string;
+  status_vigencia?: string;
+}
 
-const DEFAULT_CONSORCIOS = ["Intersul", "Internorte", "Transcarioca", "Santa Cruz"];
+const DEFAULT_OS: OSOption[] = [
+  { uid: "os-179-os-2026-09-setembro-1o-estudo-ret", title: "179 - OS 2026.09 - Setembro 1º Estudo ret" },
+  { uid: "os-178-os-2026-09-setembro-1o-estudo", title: "178 - OS 2026.09 - Setembro 1º Estudo" },
+  { uid: "os-2026-08-estudo-2-ret-4", title: "174 - OS 2026.08 - Agosto 2º Estudo [ret4]" },
+];
 
 export const FilterBar: React.FC<FilterBarProps> = ({
   filters,
   onChange,
-  availableLines = [],
-  availableConsorcios = [],
+  availableOs = [],
 }) => {
-  const linesSource = availableLines.length > 0 ? availableLines : DEFAULT_LINES;
-  const lineOptions: FilterOption[] = linesSource.map((l) => ({
-    id: l.codigo,
-    label: l.codigo,
-    sublabel: l.vista,
+  const osSource = availableOs.length > 0 ? availableOs : DEFAULT_OS;
+  const osOptions: FilterOption[] = osSource.map((o) => ({
+    id: o.title,
+    label: o.title,
+    sublabel: o.status_vigencia,
   }));
 
-  const consorciosSource = availableConsorcios.length > 0 ? availableConsorcios : DEFAULT_CONSORCIOS;
-  const consorcioOptions: FilterOption[] = consorciosSource.map((c) => ({ id: c, label: c }));
-
-  const toggleLine = (line: string) => {
-    const exists = filters.linhas.includes(line);
-    const updated = exists ? filters.linhas.filter((l) => l !== line) : [...filters.linhas, line];
-    onChange({ ...filters, linhas: updated });
-  };
-
-  const toggleConsorcio = (consorcio: string) => {
-    const exists = filters.consorcios.includes(consorcio);
+  const toggleOs = (title: string) => {
+    const exists = filters.os_titulos.includes(title);
     const updated = exists
-      ? filters.consorcios.filter((c) => c !== consorcio)
-      : [...filters.consorcios, consorcio];
-    onChange({ ...filters, consorcios: updated });
+      ? filters.os_titulos.filter((t) => t !== title)
+      : [...filters.os_titulos, title];
+    onChange({ ...filters, os_titulos: updated });
   };
 
   const resetFilters = () => {
     onChange({
       apenas_vigentes: true,
-      linhas: [],
-      consorcios: [],
+      os_titulos: [],
     });
   };
 
-  const hasActiveFilters =
-    !filters.apenas_vigentes || filters.linhas.length > 0 || filters.consorcios.length > 0;
+  const hasActiveFilters = !filters.apenas_vigentes || filters.os_titulos.length > 0;
 
   const segStyle = (active: boolean): React.CSSProperties => ({
     background: active ? "rgba(16, 185, 129, 0.15)" : "transparent",
@@ -374,28 +363,16 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         </button>
       </div>
 
-      {/* Popup de Linhas com busca */}
+      {/* Popup de OS com busca */}
       <MultiSelectPopup
-        label="Linhas"
+        label="OS"
         accentColor="#38bdf8"
         tintColor="rgba(56, 189, 248, 0.16)"
-        options={lineOptions}
-        selected={filters.linhas}
-        onToggle={toggleLine}
-        placeholder="Buscar linha..."
-        emptyText="Nenhuma linha encontrada."
-      />
-
-      {/* Popup de Consórcios com busca */}
-      <MultiSelectPopup
-        label="Consórcios"
-        accentColor="#a78bfa"
-        tintColor="rgba(167, 139, 250, 0.16)"
-        options={consorcioOptions}
-        selected={filters.consorcios}
-        onToggle={toggleConsorcio}
-        placeholder="Buscar consórcio..."
-        emptyText="Nenhum consórcio encontrado."
+        options={osOptions}
+        selected={filters.os_titulos}
+        onToggle={toggleOs}
+        placeholder="Buscar OS..."
+        emptyText="Nenhuma OS encontrada."
       />
 
       {hasActiveFilters && (

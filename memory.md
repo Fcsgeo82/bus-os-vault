@@ -121,6 +121,12 @@
     - **Prompt do generator:** SYSTEM_PROMPT orienta priorizar tabelas dos ANEXO II ao responder sobre desvios/itinerários alternativos; "Notas de Eventos Vinculadas: Nenhuma nota..." de um hub não implica ausência de desvios.
     - Testes: `tests/test_chunker.py` (5) + fixture `indice_pronto` em `test_rag.py` (reconstrói BM25); 8 testes passando. LanceDB: `table_names()` → `list_tables()`. Plano: `docs/implementation_plan_fix_recuperacao_rag.md`.
 
+19. **Filtro por OS nos Filtros RAG (v0.10.0):**
+    - **UI:** filtros por **linha** e **consórcio** removidos em `FilterBar.tsx`; novo seletor **OS** (popup multi-seleção, valores via `GET /api/os`) com fallback `DEFAULT_OS` (179, 178, 174). `RAGFilters` agora envia `os_titulos: string[]` (propagado em `types.ts`); `LineOption` mantido exportado para `LineFilterDropdown` (hubs).
+    - **Chunking:** todo chunk ganha `os_titulo` — extraído do wikilink `os_origem` do frontmatter (ex.: `[[179 - OS 2026.09 - Setembro 1º Estudo ret]]`); notas mestras (`os_mestra`) usam o próprio título. Persistido no LanceDB (`vector_store`) e no metadata de `RAGSource`.
+    - **Bugs corrigidos:** (1) ramo `else` do `chunk_document` referenciava `sub_body` (inexistente fora do laço) → `UnboundLocalError` derrubava o `POST /api/rag/sync` em massa — trocado por `body`; (2) extração de wikilink com colchetes aninhados (`[[174 ... [ret4]]]`) truncava o título (perdia o `]`) e o filtro da OS 174 voltava vazio — agora via `find('[[')`/`rfind(']]')`.
+    - **Retriever:** com `os_titulos` ativo, o pool de candidatos denso+léxico é ampliado (×5) para não perder chunks da OS selecionada fora do top-K global; comparação por `_normalize_os` (NFKD, sem diacríticos, espaços colapsados).
+
 ---
 
 ## 3. Estado de Entrega (v0.9.0 Concluído)
@@ -150,5 +156,6 @@
 - [x] **Reformulação do pipeline RAG (v0.8.0):** table-aware chunking (10 linhas/tabela, 1500 chars máx), resumos em linguagem natural no ANEXO I, boost 1.5x para hubs, truncamento de trecho (800 chars) e contexto do LLM (6 docs × 600 chars), filtro ano_mes ativado, campo `is_hub` no LanceDB. Vault reindexado: 452 arquivos → 2852 chunks.
 - [x] **Otimizações do plano de melhorias (v0.9.0, etapas 4-6):** contexto LLM ampliado (trecho 1000/contexto 1000/8 docs), categoria por frontmatter com fallback por pasta, chunking de tabelas adaptativo com divisão recursiva; provider NVIDIA NIM (free tier) e retry no OpenRouter para `provider_overloaded`.
 - [x] **Fix recuperação RAG (v0.9.1):** `_chunk_table` iterativo elimina RecursionError e indexa os 6 anexos de `03_Anexos` (452/452, 0 falhas); boost `HUB_BOOST` (2.5x) específico da linha consultada via `_chunk_toca_linha`; prompt do generator prioriza ANEXO II. Consulta "desvios linha 104" valida. Plano: `docs/implementation_plan_fix_recuperacao_rag.md`.
+- [x] **Filtro por OS nos Filtros RAG (v0.10.0):** `os_titulos` substitui filtros por linha/consórcio; chunk ganha `os_titulo` (wikilink `os_origem`, extração robusta p/ `[ret4]`); fix `sub_body` no chunking de parágrafos; pool ×5 no retriever com filtro ativo. 9 testes (chunker+RAG, incl. filtro por OS); `tsc --noEmit`/`next build` limpos.
 - [x] 31 de 31 testes automatizados com pytest (100% de sucesso) e `tsc --noEmit`/`next build` limpos.
 - [x] Build de produção do frontend Next.js 15 compilado sem erros.

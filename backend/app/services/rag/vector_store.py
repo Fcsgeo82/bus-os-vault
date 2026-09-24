@@ -42,6 +42,7 @@ class LanceDBStore:
                 "vector": vec,
                 "chunk_id": c["chunk_id"],
                 "nota_titulo": c["nota_titulo"],
+                "os_titulo": c.get("os_titulo", ""),
                 "secao_titulo": c["secao_titulo"],
                 "arquivo_path": c["arquivo_path"],
                 "categoria": c["categoria"],
@@ -84,6 +85,7 @@ class LanceDBStore:
             formatted.append({
                 "chunk_id": r["chunk_id"],
                 "nota_titulo": r["nota_titulo"],
+                "os_titulo": r.get("os_titulo", ""),
                 "secao_titulo": r["secao_titulo"],
                 "arquivo_path": r["arquivo_path"],
                 "categoria": r["categoria"],
