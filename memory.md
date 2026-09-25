@@ -134,6 +134,19 @@
     - **Prompt (item 8):** atribuição de fontes — dados da linha (grade/viagens/quilometragem) → hub e resumo do ANEXO I; itinerários alternativos/desvios → ANEXO II; alterações/retificações da OS → notas de eventos.
     - Testes: `test_retriever_inclui_planejamento_do_hub` (query "planejamento de viagens da linha 812" top-8 contém chunk de `Linha 812` com `| Dia Útil |`/`Distribuição Horária`); 10 testes passando. API validada: 812 → 5 chunks do hub + ANEXO I (len 1492, colunas completas); 104 desvios → Linha 104 + ANEXO II 174.
 
+21. **Lição aprendida — autenticação (tentativa multiusuário e simplificação):**
+    - **O que deu errado (tentativa v0.11 multiusuário, revertida até `afc3777`):**
+      - **Escopo inflado:** modelo multiusuário (roles admin/editor, SQLite + bcrypt, tokens HMAC com TTL, CRUD de usuários, tela Usuários) era muito maior que o requisito real — "só quem tem acesso escreve". O backend chegou a ficar pronto (17 testes), mas o frontend ainda estava pela metade quando a sessão foi abandonada.
+      - **Contenção do LanceDB no Windows:** pytest abrindo o mesmo diretório do LanceDB usado pelo servidor vivo (ou imports de módulos RAG em module scope) dispara "Windows fatal exception: access violation" em threads nativas do LanceDB (background_loop/DuckDB). A suíte até passava (26 passed), mas o servidor caía em crash-loop.
+      - **`uvicorn --reload` + edits no backend:** cada edição reinicia o worker, que reabre o LanceDB enquanto o anterior ainda o segura → crash-loop e API fora do ar (health timeout). O servidor virava ruído/dumping repetido.
+      - **Testes importavam `app.api.*`:** `test_auth.py` importava `ingest.py` etc., que conectam o LanceDB no module scope — contaminava o processo de teste com mais access violations. Corrigido removendo esses imports e testando a dependência em app mínimo.
+      - **Suíte RAG pesada:** `test_rag.py` roda embeddings (sentence-transformers) + LanceDB reais (~1m47s por rodada); multiplicada por ciclos de diagnóstico, dominava o tempo de sessão.
+    - **O que pode ser melhorado / decisões futuras:**
+      - **Auth simplificada (aprovada):** chave de escrita única `AUTH_WRITE_KEY` no `.env`, enviada como `Authorization: Bearer`. Sem DB, bcrypt, JWT, sessão ou CRUD. Sem chave = leitura pública; com chave = todas as escritas. Plano: `.opencode/plans/auth-chave-escrita-v011.md`.
+      - **Protocolo de testes anti-gargalo:** (1) nunca rodar `test_rag.py` com o servidor de pé; (2) parar o servidor antes de edits no backend — não confiar em `--reload`; (3) testes de auth usam TestClient de app mínimo + `tmp_path`/monkeypatch, sem importar módulos que conectam LanceDB; (4) validar amarração de endpoints na API real (401/200), não por inspeção de assinatura.
+      - **Restart deliberado:** depois de changes no backend, reiniciar o uvicorn explicitamente (memória item 7: `.env` só é lido no import — também vale para `AUTH_WRITE_KEY`).
+      - **Escopo enxuto por tentativa:** implementar backend → testes leves → frontend → validação pontual, em vez de empilhar todo o backend antes da primeira validação.
+
 ---
 
 ## 3. Estado de Entrega (v0.9.0 Concluído)
