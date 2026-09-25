@@ -147,6 +147,14 @@
       - **Restart deliberado:** depois de changes no backend, reiniciar o uvicorn explicitamente (memória item 7: `.env` só é lido no import — também vale para `AUTH_WRITE_KEY`).
       - **Escopo enxuto por tentativa:** implementar backend → testes leves → frontend → validação pontual, em vez de empilhar todo o backend antes da primeira validação.
 
+22. **Skills reutilizáveis extraídas deste projeto (novas):**
+    - Criadas 3 skills a partir do conhecimento acumulado (especialmente da tentativa de auth v0.11):
+      1. **`markdown-vault-rag`** — RAG sobre vault Markdown/Obsidian: schema em frontmatter (`schema_version`, `uid`, wikilinks como proveniência), chunking table-aware iterativo (nunca quebra linha), hubs derivados + injeção de âncoras no topo do RRF quando a query cita entidade, retriever híbrido (dense + BM25), cadeia de fallback de LLM (OpenRouter→NIM→Gemini→síntese local) com tratamento de 200-com-erro, atribuição de fontes no prompt e testes de recall semântico.
+      2. **`embedded-db-dev-loop`** — disciplina anti-crash p/ banco embutido (LanceDB/SQLite/DuckDB) + servidor vivo no Windows: a lição mais cara desta feature (access violation por 2 processos abrindo o mesmo diretório, crash-loop do `--reload`, imports em module scope, `.env` lido no import, como distinguir ruído de falha real).
+      3. **`right-sized-auth`** — escolher o nível de auth pelo ameaça real (chave única Bearer → 2 chaves → Basic → multiusuário), falha-fechada sem crash, gate em `sessionStorage`, testes da dependência em app mínimo (sem importar módulos que conectam DB).
+    - **Localização:** instaladas globalmente em `~/.claude/skills/<nome>/SKILL.md` e copiadas para `.opencode/skills/` (portáveis com o repo; `.opencode/` permanece fora de commit).
+    - **Padrão de skill do projeto:** seguir `.opencode/skills/skill-creator/SKILL.md` (nome = pasta, lowercase/hífens; frontmatter `name`/`description` obrigatórios — *o que faz* e *quando usar*; corpo procedimental e conciso; sem README; recursos extras só em `references/`, `scripts/`, `assets/` quando removem trabalho repetido). Novas skills são descobertas ao **iniciar nova sessão** de agente.
+
 ---
 
 ## 3. Estado de Entrega (v0.9.0 Concluído)
